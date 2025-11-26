@@ -3,212 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>평화를 위한 발자국 | 졸업 프로젝트</title>
+    <title>🌟 평화를 위한 날개 🦋 | [프로젝트 제목]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* 테마 색상 정의 */
+        /* 키치 색상 팔레트 및 기본 설정 */
         :root {
-            --primary-color: #64B5F6; /* 주 색상: 밝은 하늘색 */
-            --secondary-color: #C5E1A5; /* 보조 색상: 연두색 */
-            --dark-color: #1976D2; /* 어두운 하늘색 (포인트) */
-            --text-color: #333;
-            --background-color: #ffffff;
-            --section-bg: #F0F4C3; /* 섹션 배경: 매우 연한 연두색 */
+            --kitsch-green: #B2FF59; /* 연두색 */
+            --kitsch-blue: #81D4FA;  /* 하늘색 */
+            --kitsch-pink: #F48FB1;  /* 분홍색 */
+            --kitsch-dark-blue: #4FC3F7; /* 조금 더 진한 하늘색 (포인트) */
+            --kitsch-light-bg: #E8F5E9; /* 아주 연한 연두색 배경 */
+            --text-color-dark: #333333;
+            --text-color-light: #ffffff;
+            --section-padding: 60px 20px;
+            --container-width: 900px;
+            --border-radius: 12px; /* Apple UI 스타일의 둥근 모서리 */
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
         }
 
-        /* 폰트 및 기본 설정 */
         body {
-            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-family: 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif; /* Apple 폰트 우선 */
             margin: 0;
             padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
+            background-color: #f8f8f8; /* 아주 밝은 회색 배경 */
+            color: var(--text-color-dark);
             line-height: 1.6;
             scroll-behavior: smooth;
         }
 
-        /* 헤더/히어로 섹션: 프로젝트 메인 */
-        .hero {
-            background: linear-gradient(rgba(100, 181, 246, 0.7), rgba(200, 221, 165, 0.7)), url('images/hero_background.jpg'); 
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 150px 20px;
-            height: 50vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        /* --- Global Styles --- */
+        .container {
+            max-width: var(--container-width);
+            margin: auto;
+            padding: 0 20px; /* 좌우 여백 */
         }
 
-        .hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-top: 0;
-        }
-
-        /* 네비게이션 바 */
-        .navbar {
-            background-color: var(--dark-color); /* 어두운 하늘색 */
-            overflow: hidden;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .navbar a:hover {
-            background-color: var(--primary-color); /* 밝은 하늘색으로 호버 */
-        }
-
-        /* 섹션 공통 스타일 */
         .section {
-            padding: 60px 20px;
-            max-width: 1000px;
+            background-color: var(--kitsch-light-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
             margin: 40px auto;
-            background: var(--section-bg); 
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            border-left: 5px solid var(--primary-color); /* 하늘색 포인트 */
+            padding: var(--section-padding);
+            border: 1px solid rgba(0, 0, 0, 0.05); /* 은은한 테두리 */
         }
 
         .section h2 {
             text-align: center;
-            color: var(--dark-color); /* 어두운 하늘색 */
-            font-size: 2em;
-            margin-bottom: 40px;
+            color: var(--kitsch-dark-blue);
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* 아이콘과 텍스트 간격 */
+        }
+
+        .section h2 .icon {
+            color: var(--kitsch-pink); /* 제목 아이콘 색상 */
+            font-size: 1em; /* 아이콘 크기 */
+        }
+
+        p, ul, ol {
+            font-size: 1.05em;
+            margin-bottom: 1.2em; /* 문단 간격 */
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--kitsch-blue) 0%, var(--kitsch-pink) 100%); /* 하늘색 -> 분홍색 그라데이션 */
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 120px 20px;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             position: relative;
+            overflow: hidden; /* 별, 날개 이미지 오버플로우 방지 */
         }
 
-        .section h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--secondary-color); /* 연두색 밑줄 */
-            margin: 10px auto 0;
+        .hero::before, .hero::after { /* 별, 날개 데코레이션 */
+            content: '🌟';
+            position: absolute;
+            font-size: 5em;
+            opacity: 0.7;
+        }
+        .hero::before { top: 10%; left: 10%; transform: rotate(-20deg); }
+        .hero::after { bottom: 10%; right: 10%; transform: rotate(30deg); content: '🦋'; font-size: 6em; }
+
+        .hero h1 {
+            font-size: 4em;
+            margin: 0 0 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1; /* 아이콘 위에 표시 */
         }
 
-        /* 갤러리 그리드 스타일 (이전과 동일) */
+        .hero p {
+            font-size: 1.5em;
+            margin: 0;
+            z-index: 1;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background-color: var(--kitsch-dark-blue); /* 진한 하늘색 */
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .navbar a {
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 16px 25px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            display: flex; /* 아이콘 중앙 정렬 */
+            align-items: center;
+            gap: 8px; /* 아이콘과 텍스트 간격 */
+        }
+
+        .navbar a:hover {
+            background-color: var(--kitsch-pink); /* 분홍색으로 호버 */
+            transform: translateY(-2px); /* 살짝 위로 이동 효과 */
+        }
+        
+        .navbar a .icon {
+            font-size: 1.1em;
+        }
+
+        /* --- Gallery Grid --- */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            text-align: center;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; /* 이미지 간격 */
+            padding: 20px 0;
+        }
+
+        .gallery-grid figure {
+            margin: 0; /* 기본 마진 제거 */
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-grid figure:hover {
+            transform: translateY(-5px);
         }
 
         .gallery-grid img {
             width: 100%;
-            height: auto;
-            border-radius: 5px;
-            object-fit: cover;
-            border: 2px solid var(--secondary-color); /* 연두색 테두리 */
-            transition: transform 0.3s;
+            height: 200px; /* 이미지 높이 고정 */
+            object-fit: cover; /* 이미지를 잘라내서 채움 */
+            display: block;
         }
 
-        .gallery-grid img:hover {
-            transform: scale(1.05);
-        }
-
-        /* 푸터 */
-        footer {
-            background-color: #444;
-            color: #ddd;
+        .gallery-grid figcaption {
+            background-color: var(--kitsch-blue);
+            color: var(--text-color-light);
+            padding: 12px;
+            font-size: 0.9em;
             text-align: center;
-            padding: 20px 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--kitsch-dark-blue); /* 진한 하늘색 */
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 25px 0;
             margin-top: 50px;
             font-size: 0.9em;
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+
+        /* --- Responsive Design (Optional, but good practice for Apple UI) --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .navbar a {
+                padding: 12px 15px;
+                font-size: 0.9em;
+                gap: 5px;
+            }
+            .section {
+                margin: 20px auto;
+                padding: 40px 15px;
+            }
+            .section h2 {
+                font-size: 1.8em;
+            }
+        }
+        @media (max-width: 480px) {
+            .navbar .container {
+                flex-wrap: wrap; /* 작은 화면에서 메뉴 줄 바꿈 */
+            }
+            .navbar a {
+                flex-grow: 1; /* 각 메뉴가 공간을 균등하게 차지 */
+                width: 50%;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="navbar">
-        <a href="#hero">[프로젝트 제목]</a>
-        <a href="#project-intro">프로젝트 소개</a>
-        <a href="#process">제작 과정</a>
-        <a href="#gallery">사진첩</a>
-        <a href="#meaning">프로젝트 의미</a>
-        <a href="#about-me">나의 소개</a>
+        <div class="container">
+            <a href="#hero"><i class="fas fa-star icon"></i> <span>Home</span></a>
+            <a href="#project-intro"><i class="fas fa-hand-holding-heart icon"></i> <span>프로젝트 소개</span></a>
+            <a href="#process"><i class="fas fa-cogs icon"></i> <span>제작 과정</span></a>
+            <a href="#gallery"><i class="fas fa-images icon"></i> <span>사진첩</span></a>
+            <a href="#meaning"><i class="fas fa-lightbulb icon"></i> <span>프로젝트 의미</span></a>
+            <a href="#about-me"><i class="fas fa-user-circle icon"></i> <span>제작자</span></a>
+        </div>
     </div>
 
     <div class="hero" id="hero">
-        <h1>평화를 위한 발자국</h1>
-        <p>세상을 바꾸는 활동가들의 진솔한 인터뷰 영상 기록</p>
+        <h1>🌟 평화를 위한 날개 🦋</h1>
+        <p>세상을 바꾸는 활동가들의 빛나는 이야기</p>
     </div>
 
     <section class="section" id="project-intro">
-        <h2>프로젝트 소개 🕊️</h2>
-        <p>본 프로젝트는 평화와 인권을 위해 헌신하는 **세 분의 활동가**를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 단순한 기록을 넘어, 평화가 우리 모두의 일상 속 실천임을 알리고자 합니다.</p>
-        <h3>주요 내용</h3>
-        <ul>
-            <li>**활동가 A:** [분야: 예시) 환경 평화]</li>
-            <li>**활동가 B:** [분야: 예시) 인권 및 교육]</li>
-            <li>**활동가 C:** [분야: 예시) 지역 사회 봉사]</li>
-        </ul>
-        <p style="text-align: center; margin-top: 30px;">**[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**</p>
-    </section>
-    
-    <hr>
-
-    <section class="section" id="process">
-        <h2>제작 과정 🎬</h2>
-        <ol>
-            <li>기획 및 대상 선정 (9월) : 인터뷰 대상자 섭외 및 질문지 구성</li>
-            <li>현장 인터뷰 및 촬영 (9월~12월) : 대상자의 활동 현장 방문 및 심층 인터뷰 진행</li>
-            <li>영상 편집 및 후반 작업 (12월~1월) : 핵심 메시지를 전달할 수 있도록 영상 구성 및 자막/배경 음악 작업</li>
-            <li>홈페이지 구현 및 발표 : 최종 결과물 온라인 공개</li>
-        </ol>
-        <p style="margin-top: 20px;">각 단계에서 발생한 어려움(예: 원격 인터뷰 환경 구축)과 이를 극복한 과정을 상세히 기록하여 프로젝트의 투명성을 높였습니다.</p>
-    </section>
-    
-    <hr>
-
-    <section class="section" id="gallery">
-        <h2>사진첩 ✨</h2>
-        <div class="gallery-grid">
-            <img src="images/photo1.jpg" alt="인터뷰 현장 모습">
-            <img src="images/photo2.jpg" alt="촬영 장비 셋업">
-            <img src="images/photo3.jpg" alt="활동가와 기념 사진">
+        <div class="container">
+            <h2><i class="fas fa-dove icon"></i> 프로젝트 소개</h2>
+            <p><strong>[여기에 프로젝트의 주제, 목표, 그리고 인터뷰의 중요성을 작성하세요.]</strong></p>
+            <p>본 프로젝트는 평화와 인권을 위해 헌신하는 <strong>세 분의 활동가</strong>를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 단순한 기록을 넘어, 평화가 우리 모두의 일상 속 실천임을 알리고자 합니다.</p>
+            <h3>🌟 참여 활동가</h3>
+            <ul>
+                <li><strong>활동가 A:</strong> [분야: 예시) 환경 평화]</li>
+                <li><strong>활동가 B:</strong> [분야: 예시) 인권 및 교육]</li>
+                <li><strong>활동가 C:</strong> [분야: 예시) 지역 사회 봉사]</li>
+            </ul>
+            <p style="text-align: center; margin-top: 30px;">
+                <i class="fab fa-youtube icon" style="font-size: 2em; color: var(--kitsch-pink);"></i>
+                <br>
+                **[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**
+                </p>
         </div>
-        <p style="text-align: center; margin-top: 30px; font-style: italic;">**주의:** `images/` 폴더를 만들고 사진을 넣은 후, 파일 이름을 확인해 주세요.</p>
     </section>
-
-    <hr>
+    
+    <section class="section" id="process">
+        <div class="container">
+            <h2><i class="fas fa-wand-magic-sparkles icon"></i> 제작 과정</h2>
+            <ol>
+                <li><i class="fas fa-clipboard-list icon" style="color: var(--kitsch-green);"></i> <strong>기획 & 섭외 (X월):</strong> 인터뷰 대상자 선정 및 질문지 구성</li>
+                <li><i class="fas fa-video icon" style="color: var(--kitsch-blue);"></i> <strong>현장 촬영 (Y월):</strong> 활동 현장 방문 및 심층 인터뷰 진행</li>
+                <li><i class="fas fa-edit icon" style="color: var(--kitsch-pink);"></i> <strong>영상 편집 & 후반 작업 (Z월):</strong> 핵심 메시지 전달을 위한 구성, 자막, 배경 음악</li>
+                <li><i class="fas fa-globe-americas icon" style="color: var(--kitsch-dark-blue);"></i> <strong>홈페이지 구현 & 공개:</strong> 최종 결과물 온라인 공개 및 발표</li>
+            </ol>
+            <p style="margin-top: 20px;">각 단계에서 발생한 어려움과 이를 극복한 과정을 기록하여 프로젝트의 투명성을 높였습니다.</p>
+        </div>
+    </section>
+    
+    <section class="section" id="gallery">
+        <div class="container">
+            <h2><i class="fas fa-camera-retro icon"></i> 사진첩</h2>
+            <div class="gallery-grid">
+                <figure>
+                    <img src="images/photo1.jpg" alt="인터뷰 현장 모습">
+                    <figcaption>인터뷰 현장의 따뜻한 순간</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/photo2.jpg" alt="촬영 장비 셋업">
+                    <figcaption>꼼꼼한 촬영 준비</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/photo3.jpg" alt="활동가와 기념 사진">
+                    <figcaption>함께 빛나는 평화의 씨앗</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/photo4.jpg" alt="프로젝트 팀원">
+                    <figcaption>저희 팀입니다!</figcaption>
+                </figure>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-style: italic; color: #777;">**참고:** `images/` 폴더를 만들고 사진 파일을 넣어주세요. (예: `photo1.jpg`, `hero_background.jpg` 등)</p>
+        </div>
+    </section>
 
     <section class="section" id="meaning">
-        <h2>프로젝트의 의미와 결론 💡</h2>
-        <p>이 프로젝트를 통해 우리는 평화 활동의 **연속성과 확장성**에 주목했습니다. 활동가들의 이야기를 듣고 기록함으로써, 시청자들이 **평화**라는 개념을 자신과 연결하고 일상 속 작은 실천의 중요성을 깨닫게 하는 것이 궁극적인 목표입니다.</p>
-        <p>졸업 후에도 이 콘텐츠가 교육 자료로 활용되어 사회에 긍정적인 영향을 미치기를 기대합니다.</p>
+        <div class="container">
+            <h2><i class="fas fa-heart-pulse icon"></i> 프로젝트의 의미와 결론</h2>
+            <p>이 프로젝트를 통해 우리는 평화 활동의 **연속성과 확장성**에 주목했습니다. 활동가들의 이야기를 듣고 기록함으로써, 시청자들이 **평화**라는 개념을 자신과 연결하고 일상 속 작은 실천의 중요성을 깨닫게 하는 것이 궁극적인 목표입니다.</p>
+            <p>졸업 후에도 이 콘텐츠가 교육 자료로 활용되어 사회에 긍정적인 영향을 미치기를 기대합니다. 평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. <i class="fas fa-seedling icon" style="color: var(--kitsch-green);"></i></p>
+        </div>
     </section>
 
-    <hr>
-
     <section class="section" id="about-me">
-        <h2>제작자 소개 🧑‍💻</h2>
-        <p><strong>윤소연 (그냥)</strong></p>
-        <p></p>
-        <p>평화와 미디어가 만나는 지점에서 의미있는 콘텐츠를 제작하는 데 관심을 두고 있습니다.
-            이 프로젝트를 통해 소셜 미디어와 영상 제작 기술을 활용하여 사회적 메시지를 전달하는 경험을 쌓았습니다.</p>
-        <p>📧 연락처 : souyeon1028@gmail.com</p>
+        <div class="container">
+            <h2><i class="fas fa-user-astronaut icon"></i> 제작자 소개</h2>
+            <p><strong>[본인 이름]</strong></p>
+            <p>OOO대학교 OOO학과</p>
+            <p>평화와 미디어가 만나는 지점에서 의미있는 콘텐츠를 제작하는 데 관심을 두고 있습니다. 이 프로젝트를 통해 소셜 미디어와 영상 제작 기술을 활용하여 사회적 메시지를 전달하는 경험을 쌓았습니다.</p>
+            <p>📧 연락처: your-email@example.com</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://github.com/yoonsouyeon" target="_blank" style="color: var(--kitsch-dark-blue); font-size: 2em; margin: 0 10px;"><i class="fab fa-github"></i></a>
+                </div>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 [본인 이름/팀 이름]. All Rights Reserved.</p>
+        <div class="container">
+            <p><i class="fas fa-copyright"></i> 2025 [본인 이름/팀 이름]. All Rights Reserved.</p>
+            <p>Designed with <i class="fas fa-heart" style="color: var(--kitsch-pink);"></i> & <i class="fas fa-star" style="color: var(--kitsch-green);"></i></p>
+        </div>
     </footer>
 
 </body>
