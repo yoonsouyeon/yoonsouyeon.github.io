@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>평화를 위한 발자국 | 졸업 프로젝트</title>
     <style>
-        /* 기본 색상 변수 설정 */
+        /* 테마 색상 정의 */
         :root {
-            --primary-color: #62cff4; /* 메인 하늘색 */
-            --secondary-color: #f462c7; /* 강조 핑크색 */
+            --primary-color: #64B5F6; /* 주 색상: 밝은 하늘색 */
+            --secondary-color: #C5E1A5; /* 보조 색상: 연두색 */
+            --dark-color: #1976D2; /* 어두운 하늘색 (포인트) */
             --text-color: #333;
-            --bg-light: #fefeff;
-            --bg-white: #ffffff;
+            --background-color: #ffffff;
+            --section-bg: #F0F4C3; /* 섹션 배경: 매우 연한 연두색 */
         }
 
         /* 폰트 및 기본 설정 */
@@ -19,7 +20,7 @@
             font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-light);
+            background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
             scroll-behavior: smooth;
@@ -27,10 +28,10 @@
 
         /* 헤더/히어로 섹션: 프로젝트 메인 */
         .hero {
-            background: linear-gradient(rgba(98, 207, 244, 0.7), rgba(244, 98, 199, 0.7)), url('images/hero_background.jpg'); 
+            background: linear-gradient(rgba(100, 181, 246, 0.7), rgba(200, 221, 165, 0.7)), url('images/hero_background.jpg'); 
             background-size: cover;
             background-position: center;
-            color: var(--bg-white);
+            color: white;
             text-align: center;
             padding: 150px 20px;
             height: 50vh;
@@ -42,7 +43,7 @@
         .hero h1 {
             font-size: 3.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
@@ -52,7 +53,7 @@
 
         /* 네비게이션 바 */
         .navbar {
-            background-color: var(--primary-color); 
+            background-color: var(--dark-color); /* 어두운 하늘색 */
             overflow: hidden;
             position: sticky;
             top: 0;
@@ -63,7 +64,7 @@
         .navbar a {
             float: left;
             display: block;
-            color: var(--bg-white);
+            color: white;
             text-align: center;
             padding: 14px 20px;
             text-decoration: none;
@@ -71,7 +72,7 @@
         }
 
         .navbar a:hover {
-            background-color: var(--secondary-color); /* 핑크색으로 호버 */
+            background-color: var(--primary-color); /* 밝은 하늘색으로 호버 */
         }
 
         /* 섹션 공통 스타일 */
@@ -79,14 +80,15 @@
             padding: 60px 20px;
             max-width: 1000px;
             margin: 40px auto;
-            background: var(--bg-white);
+            background: var(--section-bg); 
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary-color); /* 하늘색 포인트 */
         }
 
         .section h2 {
             text-align: center;
-            color: var(--secondary-color); /* 핑크색 제목 */
+            color: var(--dark-color); /* 어두운 하늘색 */
             font-size: 2em;
             margin-bottom: 40px;
             position: relative;
@@ -97,16 +99,11 @@
             display: block;
             width: 50px;
             height: 3px;
-            background: var(--primary-color); /* 하늘색 구분선 */
+            background: var(--secondary-color); /* 연두색 밑줄 */
             margin: 10px auto 0;
         }
-        
-        /* 목록 스타일 */
-        .section ul, .section ol {
-            padding-left: 20px;
-        }
 
-        /* 갤러리 그리드 스타일 */
+        /* 갤러리 그리드 스타일 (이전과 동일) */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -119,19 +116,18 @@
             height: auto;
             border-radius: 5px;
             object-fit: cover;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--secondary-color); /* 연두색 테두리 */
             transition: transform 0.3s;
         }
 
         .gallery-grid img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
         }
 
         /* 푸터 */
         footer {
-            background-color: var(--primary-color); /* 하늘색 푸터 */
-            color: var(--bg-white);
+            background-color: #444;
+            color: #ddd;
             text-align: center;
             padding: 20px 0;
             margin-top: 50px;
@@ -142,7 +138,7 @@
 <body>
 
     <div class="navbar">
-        <a href="#hero" style="font-weight: bold;">Peace Footprints</a>
+        <a href="#hero">[프로젝트 제목]</a>
         <a href="#project-intro">프로젝트 소개</a>
         <a href="#process">제작 과정</a>
         <a href="#gallery">사진첩</a>
@@ -156,25 +152,28 @@
     </div>
 
     <section class="section" id="project-intro">
-        <h2>프로젝트 소개 💙</h2>
+        <h2>프로젝트 소개 🕊️</h2>
         <p>본 프로젝트는 평화와 인권을 위해 헌신하는 **세 분의 활동가**를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 단순한 기록을 넘어, 평화가 우리 모두의 일상 속 실천임을 알리고자 합니다.</p>
-        
-        <div style="text-align: center; margin-top: 30px;">
-            <p><strong>[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]</strong></p>
-        </div>
+        <h3>주요 내용</h3>
+        <ul>
+            <li>**활동가 A:** [분야: 예시) 환경 평화]</li>
+            <li>**활동가 B:** [분야: 예시) 인권 및 교육]</li>
+            <li>**활동가 C:** [분야: 예시) 지역 사회 봉사]</li>
+        </ul>
+        <p style="text-align: center; margin-top: 30px;">**[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**</p>
     </section>
     
     <hr>
 
     <section class="section" id="process">
-        <h2>제작 과정 💖</h2>
+        <h2>제작 과정 🎬</h2>
         <ol>
-            <li>**기획 및 대상 선정:** 인터뷰 대상자 섭외 및 질문지 구성</li>
-            <li>**현장 인터뷰 및 촬영:** 대상자의 활동 현장 방문 및 심층 인터뷰 진행</li>
-            <li>**영상 편집 및 후반 작업:** 핵심 메시지를 전달할 수 있도록 영상 구성 및 자막/배경 음악 작업</li>
+            <li>**기획 및 대상 선정 (X월):** 인터뷰 대상자 섭외 및 질문지 구성</li>
+            <li>**현장 인터뷰 및 촬영 (Y월):** 대상자의 활동 현장 방문 및 심층 인터뷰 진행</li>
+            <li>**영상 편집 및 후반 작업 (Z월):** 핵심 메시지를 전달할 수 있도록 영상 구성 및 자막/배경 음악 작업</li>
             <li>**홈페이지 구현 및 발표:** 최종 결과물 온라인 공개</li>
         </ol>
-        <p style="margin-top: 20px;">프로젝트 과정에서 얻은 주요 교훈과 성과를 기록했습니다.</p>
+        <p style="margin-top: 20px;">각 단계에서 발생한 어려움(예: 원격 인터뷰 환경 구축)과 이를 극복한 과정을 상세히 기록하여 프로젝트의 투명성을 높였습니다.</p>
     </section>
     
     <hr>
@@ -186,27 +185,29 @@
             <img src="images/photo2.jpg" alt="촬영 장비 셋업">
             <img src="images/photo3.jpg" alt="활동가와 기념 사진">
         </div>
-        <p style="text-align: center; margin-top: 30px; color: gray;">**참고:** `images/` 폴더 내에 해당 이름의 파일을 업로드해야 이미지가 표시됩니다.</p>
+        <p style="text-align: center; margin-top: 30px; font-style: italic;">**주의:** `images/` 폴더를 만들고 사진을 넣은 후, 파일 이름을 확인해 주세요.</p>
     </section>
 
     <hr>
 
     <section class="section" id="meaning">
         <h2>프로젝트의 의미와 결론 💡</h2>
-        <p>이 프로젝트는 평화 활동의 **연속성과 확장성**에 주목하며, 시청자들에게 일상 속 작은 실천의 중요성을 깨닫게 하는 데 목표를 두고 있습니다. 활동가들의 이야기를 통해 **희망**의 메시지를 전달하고자 합니다.</p>
+        <p>이 프로젝트를 통해 우리는 평화 활동의 **연속성과 확장성**에 주목했습니다. 활동가들의 이야기를 듣고 기록함으로써, 시청자들이 **평화**라는 개념을 자신과 연결하고 일상 속 작은 실천의 중요성을 깨닫게 하는 것이 궁극적인 목표입니다.</p>
+        <p>졸업 후에도 이 콘텐츠가 교육 자료로 활용되어 사회에 긍정적인 영향을 미치기를 기대합니다.</p>
     </section>
 
     <hr>
 
     <section class="section" id="about-me">
-        <h2>제작자 소개 🙋‍♀️</h2>
+        <h2>제작자 소개 🧑‍💻</h2>
         <p><strong>[본인 이름]</strong></p>
-        <p>OOO대학교 OOO학과 졸업 프로젝트</p>
+        <p>OOO대학교 OOO학과</p>
+        <p>평화와 미디어가 만나는 지점에서 의미있는 콘텐츠를 제작하는 데 관심을 두고 있습니다. 이 프로젝트를 통해 소셜 미디어와 영상 제작 기술을 활용하여 사회적 메시지를 전달하는 경험을 쌓았습니다.</p>
         <p>📧 연락처: your-email@example.com</p>
     </section>
 
     <footer>
-        <p>&copy; 2025 Yoonsouyeon. All Rights Reserved.</p>
+        <p>&copy; 2025 [본인 이름/팀 이름]. All Rights Reserved.</p>
     </footer>
 
 </body>
