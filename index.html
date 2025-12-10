@@ -20,45 +20,45 @@
         --text-color-dark: var(--primary-color);
         --text-color-light: #ffffff;
         
-        --border-radius: 10px; /* 둥근 모서리도 약간 축소 */
-        --section-padding-min: 25px 15px; /* 섹션 내부 패딩 최소화 */
-        --container-width: 900px;
-        --shadow: 0 1px 6px rgba(0, 0, 0, 0.08); /* 그림자도 가볍게 */
+        --border-radius: 10px;
+        --section-padding-min: 25px 15px;
+        --container-width: 700px; /* ★★★ 가로 너비 축소 ★★★ */
+        --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
     }
 
     body {
-        font-family: 'S-Core Dream', 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif; 
+        font-family: 'S-Core Dream', 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif;
         font-weight: 100;
         margin: 0;
         padding: 0;
         background-color: var(--main-bg);
         color: var(--text-color-dark);
-        line-height: 1.4; /* 줄 간격 최소화 */
+        line-height: 1.4;
         scroll-behavior: smooth;
     }
 
     /* --- Global & Layout Styles --- */
     .container {
-        max-width: var(--container-width);
+        max-width: var(--container-width); /* 가로 너비 제한 */
         margin: auto;
-        padding: 0 15px; /* 좌우 패딩 축소 */
+        padding: 0 15px;
     }
 
     /* --- 모든 섹션의 크기 최소화 --- */
     .section {
-        background-color: var(--section-bg); 
+        background-color: var(--section-bg);
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
-        margin: 15px auto; /* 섹션 간 마진 최소화 */
-        padding: var(--section-padding-min); /* 섹션 내부 패딩 최소화 */
-        border: 1px solid var(--border-color); 
+        margin: 15px auto;
+        padding: var(--section-padding-min);
+        border: 1px solid var(--border-color);
     }
 
     .section h2 {
         text-align: center;
-        color: var(--primary-color); 
-        font-size: 1.6em; /* 제목 크기 축소 */
-        margin-bottom: 15px; /* 제목 아래 마진 축소 */
+        color: var(--primary-color);
+        font-size: 1.6em;
+        margin-bottom: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -67,8 +67,8 @@
     }
 
     p, ul, ol {
-        font-size: 0.95em; /* 본문 폰트 크기 축소 */
-        margin-bottom: 0.8em; /* 문단 간격 최소화 */
+        font-size: 0.95em;
+        margin-bottom: 0.8em;
     }
 
     /* --- Hero Section --- */
@@ -76,8 +76,8 @@
         background: var(--primary-color);
         color: var(--text-color-light);
         text-align: center;
-        padding: 60px 20px; /* 패딩 축소 */
-        height: 20vh; /* 높이 최소화 */
+        padding: 60px 20px;
+        height: 20vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -87,13 +87,13 @@
     }
 
     .hero::before, .hero::after {
-        content: none; 
+        content: none;
     }
 
     .hero h1 {
-        font-size: 2.5em; /* 제목 크기 축소 */
+        font-size: 2.5em;
         margin: 0 0 5px;
-        text-shadow: none; 
+        text-shadow: none;
         z-index: 1;
         font-weight: 700;
     }
@@ -109,13 +109,13 @@
         background-color: var(--primary-color);
         overflow: hidden;
         position: sticky;
-        top: 10px; /* 상단 띄우기 마진 축소 */
+        top: 10px;
         z-index: 1000;
         box-shadow: var(--shadow);
-        
+
         border-radius: var(--border-radius);
-        width: fit-content; 
-        margin: 10px auto 0 auto; /* 상단 마진 최소화 */
+        width: fit-content;
+        margin: 10px auto 0 auto;
     }
 
     .navbar .container {
@@ -123,16 +123,16 @@
         justify-content: center;
         align-items: center;
         padding: 0;
-        width: 100%; 
+        width: 100%;
     }
 
     .navbar a {
         color: var(--text-color-light);
         text-align: center;
-        padding: 8px 15px; /* 메뉴 버튼 내부 패딩 최소화 */
+        padding: 8px 15px;
         text-decoration: none;
         transition: background-color 0.3s ease;
-        font-weight: 400; 
+        font-weight: 400;
         letter-spacing: 0.5px;
         display: flex;
         flex-direction: column;
@@ -141,12 +141,12 @@
     }
 
     .navbar a span {
-        font-size: 0.85em; /* 메뉴 텍스트 크기 축소 */
+        font-size: 0.85em;
     }
 
     .navbar a:hover {
         background-color: #555555;
-        transform: none; 
+        transform: none;
     }
 
     /* 둥근 모서리 침범 방지를 위해 개별 링크에 둥근 모서리 적용 */
@@ -162,8 +162,9 @@
     /* --- Gallery Grid --- */
     .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 최소 크기 축소 */
-        gap: 10px; /* 간격 최소화 */
+        /* 넓이 축소에 맞춰 그리드 칼럼 최소 크기 조정 */
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+        gap: 10px;
         padding: 5px 0;
     }
     .gallery-grid figure {
@@ -178,27 +179,27 @@
     }
     .gallery-grid img {
         width: 100%;
-        height: 150px; /* 이미지 높이 최소화 */
+        height: 150px;
         object-fit: cover;
         display: block;
     }
     .gallery-grid figcaption {
         background-color: #eeeeee;
-        color: var(--primary-color); 
-        padding: 6px; /* 캡션 패딩 최소화 */
+        color: var(--primary-color);
+        padding: 6px;
         font-size: 0.8em;
         text-align: center;
-        border-bottom-left-radius: var(--border-radius); 
+        border-bottom-left-radius: var(--border-radius);
         border-bottom-right-radius: var(--border-radius);
     }
 
     /* --- Footer --- */
     footer {
-        background-color: var(--primary-color); 
-        color: var(--text-color-light); 
+        background-color: var(--primary-color);
+        color: var(--text-color-light);
         text-align: center;
-        padding: 10px 0; /* 패딩 최소화 */
-        margin-top: 15px; /* 마진 최소화 */
+        padding: 10px 0;
+        margin-top: 15px;
         font-size: 0.75em;
         border-radius: 0;
     }
@@ -210,6 +211,12 @@
 
     @media (max-width: 768px) {
         
+        /* 모바일에서는 가로 너비 제한을 해제하고 화면 전체를 사용 */
+        .container {
+            max-width: 100%;
+            padding: 0 10px; 
+        }
+
         /* 네비게이션 모바일 설정 */
         .navbar {
             position: fixed;
@@ -220,7 +227,7 @@
             margin: 0;
             border-radius: 0;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff; 
+            background-color: #ffffff;
             border-top: 1px solid var(--border-color);
         }
 
@@ -230,26 +237,26 @@
 
         .navbar a {
             flex: 1;
-            padding: 6px 5px; /* 모바일 메뉴 패딩 최소화 */
-            color: #888; 
+            padding: 6px 5px;
+            color: #888;
         }
-        
+
         /* --- 콘텐츠 영역 조정 --- */
-        
+
         body {
-            padding-bottom: 40px; /* 하단 탭바 높이에 맞춰 축소 */
+            padding-bottom: 40px;
         }
 
         .hero {
-            height: 15vh; /* 모바일 히어로 높이 최소화 */
+            height: 15vh;
             padding: 40px 10px;
         }
-        
+
         .section {
-            margin: 10px 10px; /* 모바일 섹션 마진 최소화 */
-            padding: 15px 15px; /* 모바일 섹션 패딩 최소화 */
+            margin: 10px 10px;
+            padding: 15px 10px; /* 모바일 섹션 내부 패딩 축소 */
         }
-        
+
         .gallery-grid {
             grid-template-columns: 1fr;
             gap: 8px;
