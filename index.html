@@ -1,410 +1,315 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>졸업 프로젝트(미정) | [프로젝트 제목]</title>
+<style>
+    /* ====================================================== */
+    /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
+    /* GitHub 저장소의 /fonts 폴더에 폰트 파일이 있어야 합니다. */
+    /* ====================================================== */
+    @font-face {
+        font-family: 'S-Core Dream';
+        font-weight: 100; /* Thin */
+        font-style: normal;
+        src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
+             url('fonts/S-CoreDream-100Thin.woff') format('woff');
+        /* 만약 다른 폰트 파일을 사용한다면 파일 이름을 여기에 맞게 수정하세요. */
+    }
+
+    /* 키치 색상 팔레트 및 기본 설정 */
+    :root {
+        --kitsch-green: #B2FF59;
+        --kitsch-blue: #81D4FA;
+        --kitsch-pink-accent: #F48FB1;
+        --kitsch-dark-blue: #4FC3F7;
+        --kitsch-light-bg: #E8F5E9;
+        --text-color-dark: #333333;
+        --text-color-light: #ffffff;
+        
+        --section-padding: 60px 20px;
+        --container-width: 900px;
+        --border-radius: 12px;
+        --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+        /* 폰트 적용: 에스코어 드림 100이 가장 우선순위를 갖습니다. */
+        font-family: 'S-Core Dream', 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif; 
+        font-weight: 100; /* Thin 굵기 적용 */
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        color: var(--text-color-dark);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+    }
+
+    /* --- Global & Layout Styles --- */
+    .container {
+        max-width: var(--container-width);
+        margin: auto;
+        padding: 0 20px;
+    }
+
+    .section {
+        background-color: var(--kitsch-light-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        margin: 40px auto;
+        padding: var(--section-padding);
+        border: 1px solid rgba(0, 0, 0, 0.05); 
+    }
+
+    .section h2 {
+        text-align: center;
+        color: var(--kitsch-dark-blue);
+        font-size: 2.2em;
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        /* 제목 굵기만 400(Regular)으로 변경 (Thin은 제목으로 너무 얇을 수 있음) */
+        font-weight: 400; 
+    }
+
+    /* 섹션 제목 아이콘 색상을 분홍색으로 설정 */
+    .section h2 .icon {
+        color: var(--kitsch-pink-accent); 
+        font-size: 1.1em;
+    }
+
+    p, ul, ol {
+        font-size: 1.05em;
+        margin-bottom: 1.5em;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+        background: linear-gradient(135deg, var(--kitsch-blue) 0%, var(--kitsch-green) 100%);
+        color: var(--text-color-light);
+        text-align: center;
+        padding: 120px 20px;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 별, 날개 데코레이션 */
+    .hero::before, .hero::after {
+        position: absolute;
+        font-size: 5em;
+        opacity: 0.8;
+        color: var(--kitsch-pink-accent);
+    }
+    .hero::before { 
+        content: '🌟'; 
+        top: 10%; left: 10%; 
+        transform: rotate(-20deg); 
+    }
+    .hero::after { 
+        content: '\f06a'; 
+        font-family: 'Font Awesome 6 Free'; 
+        font-weight: 900;
+        font-size: 6em; 
+        bottom: 10%; right: 10%; 
+        transform: rotate(30deg);
+    }
+
+    .hero h1 {
+        font-size: 4em;
+        margin: 0 0 10px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        z-index: 1;
+        font-weight: 400; /* 제목 굵기 조절 */
+    }
+
+    .hero p {
+        font-size: 1.5em;
+        margin: 0;
+        z-index: 1;
+    }
+
+    /* --- Navbar --- */
+    .navbar {
+        background-color: var(--kitsch-dark-blue);
+        overflow: hidden;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-bottom-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+    }
+
+    .navbar .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .navbar a {
+        color: var(--text-color-light);
+        text-align: center;
+        padding: 16px 20px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 400; /* 메뉴 텍스트 굵기 조절 */
+        letter-spacing: 0.5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* 키치 색상 팔레트 및 기본 설정 */
-        :root {
-            --kitsch-green: #B2FF59; /* 메인 연두색 */
-            --kitsch-blue: #81D4FA;  /* 메인 하늘색 */
-            --kitsch-pink-accent: #F48FB1;  /* 분홍색 (아이콘 및 강조) */
-            --kitsch-dark-blue: #4FC3F7; /* 조금 더 진한 하늘색 (헤더/네비) */
-            --kitsch-light-bg: #E8F5E9; /* 아주 연한 연두색 배경 */
-            --text-color-dark: #333333;
-            --text-color-light: #ffffff;
-            
-            /* Apple UI 가이드라인 기반 간격 및 모양 */
-            --section-padding: 60px 20px;
-            --container-width: 900px;
-            --border-radius: 12px; /* 둥근 모서리 */
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
-        }
+    .navbar a span {
+        font-size: 0.8em;
+    }
 
-        body {
-            font-family: 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif; 
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            color: var(--text-color-dark);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
+    .navbar a:hover {
+        background-color: var(--kitsch-blue);
+        transform: translateY(-2px);
+    }
+    
+    /* 네비게이션 아이콘 색상을 분홍색으로 설정 */
+    .navbar a .icon {
+        font-size: 1.3em;
+        color: var(--kitsch-pink-accent); 
+    }
 
-        /* --- Global & Layout Styles --- */
-        .container {
-            max-width: var(--container-width);
-            margin: auto;
-            padding: 0 20px;
-        }
+    /* --- Gallery Grid --- */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px; 
+        padding: 20px 0;
+    }
+    .gallery-grid figure {
+        margin: 0;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    .gallery-grid figure:hover {
+        transform: translateY(-5px);
+    }
+    .gallery-grid img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
+    .gallery-grid figcaption {
+        background-color: var(--kitsch-blue);
+        color: var(--text-color-light);
+        padding: 12px;
+        font-size: 0.9em;
+        text-align: center;
+    }
 
-        .section {
-            background-color: var(--kitsch-light-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin: 40px auto;
-            padding: var(--section-padding);
-            border: 1px solid rgba(0, 0, 0, 0.05); 
-        }
+    /* --- Footer --- */
+    footer {
+        background-color: var(--kitsch-dark-blue);
+        color: var(--text-color-light);
+        text-align: center;
+        padding: 25px 0;
+        margin-top: 50px;
+        font-size: 0.9em;
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+    }
 
-        .section h2 {
-            text-align: center;
-            color: var(--kitsch-dark-blue);
-            font-size: 2.2em;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
 
-        /* 섹션 제목 아이콘 색상을 분홍색으로 설정 */
-        .section h2 .icon {
-            color: var(--kitsch-pink-accent); 
-            font-size: 1.1em;
-        }
+    /* ====================================================== */
+    /* 모바일 최적화 (Max-width: 768px 이하) */
+    /* ====================================================== */
 
-        p, ul, ol {
-            font-size: 1.05em;
-            margin-bottom: 1.5em;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            background: linear-gradient(135deg, var(--kitsch-blue) 0%, var(--kitsch-green) 100%);
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 120px 20px;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* 별, 날개 데코레이션 */
-        .hero::before, .hero::after {
-            position: absolute;
-            font-size: 5em;
-            opacity: 0.8;
-            color: var(--kitsch-pink-accent);
-        }
-        .hero::before { 
-            content: '🌟'; 
-            top: 10%; left: 10%; 
-            transform: rotate(-20deg); 
-        }
-        .hero::after { 
-            content: '\f06a'; /* Font Awesome feather icon (날개) */
-            font-family: 'Font Awesome 6 Free'; /* Font Awesome 패밀리 사용 */
-            font-weight: 900; /* Solid 스타일 */
-            font-size: 6em; 
-            bottom: 10%; right: 10%; 
-            transform: rotate(30deg);
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            margin: 0 0 10px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            z-index: 1;
-        }
-
-        .hero p {
-            font-size: 1.5em;
-            margin: 0;
-            z-index: 1;
-        }
-
-        /* --- Navbar --- */
+    @media (max-width: 768px) {
+        
+        /* 네비게이션을 하단 고정 탭바로 변경 */
         .navbar {
-            background-color: var(--kitsch-dark-blue);
-            overflow: hidden;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-bottom-left-radius: var(--border-radius);
-            border-bottom-right-radius: var(--border-radius);
+            position: fixed;
+            bottom: 0;
+            top: auto;
+            left: 0;
+            width: 100%;
+            border-radius: 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff; 
         }
 
         .navbar .container {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-around;
+            flex-wrap: nowrap;
             padding: 0;
         }
 
         .navbar a {
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 16px 20px;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
+            flex: 1;
+            padding: 8px 5px;
+            gap: 2px;
+            color: #888;
         }
         
         .navbar a span {
-            font-size: 0.8em;
+            font-size: 0.65em;
         }
 
-        .navbar a:hover {
-            background-color: var(--kitsch-blue);
-            transform: translateY(-2px);
-        }
-        
-        /* 네비게이션 아이콘 색상을 분홍색으로 설정 */
+        /* 모바일 하단 네비게이션 아이콘 색상을 분홍색으로 설정 */
         .navbar a .icon {
-            font-size: 1.3em;
+            font-size: 1.2em;
+            color: var(--kitsch-pink-accent); 
+        }
+        /* 활성화된 메뉴 색상을 분홍색 계열로 변경 */
+        .navbar a:first-child { 
             color: var(--kitsch-pink-accent); 
         }
 
-        /* --- Gallery Grid --- */
+        .navbar a:hover {
+            background-color: transparent; 
+            transform: none; 
+            color: var(--kitsch-pink-accent);
+        }
+
+        /* --- 콘텐츠 영역 조정 --- */
+        
+        body {
+            padding-bottom: 60px; 
+        }
+
+        .hero {
+            height: 40vh;
+            padding: 80px 10px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+        }
+
+        .hero p {
+            font-size: 1.1em;
+        }
+
+        .hero::before, .hero::after {
+            font-size: 3em;
+        }
+        
+        .section {
+            margin: 20px 10px;
+            padding: 30px 15px;
+        }
+
+        .section h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px; 
-            padding: 20px 0;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
-        .gallery-grid figure {
-            margin: 0;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .gallery-grid figure:hover {
-            transform: translateY(-5px);
-        }
-        .gallery-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        .gallery-grid figcaption {
-            background-color: var(--kitsch-blue);
-            color: var(--text-color-light);
-            padding: 12px;
-            font-size: 0.9em;
-            text-align: center;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--kitsch-dark-blue);
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 25px 0;
-            margin-top: 50px;
-            font-size: 0.9em;
-            border-top-left-radius: var(--border-radius);
-            border-top-right-radius: var(--border-radius);
-        }
-
-
-        /* ====================================================== */
-        /* 모바일 최적화 (Max-width: 768px 이하) */
-        /* ====================================================== */
-
-        @media (max-width: 768px) {
-            
-            /* 네비게이션을 하단 고정 탭바로 변경 */
-            .navbar {
-                position: fixed;
-                bottom: 0;
-                top: auto;
-                left: 0;
-                width: 100%;
-                border-radius: 0;
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-                background-color: #ffffff; 
-            }
-
-            .navbar .container {
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: nowrap;
-                padding: 0;
-            }
-
-            .navbar a {
-                flex: 1;
-                padding: 8px 5px;
-                gap: 2px;
-                color: #888;
-            }
-            
-            .navbar a span {
-                font-size: 0.65em;
-            }
-
-            /* 모바일 하단 네비게이션 아이콘 색상을 분홍색으로 설정 */
-            .navbar a .icon {
-                font-size: 1.2em;
-                color: var(--kitsch-pink-accent); 
-            }
-            /* 활성화된 메뉴 색상을 분홍색 계열로 변경 */
-            .navbar a:first-child { 
-                color: var(--kitsch-pink-accent); 
-            }
-
-            .navbar a:hover {
-                background-color: transparent; 
-                transform: none; 
-                color: var(--kitsch-pink-accent);
-            }
-
-            /* --- 콘텐츠 영역 조정 --- */
-            
-            body {
-                padding-bottom: 60px; 
-            }
-
-            .hero {
-                height: 40vh;
-                padding: 80px 10px;
-            }
-
-            .hero h1 {
-                font-size: 2.5em;
-            }
-
-            .hero p {
-                font-size: 1.1em;
-            }
-
-            .hero::before, .hero::after {
-                font-size: 3em;
-            }
-            
-            .section {
-                margin: 20px 10px;
-                padding: 30px 15px;
-            }
-
-            .section h2 {
-                font-size: 1.8em;
-                margin-bottom: 30px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="navbar">
-        <div class="container">
-            <a href="#hero"><i class="fas fa-star icon"></i> <span>HOME</span></a>
-            <a href="#project-intro"><i class="fas fa-hand-holding-heart icon"></i> <span>소개</span></a>
-            <a href="#process"><i class="fas fa-cogs icon"></i> <span>제작</span></a>
-            <a href="#gallery"><i class="fas fa-images icon"></i> <span>사진첩</span></a>
-            <a href="#meaning"><i class="fas fa-lightbulb icon"></i> <span>의미</span></a>
-            <a href="#about-me"><i class="fas fa-user-circle icon"></i> <span>제작자</span></a>
-        </div>
-    </div>
-
-    <div class="hero" id="hero">
-        <h1>🌟 평화를 위한 날개 💖</h1>
-        <p>세상을 바꾸는 활동가들의 빛나는 이야기</p>
-    </div>
-
-    <section class="section" id="project-intro">
-        <div class="container">
-            <h2><i class="fas fa-dove icon"></i> 프로젝트 소개</h2>
-            <p><strong>[평화를 위해 다양한 곳에서 투쟁하는 사람들의 이야기를 담은 다큐멘터리입니다. 성미산학교를 다니며 생겨난 고민들과, 앞으로 나는 어떻게 살아갈 것이가에 대한 고민을 함꼐 찾아가는 이야기를 담고 있습니다.]</strong></p>
-            <p>이 다큐멘터리는 평화를 위해 투쟁하는 <strong>다양한 활동가</strong>를 직접 만나, 그들의 이야기를 듣고, 나는 앞으로 어떻게 살 것이가를 이야기하고 있습니다.</p>
-            <h3>🌟 참여 활동가</h3>
-            <ul>
-                <li><strong>평화바람 딸기</strong> </li>
-                <li><strong>새만금신공항백지화공동행동 김지은</strong> </li>
-                <li><strong>독립연구활동가 아정</strong> </li>
-                <li><strong>전쟁과여성인권박물관 김동희 관장님</strong> </li>
-                <li><strong>해초</strong> </li>
-                <li><strong>핫핑크돌핀스 조약골</strong> </li>
-            </ul>
-            <p style="text-align: center; margin-top: 30px;">
-                <i class="fab fa-youtube icon" style="font-size: 2.5em; color: var(--kitsch-pink-accent);"></i>
-                <br>
-                **[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**
-            </p>
-        </div>
-    </section>
-    
-    <section class="section" id="process">
-        <div class="container">
-            <h2><i class="fas fa-wand-magic-sparkles icon"></i> 제작 과정</h2>
-            <ol>
-                <li><i class="fas fa-clipboard-list icon" style="color: var(--kitsch-pink-accent);"></i> <strong>기획 & 섭외 (X월):</strong> 인터뷰 대상자 선정 및 질문지 구성</li>
-                <li><i class="fas fa-video icon" style="color: var(--kitsch-pink-accent);"></i> <strong>현장 촬영 (Y월):</strong> 활동 현장 방문 및 심층 인터뷰 진행</li>
-                <li><i class="fas fa-edit icon" style="color: var(--kitsch-pink-accent);"></i> <strong>영상 편집 & 후반 작업 (Z월):</strong> 핵심 메시지 전달을 위한 구성, 자막, 배경 음악</li>
-                <li><i class="fas fa-globe-americas icon" style="color: var(--kitsch-pink-accent);"></i> <strong>홈페이지 구현 & 공개:</strong> 최종 결과물 온라인 공개 및 발표</li>
-            </ol>
-            <p style="margin-top: 20px;">각 단계에서 발생한 어려움과 이를 극복한 과정을 상세히 기록하여 프로젝트의 투명성을 높였습니다.</p>
-        </div>
-    </section>
-    
-    <section class="section" id="gallery">
-        <div class="container">
-            <h2><i class="fas fa-camera-retro icon"></i> 사진첩</h2>
-            <div class="gallery-grid">
-                <figure>
-                    <img src="images/photo1.jpg" alt="인터뷰 현장 모습">
-                    <figcaption>인터뷰 현장의 따뜻한 순간</figcaption>
-                </figure>
-                <figure>
-                    <img src="images/photo2.jpg" alt="촬영 장비 셋업">
-                    <figcaption>꼼꼼한 촬영 준비</figcaption>
-                </figure>
-                <figure>
-                    <img src="images/photo3.jpg" alt="활동가와 기념 사진">
-                    <figcaption>함께 빛나는 평화의 씨앗</figcaption>
-                </figure>
-            </div>
-            <p style="text-align: center; margin-top: 30px; font-style: italic; color: #777;">**참고:** `images/` 폴더를 만들고 사진 파일을 넣어주세요. (예: `photo1.jpg`, `hero_background.jpg` 등)</p>
-        </div>
-    </section>
-
-    <section class="section" id="meaning">
-        <div class="container">
-            <h2><i class="fas fa-heart-pulse icon"></i> 프로젝트의 의미와 결론</h2>
-            <p>이 프로젝트를 통해 우리는 평화 활동의 **연속성과 확장성**에 주목했습니다. 활동가들의 이야기를 듣고 기록함으로써, 시청자들이 **평화**라는 개념을 자신과 연결하고 일상 속 작은 실천의 중요성을 깨닫게 하는 것이 궁극적인 목표입니다.</p>
-            <p>평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. <i class="fas fa-seedling icon" style="color: var(--kitsch-pink-accent);"></i></p>
-        </div>
-    </section>
-
-    <section class="section" id="about-me">
-        <div class="container">
-            <h2><i class="fas fa-user-astronaut icon"></i> 제작자 소개</h2>
-            <p><strong>[그냥(윤소연)]</strong></p>
-            <p>이 프로젝트를 통해 소셜 미디어와 영상 제작 기술을 활용하여 사회적 메시지를 전달하는 경험을 쌓았습니다.</p>
-            <p>📧 연락처: souyeon1028@gmail.com</p>
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="https://github.com/yoonsouyeon" target="_blank" style="color: var(--kitsch-dark-blue); font-size: 2em; margin: 0 10px;"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p><i class="fas fa-copyright"></i> 2025 [본인 이름/팀 이름]. All Rights Reserved.</p>
-            <p>Designed with <i class="fas fa-heart" style="color: var(--kitsch-pink-accent);"></i> & <i class="fas fa-star" style="color: var(--kitsch-green);"></i></p>
-        </div>
-    </footer>
-
-</body>
-</html>
+    }
+</style>
