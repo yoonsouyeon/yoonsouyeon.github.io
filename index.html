@@ -20,17 +20,16 @@
         --text-color-dark: var(--primary-color);
         --text-color-light: #ffffff;
         
-        /* Apple UI 가이드라인 기반 간격 및 모양 (유지) */
+        /* 둥근 모서리 기본값: 더 크게 설정 */
+        --border-radius: 15px; 
         --section-padding: 60px 20px;
         --container-width: 900px;
-        --border-radius: 8px; /* 둥근 모서리 기본값 */
-        --shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+        --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     body {
-        /* 폰트 적용 및 굵기 설정 */
         font-family: 'S-Core Dream', 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif; 
-        font-weight: 100; /* Thin 굵기 적용 */
+        font-weight: 100;
         margin: 0;
         padding: 0;
         background-color: var(--main-bg);
@@ -46,9 +45,10 @@
         padding: 0 20px;
     }
 
+    /* --- 모든 섹션 (글이 들어있는 칸)에 둥근 모서리 적용 강화 --- */
     .section {
         background-color: var(--section-bg); 
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius); /* 15px 적용 */
         box-shadow: var(--shadow);
         margin: 30px auto; 
         padding: var(--section-padding);
@@ -87,7 +87,6 @@
         overflow: hidden;
     }
 
-    /* 모든 데코레이션 제거 */
     .hero::before, .hero::after {
         content: none; 
     }
@@ -111,14 +110,13 @@
         background-color: var(--primary-color);
         overflow: hidden;
         position: sticky;
-        top: 20px; /* 상단에서 띄워서 둥근 모서리가 잘 보이도록 함 */
+        top: 20px;
         z-index: 1000;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         
-        /* 둥근 모서리 적용 */
-        border-radius: var(--border-radius); 
-        width: fit-content; /* 내용물 너비만큼만 차지하도록 변경 */
-        margin: 20px auto 0 auto; /* 상단 마진과 중앙 정렬 */
+        border-radius: var(--border-radius); /* 네비게이션도 15px 적용 */
+        width: fit-content;
+        margin: 20px auto 0 auto;
     }
 
     .navbar .container {
@@ -126,7 +124,7 @@
         justify-content: center;
         align-items: center;
         padding: 0;
-        width: 100%; /* 너비 100% 사용 */
+        width: 100%;
     }
 
     .navbar a {
@@ -152,7 +150,7 @@
         transform: none; 
     }
 
-    /* 둥근 모서리가 개별 링크에 의해 침범되지 않도록 첫/마지막 링크에 둥근 모서리 적용 */
+    /* 둥근 모서리 침범 방지를 위해 개별 링크에 둥근 모서리 적용 */
     .navbar a:first-child {
         border-top-left-radius: var(--border-radius);
         border-bottom-left-radius: var(--border-radius);
@@ -171,7 +169,7 @@
     }
     .gallery-grid figure {
         margin: 0;
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius); /* 갤러리 이미지 박스 둥글게 */
         overflow: hidden;
         box-shadow: var(--shadow);
         transition: box-shadow 0.3s ease;
@@ -212,22 +210,22 @@
 
     @media (max-width: 768px) {
         
-        /* 네비게이션을 하단 고정 탭바로 변경 (모서리 제거) */
+        /* 네비게이션 모바일 설정 (하단 탭바는 모서리 제거) */
         .navbar {
             position: fixed;
             bottom: 0;
             top: auto;
             left: 0;
             width: 100%;
-            margin: 0; /* 중앙 정렬/상단 마진 제거 */
-            border-radius: 0; /* 모바일 하단 탭바는 둥근 모서리 제거 */
+            margin: 0;
+            border-radius: 0;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
             background-color: #ffffff; 
             border-top: 1px solid var(--border-color);
         }
 
         .navbar a:first-child, .navbar a:last-child {
-            border-radius: 0; /* 모바일에서 둥근 모서리 제거 */
+            border-radius: 0;
         }
 
         .navbar a {
@@ -241,24 +239,17 @@
         body {
             padding-bottom: 50px; 
         }
+
         .hero {
             height: 30vh;
             padding: 60px 10px;
         }
-        .hero h1 {
-            font-size: 2em;
-        }
-        .hero p {
-            font-size: 1em;
-        }
+        
         .section {
             margin: 20px 10px;
             padding: 25px 15px;
         }
-        .section h2 {
-            font-size: 1.6em;
-            margin-bottom: 20px;
-        }
+        
         .gallery-grid {
             grid-template-columns: 1fr;
             gap: 15px;
