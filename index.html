@@ -1,378 +1,263 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>평화를 위한 날개 | [프로젝트 제목]</title>
-    
-    <style>
-        /* ====================================================== */
-        /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
-        /* ====================================================== */
-        @font-face {
-            font-family: 'S-Core Dream';
-            font-weight: 100; /* Thin */
-            font-style: normal;
-            src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
-                 url('fonts/S-CoreDream-100Thin.woff') format('woff');
-        }
+<style>
+    /* ====================================================== */
+    /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
+    /* ====================================================== */
+    @font-face {
+        font-family: 'S-Core Dream';
+        font-weight: 100; /* Thin */
+        font-style: normal;
+        src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
+             url('fonts/S-CoreDream-100Thin.woff') format('woff');
+    }
 
-        /* --- 흑백 색상 팔레트 --- */
-        :root {
-            --main-bg: #f8f8f8;
-            --section-bg: #ffffff;
-            --primary-color: #333333;
-            --secondary-color: #666666;
-            --border-color: #cccccc;
-            --text-color-dark: var(--primary-color);
-            --text-color-light: #ffffff;
-            
-            --border-radius: 10px;
-            --section-padding-min: 25px 15px;
-            --container-width: 700px;
-            --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
-        }
+    /* --- 흑백 색상 팔레트 --- */
+    :root {
+        --main-bg: #f8f8f8;
+        --section-bg: #ffffff;
+        --primary-color: #333333;
+        --secondary-color: #666666;
+        --border-color: #cccccc;
+        --text-color-dark: var(--primary-color);
+        --text-color-light: #ffffff;
+        
+        --border-radius: 10px;
+        --section-padding-min: 25px 15px;
+        --container-width: 700px;
+        --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
 
-        body {
-            /* 폰트 적용: S-Core Dream 100 적용 */
-            font-family: 'S-Core Dream', 'Malgun Gothic', 'SF Pro Display', sans-serif; 
-            font-weight: 100; 
-            margin: 0;
-            padding: 0;
-            background-color: var(--main-bg);
-            color: var(--text-color-dark);
-            line-height: 1.4;
-            scroll-behavior: smooth;
-        }
+    body {
+        /* 폰트 적용: S-Core Dream 100 적용 */
+        font-family: 'S-Core Dream', 'Malgun Gothic', 'SF Pro Display', sans-serif; 
+        font-weight: 100; 
+        margin: 0;
+        padding: 0;
+        background-color: var(--main-bg);
+        color: var(--text-color-dark);
+        line-height: 1.4;
+        scroll-behavior: smooth;
+    }
 
-        /* --- Global & Layout Styles --- */
-        .container {
-            max-width: var(--container-width);
-            margin: auto;
-            padding: 0 15px;
-        }
+    /* --- Global & Layout Styles --- */
+    .container {
+        max-width: var(--container-width);
+        margin: auto;
+        padding: 0 15px;
+    }
 
-        /* --- 모든 섹션의 크기 최소화 --- */
-        .section {
-            background-color: var(--section-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin: 15px auto;
-            padding: var(--section-padding-min);
-            border: 1px solid var(--border-color);
-        }
+    /* --- 모든 섹션의 크기 최소화 --- */
+    .section {
+        background-color: var(--section-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        margin: 15px auto;
+        padding: var(--section-padding-min);
+        border: 1px solid var(--border-color);
+    }
 
-        .section h2 {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 1.6em;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-weight: 700;
-        }
+    .section h2 {
+        text-align: center;
+        color: var(--primary-color);
+        font-size: 1.6em;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-weight: 700;
+    }
 
-        p, ul, ol {
-            font-size: 0.95em;
-            margin-bottom: 0.8em;
-        }
+    p, ul, ol {
+        font-size: 0.95em;
+        margin-bottom: 0.8em;
+    }
 
-        /* --- Hero Section --- */
-        .hero {
-            background: var(--primary-color);
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 60px 20px;
-            height: 20vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
+    /* --- Hero Section --- */
+    .hero {
+        background: var(--primary-color);
+        color: var(--text-color-light);
+        text-align: center;
+        padding: 60px 20px;
+        height: 20vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
 
-        .hero::before, .hero::after {
-            content: none;
-        }
+    .hero::before, .hero::after {
+        content: none;
+    }
 
-        .hero h1 {
-            font-size: 2.5em;
-            margin: 0 0 5px;
-            text-shadow: none;
-            z-index: 1;
-            font-weight: 700;
-        }
+    .hero h1 {
+        font-size: 2.5em;
+        margin: 0 0 5px;
+        text-shadow: none;
+        z-index: 1;
+        font-weight: 700;
+    }
 
-        .hero p {
-            font-size: 1.1em;
-            margin: 0;
-            z-index: 1;
-        }
+    .hero p {
+        font-size: 1.1em;
+        margin: 0;
+        z-index: 1;
+    }
 
-        /* --- Navbar (데스크톱) --- */
+    /* --- Navbar (데스크톱 기본 설정) --- */
+    .navbar {
+        background-color: var(--primary-color);
+        overflow: hidden;
+        position: sticky;
+        top: 10px;
+        z-index: 1000;
+        box-shadow: var(--shadow);
+
+        border-radius: var(--border-radius);
+        width: fit-content;
+        margin: 10px auto 0 auto;
+    }
+
+    .navbar .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+    }
+
+    .navbar a {
+        color: var(--text-color-light);
+        text-align: center;
+        padding: 8px 15px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .navbar a span {
+        font-size: 0.85em;
+    }
+
+    .navbar a:hover {
+        background-color: #555555;
+        transform: none;
+    }
+
+    /* 둥근 모서리 침범 방지를 위해 개별 링크에 둥근 모서리 적용 */
+    .navbar a:first-child {
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
+    }
+    .navbar a:last-child {
+        border-top-right-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+    }
+
+    /* --- Gallery Grid --- */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+        padding: 5px 0;
+    }
+    .gallery-grid figure {
+        margin: 0;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: box-shadow 0.3s ease;
+    }
+    .gallery-grid figure:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .gallery-grid img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+    }
+    .gallery-grid figcaption {
+        background-color: #eeeeee;
+        color: var(--primary-color);
+        padding: 6px;
+        font-size: 0.8em;
+        text-align: center;
+        border-bottom-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+    }
+
+    /* --- Footer --- */
+    footer {
+        background-color: var(--primary-color);
+        color: var(--text-color-light);
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 15px;
+        font-size: 0.75em;
+        border-radius: 0;
+    }
+
+
+    /* ====================================================== */
+    /* 모바일 최적화 (Max-width: 768px 이하) */
+    /* ====================================================== */
+
+    @media (max-width: 768px) {
+        
+        /* ----------------------------------------------------- */
+        /* ★★★ 모바일에서 상단 고정 설정 (수정됨) ★★★ */
+        /* ----------------------------------------------------- */
         .navbar {
-            background-color: var(--primary-color);
-            overflow: hidden;
-            position: sticky;
-            top: 10px;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-
-            border-radius: var(--border-radius);
-            width: fit-content;
-            margin: 10px auto 0 auto;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
+            position: fixed; /* 고정 위치 */
+            top: 0;           /* 상단에 배치 */
+            bottom: auto;     /* 하단 위치 제거 */
+            left: 0;
             width: 100%;
+            margin: 0;        /* 상단 마진 제거 */
+            border-radius: 0; /* 모바일에서 둥근 모서리 제거 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 상단으로 이동 */
+            background-color: var(--primary-color); /* 배경색 검정으로 복구 */
+            border-top: none; /* 하단 경계선 제거 */
         }
-
-        .navbar a {
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 8px 15px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-        }
-
-        .navbar a span {
-            font-size: 0.85em;
-        }
-
-        .navbar a:hover {
-            background-color: #555555;
-            transform: none;
-        }
-
-        /* 둥근 모서리 침범 방지를 위해 개별 링크에 둥근 모서리 적용 */
-        .navbar a:first-child {
-            border-top-left-radius: var(--border-radius);
-            border-bottom-left-radius: var(--border-radius);
-        }
-        .navbar a:last-child {
-            border-top-right-radius: var(--border-radius);
-            border-bottom-right-radius: var(--border-radius);
-        }
-
-        /* --- Gallery Grid --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 10px;
-            padding: 5px 0;
-        }
-        .gallery-grid figure {
-            margin: 0;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: box-shadow 0.3s ease;
-        }
-        .gallery-grid figure:hover {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        .gallery-grid img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            display: block;
-        }
-        .gallery-grid figcaption {
-            background-color: #eeeeee;
-            color: var(--primary-color);
-            padding: 6px;
-            font-size: 0.8em;
-            text-align: center;
-            border-bottom-left-radius: var(--border-radius);
-            border-bottom-right-radius: var(--border-radius);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 15px;
-            font-size: 0.75em;
+        
+        .navbar a:first-child, .navbar a:last-child {
             border-radius: 0;
         }
 
-
-        /* ====================================================== */
-        /* 모바일 최적화 (Max-width: 768px 이하) */
-        /* ====================================================== */
-
-        @media (max-width: 768px) {
-            
-            /* 네비게이션 모바일 설정 */
-            .navbar {
-                position: fixed;
-                bottom: 0;
-                top: auto;
-                left: 0;
-                width: 100%;
-                margin: 0;
-                border-radius: 0;
-                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-                background-color: #ffffff;
-                border-top: 1px solid var(--border-color);
-            }
-
-            .navbar a:first-child, .navbar a:last-child {
-                border-radius: 0;
-            }
-
-            .navbar a {
-                flex: 1;
-                padding: 6px 5px;
-                color: #888;
-            }
-
-            /* --- 콘텐츠 영역 조정 --- */
-
-            body {
-                padding-bottom: 40px;
-            }
-
-            .hero {
-                height: 15vh;
-                padding: 40px 10px;
-            }
-
-            .section {
-                margin: 10px 10px;
-                padding: 15px 10px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
+        .navbar a {
+            flex: 1;
+            padding: 6px 5px;
+            color: var(--text-color-light); /* 텍스트 색상 흰색으로 복구 */
         }
-    </style>
-</head>
-<body>
 
-    <div class="navbar">
-        <div class="container">
-            <a href="#hero"><span>HOME</span></a>
-            <a href="#project-intro"><span>소개</span></a>
-            <a href="#process"><span>제작</span></a>
-            <a href="#gallery"><span>사진첩</span></a>
-            <a href="#meaning"><span>의미</span></a>
-            <a href="#guestbook"><span>방명록</span></a> <a href="#about-me"><span>제작자</span></a>
-        </div>
-    </div>
+        /* --- 콘텐츠 영역 조정 (상단 고정에 맞게 조정) --- */
+        
+        /* 네비게이션바 높이(약 40px)만큼 콘텐츠에 상단 패딩 추가하여 가려짐 방지 */
+        body {
+            padding-top: 45px; 
+            padding-bottom: 0; /* 하단 패딩 제거 */
+        }
 
-    <div class="hero" id="hero">
-        <h1>평화를 위한 날개</h1>
-        <p>세상을 바꾸는 활동가들의 빛나는 이야기</p>
-    </div>
+        .hero {
+            height: 15vh;
+            padding: 40px 10px;
+        }
 
-    <section class="section" id="project-intro">
-        <div class="container">
-            <h2>프로젝트 소개</h2>
-            <p><strong>[여기에 프로젝트의 주제, 목표, 그리고 인터뷰의 중요성을 작성하세요.]</strong></p>
-            <p>본 프로젝트는 평화와 인권을 위해 헌신하는 <strong>세 분의 활동가</strong>를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 평화가 우리 일상 속 실천임을 알리고자 합니다.</p>
-            <h3>참여 활동가</h3>
-            <ul>
-                <li><strong>활동가 A:</strong> [분야: 예시) 환경 평화]</li>
-                <li><strong>활동가 B:</strong> [분야: 예시) 인권 및 교육]</li>
-                <li><strong>활동가 C:</strong> [분야: 예시) 지역 사회 봉사]</li>
-            </ul>
-            <p style="text-align: center; margin-top: 30px;">
-                <br>
-                **[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**
-            </p>
-        </div>
-    </section>
-    
-    <section class="section" id="process">
-        <div class="container">
-            <h2>제작 과정</h2>
-            <ol>
-                <li><strong>기획 & 섭외 (X월):</strong> 인터뷰 대상자 선정 및 질문지 구성</li>
-                <li><strong>현장 촬영 (Y월):</strong> 활동 현장 방문 및 심층 인터뷰 진행</li>
-                <li><strong>영상 편집 & 후반 작업 (Z월):</strong> 핵심 메시지 전달을 위한 구성, 자막, 배경 음악</li>
-                <li><strong>홈페이지 구현 & 공개:</strong> 최종 결과물 온라인 공개 및 발표</li>
-            </ol>
-            <p style="margin-top: 20px;">각 단계에서 발생한 어려움과 이를 극복한 과정을 상세히 기록하여 프로젝트의 투명성을 높였습니다.</p>
-        </div>
-    </section>
-    
-    <section class="section" id="gallery">
-        <div class="container">
-            <h2>사진첩</h2>
-            <div class="gallery-grid">
-                <figure>
-                    <img src="images/photo1.jpg" alt="인터뷰 현장 모습">
-                    <figcaption>인터뷰 현장의 따뜻한 순간</figcaption>
-                </figure>
-                <figure>
-                    <img src="images/photo2.jpg" alt="촬영 장비 셋업">
-                    <figcaption>꼼꼼한 촬영 준비</figcaption>
-                </figure>
-                <figure>
-                    <img src="images/photo3.jpg" alt="활동가와 기념 사진">
-                    <figcaption>함께 빛나는 평화의 씨앗</figcaption>
-                </figure>
-            </div>
-            <p style="text-align: center; margin-top: 30px; font-style: italic; color: var(--secondary-color);">**참고:** `images/` 폴더를 만들고 사진 파일을 넣어주세요.</p>
-        </div>
-    </section>
+        .section {
+            margin: 10px 10px;
+            padding: 15px 10px;
+        }
 
-    <section class="section" id="meaning">
-        <div class="container">
-            <h2>프로젝트의 의미와 결론</h2>
-            <p>이 프로젝트를 진행하며 많은 고민을 거쳤습니다. </p>
-            <p>평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. </p>
-        </div>
-    </section>
-    
-    <section class="section" id="guestbook">
-        <div class="container">
-            <h2>방명록 / 참여하기</h2>
-            <p style="text-align: center; margin-bottom: 20px;">프로젝트에 대한 소감, 질문, 응원의 메시지를 남겨주세요. 남겨주신 소중한 의견은 다음 프로젝트에 큰 힘이 됩니다!</p>
-            
-            <div id="comments-section" style="min-height: 200px; border: 1px dashed var(--border-color); border-radius: 5px; padding: 10px; text-align: center; color: var(--secondary-color);">
-                여기에 방명록 서비스 (Disqus, utterances 등)의 코드를 삽입하세요.
-            </div>
-        </div>
-    </section>
-    
-
-    <section class="section" id="about-me">
-        <div class="container">
-            <h2>제작자 소개</h2>
-            <p><strong>윤소연(그냥)</strong></p>
-            <p>E-mail souyeon1028@gmail.com
-            <p>Phone 010-5331-2753</p>
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="https://github.com/yoonsouyeon" target="_blank" style="color: var(--primary-color); font-size: 1.2em; text-decoration: underline;">GitHub 링크</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 [윤소연]. All Rights Reserved.</p>
-            <p>Designed simply.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+        .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+    }
+</style>
