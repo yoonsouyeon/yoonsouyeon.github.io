@@ -3,32 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌟 평화를 위한 날개 💖 | [프로젝트 제목]</title>
+    <title>평화를 위한 날개 | [프로젝트 제목]</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* 키치 색상 팔레트 및 기본 설정 */
+        /* ====================================================== */
+        /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
+        /* ====================================================== */
+        @font-face {
+            font-family: 'S-Core Dream';
+            font-weight: 100; /* Thin */
+            font-style: normal;
+            src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
+                 url('fonts/S-CoreDream-100Thin.woff') format('woff');
+        }
+
+        /* --- 흑백 색상 팔레트 --- */
         :root {
-            --kitsch-green: #B2FF59; /* 메인 연두색 */
-            --kitsch-blue: #81D4FA;  /* 메인 하늘색 */
-            --kitsch-pink-accent: #F48FB1;  /* 분홍색 (아이콘 및 강조) */
-            --kitsch-dark-blue: #4FC3F7; /* 조금 더 진한 하늘색 (헤더/네비) */
-            --kitsch-light-bg: #E8F5E9; /* 아주 연한 연두색 배경 */
-            --text-color-dark: #333333;
+            --main-bg: #f8f8f8; /* 아주 밝은 회색 배경 */
+            --section-bg: #ffffff; /* 섹션 배경 흰색 */
+            --primary-color: #333333; /* 주요 텍스트/헤더/푸터 색상 (짙은 검정) */
+            --secondary-color: #666666; /* 보조 텍스트 색상 (회색) */
+            --border-color: #cccccc; /* 경계선 색상 (밝은 회색) */
+            --text-color-dark: var(--primary-color);
             --text-color-light: #ffffff;
             
-            /* Apple UI 가이드라인 기반 간격 및 모양 */
+            /* Apple UI 가이드라인 기반 간격 및 모양 (유지) */
             --section-padding: 60px 20px;
             --container-width: 900px;
-            --border-radius: 12px; /* 둥근 모서리 */
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
+            --border-radius: 8px; 
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
         }
 
         body {
-            font-family: 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif; 
+            /* 폰트 적용 및 굵기 설정 */
+            font-family: 'S-Core Dream', 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif; 
+            font-weight: 100; /* Thin 굵기 적용 */
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: var(--main-bg);
             color: var(--text-color-dark);
             line-height: 1.6;
             scroll-behavior: smooth;
@@ -42,29 +54,24 @@
         }
 
         .section {
-            background-color: var(--kitsch-light-bg);
+            background-color: var(--section-bg); 
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            margin: 40px auto;
+            margin: 30px auto; 
             padding: var(--section-padding);
-            border: 1px solid rgba(0, 0, 0, 0.05); 
+            border: 1px solid var(--border-color); 
         }
 
         .section h2 {
             text-align: center;
-            color: var(--kitsch-dark-blue);
-            font-size: 2.2em;
-            margin-bottom: 40px;
+            color: var(--primary-color); 
+            font-size: 2em;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
-        }
-
-        /* 섹션 제목 아이콘 색상을 분홍색으로 설정 */
-        .section h2 .icon {
-            color: var(--kitsch-pink-accent); 
-            font-size: 1.1em;
+            font-weight: 400; /* 제목은 가독성을 위해 400 굵기 유지 */
         }
 
         p, ul, ol {
@@ -74,11 +81,11 @@
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(135deg, var(--kitsch-blue) 0%, var(--kitsch-green) 100%);
-            color: var(--text-color-light);
+            background: var(--primary-color); /* 검정색 배경 */
+            color: var(--text-color-light); /* 흰색 텍스트 */
             text-align: center;
-            padding: 120px 20px;
-            height: 60vh;
+            padding: 100px 20px;
+            height: 40vh; /* 높이 조정 */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -87,50 +94,34 @@
             overflow: hidden;
         }
 
-        /* 별, 날개 데코레이션 */
+        /* 모든 데코레이션 제거 */
         .hero::before, .hero::after {
-            position: absolute;
-            font-size: 5em;
-            opacity: 0.8;
-            color: var(--kitsch-pink-accent);
-        }
-        .hero::before { 
-            content: '🌟'; 
-            top: 10%; left: 10%; 
-            transform: rotate(-20deg); 
-        }
-        .hero::after { 
-            content: '\f06a'; /* Font Awesome feather icon (날개) */
-            font-family: 'Font Awesome 6 Free'; /* Font Awesome 패밀리 사용 */
-            font-weight: 900; /* Solid 스타일 */
-            font-size: 6em; 
-            bottom: 10%; right: 10%; 
-            transform: rotate(30deg);
+            content: none; 
         }
 
         .hero h1 {
-            font-size: 4em;
+            font-size: 3.5em; 
             margin: 0 0 10px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            text-shadow: none; 
             z-index: 1;
+            font-weight: 400;
         }
 
         .hero p {
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin: 0;
             z-index: 1;
         }
 
-        /* --- Navbar --- */
+        /* --- Navbar (데스크톱) --- */
         .navbar {
-            background-color: var(--kitsch-dark-blue);
+            background-color: var(--primary-color); /* 검정색 배경 */
             overflow: hidden;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-bottom-left-radius: var(--border-radius);
-            border-bottom-right-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 0; 
         }
 
         .navbar .container {
@@ -141,50 +132,45 @@
         }
 
         .navbar a {
-            color: var(--text-color-light);
+            color: var(--text-color-light); /* 흰색 텍스트 */
             text-align: center;
-            padding: 16px 20px;
+            padding: 14px 25px; 
             text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            font-weight: 500;
+            transition: background-color 0.3s ease;
+            font-weight: 400; 
             letter-spacing: 0.5px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 0;
         }
-        
+
         .navbar a span {
-            font-size: 0.8em;
+            font-size: 1em; /* 아이콘 제거로 텍스트 크기 키움 */
         }
 
         .navbar a:hover {
-            background-color: var(--kitsch-blue);
-            transform: translateY(-2px);
-        }
-        
-        /* 네비게이션 아이콘 색상을 분홍색으로 설정 */
-        .navbar a .icon {
-            font-size: 1.3em;
-            color: var(--kitsch-pink-accent); 
+            background-color: #555555; /* 호버 시 약간 밝은 검정 */
+            transform: none; 
         }
 
         /* --- Gallery Grid --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px; 
-            padding: 20px 0;
+            gap: 20px; 
+            padding: 10px 0;
         }
         .gallery-grid figure {
             margin: 0;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s ease;
         }
         .gallery-grid figure:hover {
-            transform: translateY(-5px);
+            transform: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         .gallery-grid img {
             width: 100%;
@@ -193,23 +179,22 @@
             display: block;
         }
         .gallery-grid figcaption {
-            background-color: var(--kitsch-blue);
-            color: var(--text-color-light);
-            padding: 12px;
+            background-color: #eeeeee; /* 캡션 배경 밝은 회색 */
+            color: var(--primary-color); 
+            padding: 10px;
             font-size: 0.9em;
             text-align: center;
         }
 
         /* --- Footer --- */
         footer {
-            background-color: var(--kitsch-dark-blue);
-            color: var(--text-color-light);
+            background-color: var(--primary-color); 
+            color: var(--text-color-light); 
             text-align: center;
-            padding: 25px 0;
-            margin-top: 50px;
+            padding: 20px 0;
+            margin-top: 40px;
             font-size: 0.9em;
-            border-top-left-radius: var(--border-radius);
-            border-top-right-radius: var(--border-radius);
+            border-radius: 0;
         }
 
 
@@ -226,13 +211,12 @@
                 top: auto;
                 left: 0;
                 width: 100%;
-                border-radius: 0;
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
                 background-color: #ffffff; 
+                border-top: 1px solid var(--border-color);
             }
 
             .navbar .container {
-                display: flex;
                 justify-content: space-around;
                 flex-wrap: nowrap;
                 padding: 0;
@@ -240,62 +224,53 @@
 
             .navbar a {
                 flex: 1;
-                padding: 8px 5px;
-                gap: 2px;
-                color: #888;
+                padding: 12px 5px; 
+                gap: 0;
+                color: #888; 
             }
             
             .navbar a span {
-                font-size: 0.65em;
+                font-size: 0.8em; 
             }
-
-            /* 모바일 하단 네비게이션 아이콘 색상을 분홍색으로 설정 */
-            .navbar a .icon {
-                font-size: 1.2em;
-                color: var(--kitsch-pink-accent); 
-            }
-            /* 활성화된 메뉴 색상을 분홍색 계열로 변경 */
+            
+            /* 활성화된 메뉴 색상을 검정색으로 변경 */
             .navbar a:first-child { 
-                color: var(--kitsch-pink-accent); 
+                color: var(--primary-color); 
             }
 
             .navbar a:hover {
                 background-color: transparent; 
                 transform: none; 
-                color: var(--kitsch-pink-accent);
+                color: var(--primary-color);
             }
 
             /* --- 콘텐츠 영역 조정 --- */
             
             body {
-                padding-bottom: 60px; 
+                padding-bottom: 50px; 
             }
 
             .hero {
-                height: 40vh;
-                padding: 80px 10px;
+                height: 30vh;
+                padding: 60px 10px;
             }
 
             .hero h1 {
-                font-size: 2.5em;
+                font-size: 2em;
             }
 
             .hero p {
-                font-size: 1.1em;
-            }
-
-            .hero::before, .hero::after {
-                font-size: 3em;
+                font-size: 1em;
             }
             
             .section {
                 margin: 20px 10px;
-                padding: 30px 15px;
+                padding: 25px 15px;
             }
 
             .section h2 {
-                font-size: 1.8em;
-                margin-bottom: 30px;
+                font-size: 1.6em;
+                margin-bottom: 20px;
             }
 
             .gallery-grid {
@@ -309,33 +284,32 @@
 
     <div class="navbar">
         <div class="container">
-            <a href="#hero"><i class="fas fa-star icon"></i> <span>HOME</span></a>
-            <a href="#project-intro"><i class="fas fa-hand-holding-heart icon"></i> <span>소개</span></a>
-            <a href="#process"><i class="fas fa-cogs icon"></i> <span>제작</span></a>
-            <a href="#gallery"><i class="fas fa-images icon"></i> <span>사진첩</span></a>
-            <a href="#meaning"><i class="fas fa-lightbulb icon"></i> <span>의미</span></a>
-            <a href="#about-me"><i class="fas fa-user-circle icon"></i> <span>제작자</span></a>
+            <a href="#hero"><span>HOME</span></a>
+            <a href="#project-intro"><span>소개</span></a>
+            <a href="#process"><span>제작</span></a>
+            <a href="#gallery"><span>사진첩</span></a>
+            <a href="#meaning"><span>의미</span></a>
+            <a href="#about-me"><span>제작자</span></a>
         </div>
     </div>
 
     <div class="hero" id="hero">
-        <h1>🌟 평화를 위한 날개 💖</h1>
+        <h1>평화를 위한 날개</h1>
         <p>세상을 바꾸는 활동가들의 빛나는 이야기</p>
     </div>
 
     <section class="section" id="project-intro">
         <div class="container">
-            <h2><i class="fas fa-dove icon"></i> 프로젝트 소개</h2>
+            <h2>프로젝트 소개</h2>
             <p><strong>[여기에 프로젝트의 주제, 목표, 그리고 인터뷰의 중요성을 작성하세요.]</strong></p>
             <p>본 프로젝트는 평화와 인권을 위해 헌신하는 <strong>세 분의 활동가</strong>를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 평화가 우리 일상 속 실천임을 알리고자 합니다.</p>
-            <h3>🌟 참여 활동가</h3>
+            <h3>참여 활동가</h3>
             <ul>
                 <li><strong>활동가 A:</strong> [분야: 예시) 환경 평화]</li>
                 <li><strong>활동가 B:</strong> [분야: 예시) 인권 및 교육]</li>
                 <li><strong>활동가 C:</strong> [분야: 예시) 지역 사회 봉사]</li>
             </ul>
             <p style="text-align: center; margin-top: 30px;">
-                <i class="fab fa-youtube icon" style="font-size: 2.5em; color: var(--kitsch-pink-accent);"></i>
                 <br>
                 **[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**
             </p>
@@ -344,12 +318,12 @@
     
     <section class="section" id="process">
         <div class="container">
-            <h2><i class="fas fa-wand-magic-sparkles icon"></i> 제작 과정</h2>
+            <h2>제작 과정</h2>
             <ol>
-                <li><i class="fas fa-clipboard-list icon" style="color: var(--kitsch-pink-accent);"></i> <strong>기획 & 섭외 (X월):</strong> 인터뷰 대상자 선정 및 질문지 구성</li>
-                <li><i class="fas fa-video icon" style="color: var(--kitsch-pink-accent);"></i> <strong>현장 촬영 (Y월):</strong> 활동 현장 방문 및 심층 인터뷰 진행</li>
-                <li><i class="fas fa-edit icon" style="color: var(--kitsch-pink-accent);"></i> <strong>영상 편집 & 후반 작업 (Z월):</strong> 핵심 메시지 전달을 위한 구성, 자막, 배경 음악</li>
-                <li><i class="fas fa-globe-americas icon" style="color: var(--kitsch-pink-accent);"></i> <strong>홈페이지 구현 & 공개:</strong> 최종 결과물 온라인 공개 및 발표</li>
+                <li><strong>기획 & 섭외 (X월):</strong> 인터뷰 대상자 선정 및 질문지 구성</li>
+                <li><strong>현장 촬영 (Y월):</strong> 활동 현장 방문 및 심층 인터뷰 진행</li>
+                <li><strong>영상 편집 & 후반 작업 (Z월):</strong> 핵심 메시지 전달을 위한 구성, 자막, 배경 음악</li>
+                <li><strong>홈페이지 구현 & 공개:</strong> 최종 결과물 온라인 공개 및 발표</li>
             </ol>
             <p style="margin-top: 20px;">각 단계에서 발생한 어려움과 이를 극복한 과정을 상세히 기록하여 프로젝트의 투명성을 높였습니다.</p>
         </div>
@@ -357,7 +331,7 @@
     
     <section class="section" id="gallery">
         <div class="container">
-            <h2><i class="fas fa-camera-retro icon"></i> 사진첩</h2>
+            <h2>사진첩</h2>
             <div class="gallery-grid">
                 <figure>
                     <img src="images/photo1.jpg" alt="인터뷰 현장 모습">
@@ -372,35 +346,35 @@
                     <figcaption>함께 빛나는 평화의 씨앗</figcaption>
                 </figure>
             </div>
-            <p style="text-align: center; margin-top: 30px; font-style: italic; color: #777;">**참고:** `images/` 폴더를 만들고 사진 파일을 넣어주세요. (예: `photo1.jpg`, `hero_background.jpg` 등)</p>
+            <p style="text-align: center; margin-top: 30px; font-style: italic; color: var(--secondary-color);">**참고:** `images/` 폴더를 만들고 사진 파일을 넣어주세요.</p>
         </div>
     </section>
 
     <section class="section" id="meaning">
         <div class="container">
-            <h2><i class="fas fa-heart-pulse icon"></i> 프로젝트의 의미와 결론</h2>
+            <h2>프로젝트의 의미와 결론</h2>
             <p>이 프로젝트를 통해 우리는 평화 활동의 **연속성과 확장성**에 주목했습니다. 활동가들의 이야기를 듣고 기록함으로써, 시청자들이 **평화**라는 개념을 자신과 연결하고 일상 속 작은 실천의 중요성을 깨닫게 하는 것이 궁극적인 목표입니다.</p>
-            <p>평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. <i class="fas fa-seedling icon" style="color: var(--kitsch-pink-accent);"></i></p>
+            <p>평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. </p>
         </div>
     </section>
 
     <section class="section" id="about-me">
         <div class="container">
-            <h2><i class="fas fa-user-astronaut icon"></i> 제작자 소개</h2>
+            <h2>제작자 소개</h2>
             <p><strong>[본인 이름]</strong></p>
             <p>OOO대학교 OOO학과</p>
             <p>이 프로젝트를 통해 소셜 미디어와 영상 제작 기술을 활용하여 사회적 메시지를 전달하는 경험을 쌓았습니다.</p>
             <p>📧 연락처: your-email@example.com</p>
             <div style="text-align: center; margin-top: 20px;">
-                <a href="https://github.com/yoonsouyeon" target="_blank" style="color: var(--kitsch-dark-blue); font-size: 2em; margin: 0 10px;"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/yoonsouyeon" target="_blank" style="color: var(--primary-color); font-size: 1.2em; text-decoration: underline;">GitHub 링크</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p><i class="fas fa-copyright"></i> 2025 [본인 이름/팀 이름]. All Rights Reserved.</p>
-            <p>Designed with <i class="fas fa-heart" style="color: var(--kitsch-pink-accent);"></i> & <i class="fas fa-star" style="color: var(--kitsch-green);"></i></p>
+            <p>&copy; 2025 [본인 이름/팀 이름]. All Rights Reserved.</p>
+            <p>Designed simply.</p>
         </div>
     </footer>
 
