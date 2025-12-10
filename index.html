@@ -7,8 +7,17 @@
     
     <style>
         /* ====================================================== */
-        /* 폰트 정의: S-Core Dream 로드 기능 제거 (하얀 화면 오류 방지) */
+        /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
+        /* ★★★ 로딩 오류 시, 이 블록 전체를 삭제하거나 주석 처리하세요. ★★★ */
         /* ====================================================== */
+        @font-face {
+            font-family: 'S-Core Dream';
+            font-weight: 100; /* Thin */
+            font-style: normal;
+            /* 폰트 파일 경로가 저장소의 /fonts/ 폴더에 정확히 있는지 확인하세요! */
+            src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
+                 url('fonts/S-CoreDream-100Thin.woff') format('woff');
+        }
 
         /* --- 흑백 색상 팔레트 --- */
         :root {
@@ -22,14 +31,14 @@
             
             --border-radius: 10px;
             --section-padding-min: 25px 15px;
-            --container-width: 700px; /* 가로 넓이 축소 */
+            --container-width: 700px;
             --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
         }
 
         body {
-            /* 폰트 변경: 시스템 기본 폰트 사용 */
-            font-family: 'Malgun Gothic', 'SF Pro Display', sans-serif; 
-            font-weight: 400; /* 굵기 기본값으로 변경 */
+            /* 폰트 적용: S-Core Dream 100 적용 */
+            font-family: 'S-Core Dream', 'Malgun Gothic', 'SF Pro Display', sans-serif; 
+            font-weight: 100; 
             margin: 0;
             padding: 0;
             background-color: var(--main-bg);
@@ -64,7 +73,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-weight: 700;
+            font-weight: 700; /* 제목 굵기는 가독성을 위해 700(Bold) 설정 */
         }
 
         p, ul, ol {
@@ -96,7 +105,7 @@
             margin: 0 0 5px;
             text-shadow: none;
             z-index: 1;
-            font-weight: 700;
+            font-weight: 700; /* 제목 굵기 강조 */
         }
 
         .hero p {
