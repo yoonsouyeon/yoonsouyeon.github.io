@@ -8,13 +8,11 @@
     <style>
         /* ====================================================== */
         /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
-        /* ★★★ 로딩 오류 시, 이 블록 전체를 삭제하거나 주석 처리하세요. ★★★ */
         /* ====================================================== */
         @font-face {
             font-family: 'S-Core Dream';
             font-weight: 100; /* Thin */
             font-style: normal;
-            /* 폰트 파일 경로가 저장소의 /fonts/ 폴더에 정확히 있는지 확인하세요! */
             src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
                  url('fonts/S-CoreDream-100Thin.woff') format('woff');
         }
@@ -73,7 +71,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-weight: 700; /* 제목 굵기는 가독성을 위해 700(Bold) 설정 */
+            font-weight: 700;
         }
 
         p, ul, ol {
@@ -105,7 +103,7 @@
             margin: 0 0 5px;
             text-shadow: none;
             z-index: 1;
-            font-weight: 700; /* 제목 굵기 강조 */
+            font-weight: 700;
         }
 
         .hero p {
@@ -276,7 +274,7 @@
             <a href="#process"><span>제작</span></a>
             <a href="#gallery"><span>사진첩</span></a>
             <a href="#meaning"><span>의미</span></a>
-            <a href="#about-me"><span>제작자</span></a>
+            <a href="#guestbook"><span>방명록</span></a> <a href="#about-me"><span>제작자</span></a>
         </div>
     </div>
 
@@ -344,6 +342,18 @@
             <p>평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. </p>
         </div>
     </section>
+    
+    <section class="section" id="guestbook">
+        <div class="container">
+            <h2>방명록 / 참여하기</h2>
+            <p style="text-align: center; margin-bottom: 20px;">프로젝트에 대한 소감, 질문, 응원의 메시지를 남겨주세요. 남겨주신 소중한 의견은 다음 프로젝트에 큰 힘이 됩니다!</p>
+            
+            <div id="comments-section" style="min-height: 200px; border: 1px dashed var(--border-color); border-radius: 5px; padding: 10px; text-align: center; color: var(--secondary-color);">
+                여기에 방명록 서비스 (Disqus, utterances 등)의 코드를 삽입하세요.
+            </div>
+        </div>
+    </section>
+    
 
     <section class="section" id="about-me">
         <div class="container">
