@@ -9,30 +9,33 @@
     <style>
         /* 키치 색상 팔레트 및 기본 설정 */
         :root {
-            --kitsch-green: #B2FF59; /* 연두색 */
-            --kitsch-blue: #81D4FA;  /* 하늘색 */
-            --kitsch-pink: #F48FB1;  /* 분홍색 */
-            --kitsch-dark-blue: #4FC3F7; /* 조금 더 진한 하늘색 (포인트) */
+            --kitsch-green: #B2FF59; /* 메인 연두색 */
+            --kitsch-blue: #81D4FA;  /* 메인 하늘색 */
+            --kitsch-pink-accent: #F48FB1;  /* 분홍색 (강조/포인트) */
+            --kitsch-dark-blue: #4FC3F7; /* 조금 더 진한 하늘색 (헤더/네비) */
             --kitsch-light-bg: #E8F5E9; /* 아주 연한 연두색 배경 */
             --text-color-dark: #333333;
             --text-color-light: #ffffff;
+            
+            /* Apple UI 가이드라인 기반 간격 및 모양 */
             --section-padding: 60px 20px;
             --container-width: 900px;
-            --border-radius: 12px; /* Apple UI 스타일의 둥근 모서리 */
+            --border-radius: 12px; /* 둥근 모서리 */
             --shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
         }
 
         body {
-            font-family: 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            /* Apple 폰트 우선 (시스템에 없을 경우 맑은 고딕 사용) */
+            font-family: 'SF Pro Display', 'Malgun Gothic', '맑은 고딕', sans-serif; 
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: #f8f8f8; /* 아주 밝은 회색 배경 */
             color: var(--text-color-dark);
             line-height: 1.6;
             scroll-behavior: smooth;
         }
 
-        /* --- Global Styles --- */
+        /* --- Global & Layout Styles (간격 조정) --- */
         .container {
             max-width: var(--container-width);
             margin: auto;
@@ -43,35 +46,35 @@
             background-color: var(--kitsch-light-bg);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            margin: 40px auto;
-            padding: var(--section-padding);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin: 40px auto; /* 섹션 간 충분한 수직 간격 */
+            padding: var(--section-padding); /* 섹션 내부 패딩 */
+            border: 1px solid rgba(0, 0, 0, 0.05); 
         }
 
         .section h2 {
             text-align: center;
             color: var(--kitsch-dark-blue);
             font-size: 2.2em;
-            margin-bottom: 30px;
+            margin-bottom: 40px; /* 제목과 내용 사이 간격 확대 */
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 15px; /* 아이콘과 텍스트 간격 조정 */
         }
 
         .section h2 .icon {
-            color: var(--kitsch-pink);
-            font-size: 1em;
+            color: var(--kitsch-green); /* 제목 아이콘 색상 (연두색) */
+            font-size: 1.1em;
         }
 
         p, ul, ol {
             font-size: 1.05em;
-            margin-bottom: 1.2em;
+            margin-bottom: 1.5em; /* 문단/리스트 항목 간격 확대 */
         }
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(135deg, var(--kitsch-blue) 0%, var(--kitsch-pink) 100%);
+            background: linear-gradient(135deg, var(--kitsch-blue) 0%, var(--kitsch-green) 100%); /* 하늘색 -> 연두색 그라데이션 */
             color: var(--text-color-light);
             text-align: center;
             padding: 120px 20px;
@@ -84,11 +87,12 @@
             overflow: hidden;
         }
 
-        .hero::before, .hero::after {
+        .hero::before, .hero::after { /* 별, 날개 데코레이션 */
             content: '🌟';
             position: absolute;
             font-size: 5em;
-            opacity: 0.7;
+            opacity: 0.8;
+            color: var(--kitsch-pink-accent); /* 분홍색 포인트 */
         }
         .hero::before { top: 10%; left: 10%; transform: rotate(-20deg); }
         .hero::after { bottom: 10%; right: 10%; transform: rotate(30deg); content: '🦋'; font-size: 6em; }
@@ -106,7 +110,7 @@
             z-index: 1;
         }
 
-        /* --- Navbar --- */
+        /* --- Navbar (아이콘 중심) --- */
         .navbar {
             background-color: var(--kitsch-dark-blue);
             overflow: hidden;
@@ -128,25 +132,30 @@
         .navbar a {
             color: var(--text-color-light);
             text-align: center;
-            padding: 16px 25px;
+            padding: 16px 20px;
             text-decoration: none;
             transition: background-color 0.3s ease, transform 0.2s ease;
             font-weight: 500;
             letter-spacing: 0.5px;
             display: flex;
+            flex-direction: column; /* 아이콘과 텍스트를 수직으로 배열 */
             align-items: center;
-            gap: 8px;
+            gap: 5px; /* 아이콘과 텍스트 간격 */
+        }
+        
+        .navbar a span {
+            font-size: 0.8em; /* 텍스트는 작게 */
         }
 
         .navbar a:hover {
-            background-color: var(--kitsch-pink);
+            background-color: var(--kitsch-blue); /* 밝은 하늘색으로 호버 */
             transform: translateY(-2px);
         }
         
         .navbar a .icon {
-            font-size: 1.1em;
+            font-size: 1.3em; /* 아이콘 크기 강조 */
         }
-        
+
         /* --- Footer --- */
         footer {
             background-color: var(--kitsch-dark-blue);
@@ -161,33 +170,14 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3em;
-            }
-            .hero p {
-                font-size: 1.2em;
-            }
-            .navbar a {
-                padding: 12px 15px;
-                font-size: 0.9em;
-                gap: 5px;
-            }
-            .section {
-                margin: 20px auto;
-                padding: 40px 15px;
-            }
-            .section h2 {
-                font-size: 1.8em;
-            }
-        }
-        @media (max-width: 480px) {
-            .navbar .container {
-                flex-wrap: wrap;
-            }
-            .navbar a {
-                flex-grow: 1;
-                width: 50%;
-            }
+            .hero h1 { font-size: 3em; }
+            .hero p { font-size: 1.2em; }
+            .navbar a { padding: 10px 15px; }
+            .section { margin: 20px auto; padding: 40px 15px; }
+            .section h2 { font-size: 1.8em; }
+            
+            .navbar .container { flex-wrap: wrap; }
+            .navbar a { flex-grow: 1; width: 30%; } /* 모바일에서 메뉴 간격 조정 */
         }
     </style>
 </head>
@@ -195,10 +185,11 @@
 
     <div class="navbar">
         <div class="container">
-            <a href="#hero"><i class="fas fa-star icon"></i> <span>Home</span></a>
-            <a href="#project-intro"><i class="fas fa-hand-holding-heart icon"></i> <span>프로젝트 소개</span></a>
-            <a href="#process"><i class="fas fa-cogs icon"></i> <span>제작 과정</span></a>
-            <a href="#meaning"><i class="fas fa-lightbulb icon"></i> <span>프로젝트 의미</span></a>
+            <a href="#hero"><i class="fas fa-star icon"></i> <span>HOME</span></a>
+            <a href="#project-intro"><i class="fas fa-hand-holding-heart icon"></i> <span>소개</span></a>
+            <a href="#process"><i class="fas fa-cogs icon"></i> <span>제작</span></a>
+            <a href="#gallery"><i class="fas fa-images icon"></i> <span>사진첩</span></a>
+            <a href="#meaning"><i class="fas fa-lightbulb icon"></i> <span>의미</span></a>
             <a href="#about-me"><i class="fas fa-user-circle icon"></i> <span>제작자</span></a>
         </div>
     </div>
@@ -212,7 +203,7 @@
         <div class="container">
             <h2><i class="fas fa-dove icon"></i> 프로젝트 소개</h2>
             <p><strong>[여기에 프로젝트의 주제, 목표, 그리고 인터뷰의 중요성을 작성하세요.]</strong></p>
-            <p>본 프로젝트는 평화와 인권을 위해 헌신하는 <strong>세 분의 활동가</strong>를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 단순한 기록을 넘어, 평화가 우리 모두의 일상 속 실천임을 알리고자 합니다.</p>
+            <p>본 프로젝트는 평화와 인권을 위해 헌신하는 <strong>세 분의 활동가</strong>를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 평화가 우리 일상 속 실천임을 알리고자 합니다.</p>
             <h3>🌟 참여 활동가</h3>
             <ul>
                 <li><strong>활동가 A:</strong> [분야: 예시) 환경 평화]</li>
@@ -220,7 +211,7 @@
                 <li><strong>활동가 C:</strong> [분야: 예시) 지역 사회 봉사]</li>
             </ul>
             <p style="text-align: center; margin-top: 30px;">
-                <i class="fab fa-youtube icon" style="font-size: 2em; color: var(--kitsch-pink);"></i>
+                <i class="fab fa-youtube icon" style="font-size: 2.5em; color: var(--kitsch-pink-accent);"></i>
                 <br>
                 **[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**
             </p>
@@ -233,18 +224,39 @@
             <ol>
                 <li><i class="fas fa-clipboard-list icon" style="color: var(--kitsch-green);"></i> <strong>기획 & 섭외 (X월):</strong> 인터뷰 대상자 선정 및 질문지 구성</li>
                 <li><i class="fas fa-video icon" style="color: var(--kitsch-blue);"></i> <strong>현장 촬영 (Y월):</strong> 활동 현장 방문 및 심층 인터뷰 진행</li>
-                <li><i class="fas fa-edit icon" style="color: var(--kitsch-pink);"></i> <strong>영상 편집 & 후반 작업 (Z월):</strong> 핵심 메시지 전달을 위한 구성, 자막, 배경 음악</li>
+                <li><i class="fas fa-edit icon" style="color: var(--kitsch-pink-accent);"></i> <strong>영상 편집 & 후반 작업 (Z월):</strong> 핵심 메시지 전달을 위한 구성, 자막, 배경 음악</li>
                 <li><i class="fas fa-globe-americas icon" style="color: var(--kitsch-dark-blue);"></i> <strong>홈페이지 구현 & 공개:</strong> 최종 결과물 온라인 공개 및 발표</li>
             </ol>
-            <p style="margin-top: 20px;">각 단계에서 발생한 어려움(예: 원격 인터뷰 환경 구축)과 이를 극복한 과정을 상세히 기록하여 프로젝트의 투명성을 높였습니다.</p>
+            <p style="margin-top: 20px;">각 단계에서 발생한 어려움과 이를 극복한 과정을 상세히 기록하여 프로젝트의 투명성을 높였습니다.</p>
         </div>
     </section>
     
+    <section class="section" id="gallery">
+        <div class="container">
+            <h2><i class="fas fa-camera-retro icon"></i> 사진첩</h2>
+            <div class="gallery-grid">
+                <figure>
+                    <img src="images/photo1.jpg" alt="인터뷰 현장 모습">
+                    <figcaption>인터뷰 현장의 따뜻한 순간</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/photo2.jpg" alt="촬영 장비 셋업">
+                    <figcaption>꼼꼼한 촬영 준비</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/photo3.jpg" alt="활동가와 기념 사진">
+                    <figcaption>함께 빛나는 평화의 씨앗</figcaption>
+                </figure>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-style: italic; color: #777;">**참고:** `images/` 폴더를 만들고 사진 파일을 넣어주세요. (예: `photo1.jpg`, `hero_background.jpg` 등)</p>
+        </div>
+    </section>
+
     <section class="section" id="meaning">
         <div class="container">
             <h2><i class="fas fa-heart-pulse icon"></i> 프로젝트의 의미와 결론</h2>
             <p>이 프로젝트를 통해 우리는 평화 활동의 **연속성과 확장성**에 주목했습니다. 활동가들의 이야기를 듣고 기록함으로써, 시청자들이 **평화**라는 개념을 자신과 연결하고 일상 속 작은 실천의 중요성을 깨닫게 하는 것이 궁극적인 목표입니다.</p>
-            <p>졸업 후에도 이 콘텐츠가 교육 자료로 활용되어 사회에 긍정적인 영향을 미치기를 기대합니다. 평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. <i class="fas fa-seedling icon" style="color: var(--kitsch-green);"></i></p>
+            <p>평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. <i class="fas fa-seedling icon" style="color: var(--kitsch-green);"></i></p>
         </div>
     </section>
 
@@ -253,7 +265,7 @@
             <h2><i class="fas fa-user-astronaut icon"></i> 제작자 소개</h2>
             <p><strong>[본인 이름]</strong></p>
             <p>OOO대학교 OOO학과</p>
-            <p>평화와 미디어가 만나는 지점에서 의미있는 콘텐츠를 제작하는 데 관심을 두고 있습니다. 이 프로젝트를 통해 소셜 미디어와 영상 제작 기술을 활용하여 사회적 메시지를 전달하는 경험을 쌓았습니다.</p>
+            <p>이 프로젝트를 통해 소셜 미디어와 영상 제작 기술을 활용하여 사회적 메시지를 전달하는 경험을 쌓았습니다.</p>
             <p>📧 연락처: your-email@example.com</p>
             <div style="text-align: center; margin-top: 20px;">
                 <a href="https://github.com/yoonsouyeon" target="_blank" style="color: var(--kitsch-dark-blue); font-size: 2em; margin: 0 10px;"><i class="fab fa-github"></i></a>
@@ -264,7 +276,7 @@
     <footer>
         <div class="container">
             <p><i class="fas fa-copyright"></i> 2025 [본인 이름/팀 이름]. All Rights Reserved.</p>
-            <p>Designed with <i class="fas fa-heart" style="color: var(--kitsch-pink);"></i> & <i class="fas fa-star" style="color: var(--kitsch-green);"></i></p>
+            <p>Designed with <i class="fas fa-heart" style="color: var(--kitsch-pink-accent);"></i> & <i class="fas fa-star" style="color: var(--kitsch-green);"></i></p>
         </div>
     </footer>
 
