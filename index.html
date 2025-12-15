@@ -35,7 +35,7 @@
         }
 
         body {
-            /* 폰트 적용: S-Core Dream 100 적용 (데스크톱) */
+            /* 폰트 적용: S-Core Dream 100 적용 (데스크톱 기본) */
             font-family: 'S-Core Dream', 'Malgun Gothic', 'SF Pro Display', sans-serif; 
             font-weight: 100; 
             margin: 0;
@@ -72,7 +72,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-weight: 700; /* 제목 굵기 강조 */
+            font-weight: 700;
         }
 
         p, ul, ol {
@@ -104,7 +104,7 @@
             margin: 0 0 5px;
             text-shadow: none;
             z-index: 1;
-            font-weight: 700; /* 제목 굵기 강조 */
+            font-weight: 700;
         }
 
         .hero p {
@@ -363,10 +363,16 @@
     <section class="section" id="guestbook">
         <div class="container">
             <h2>방명록 / 참여하기</h2>
-            <p style="text-align: center; margin-bottom: 20px;">프로젝트에 대한 소감, 질문, 응원의 메시지를 남겨주세요. 남겨주신 소중한 의견은 다음 프로젝트에 큰 힘이 됩니다!</p>
+            <p style="text-align: center; margin-bottom: 20px;">프로젝트에 대한 소감, 질문, 응원의 메시지를 남겨주세요. (GitHub 계정 로그인 필요)</p>
             
-            <div id="comments-section" style="min-height: 200px; border: 1px dashed var(--border-color); border-radius: 5px; padding: 10px; text-align: center; color: var(--secondary-color);">
-                여기에 방명록 서비스 (Disqus, utterances 등)의 코드를 삽입하세요.
+            <div id="comments-section">
+                <script src="https://utteranc.es/client.js"
+                        repo="[YOUR-USERNAME/YOUR-REPO-NAME]" 
+                        issue-term="pathname"
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
             </div>
         </div>
     </section>
