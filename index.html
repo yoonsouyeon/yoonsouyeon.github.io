@@ -5,345 +5,307 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사랑의 힘</title>
     
-    <style>
-       @media (max-width: 768px) {
-    
-    /* ----------------------------------------------------- */
-    /* ★★★ 모바일 폰트 전체 강제 적용 (본문 및 모든 텍스트) ★★★ */
-    /* ----------------------------------------------------- */
+   <style>
+    /* ====================================================== */
+    /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
+    /* ====================================================== */
+    @font-face {
+        font-family: 'S-Core Dream';
+        font-weight: 100; /* Thin */
+        font-style: normal;
+        /* 폰트 파일 경로 확인 필수: /fonts/ 폴더에 있어야 합니다. */
+        src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
+             url('fonts/S-CoreDream-100Thin.woff') format('woff');
+    }
+
+    /* --- 흑백 색상 팔레트 --- */
+    :root {
+        --main-bg: #f8f8f8;
+        --section-bg: #ffffff;
+        --primary-color: #333333;
+        --secondary-color: #666666;
+        --border-color: #cccccc;
+        --text-color-dark: var(--primary-color);
+        --text-color-light: #ffffff;
+        
+        --border-radius: 10px;
+        --section-padding-min: 25px 15px;
+        --container-width: 700px;
+        --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
+
     body {
-        /* 모바일에서 Thin 폰트 강제 적용 */
-        font-family: 'S-Core Dream', sans-serif !important; 
-        font-weight: 100 !important;
-    }
-
-    /* 제목은 모바일에서도 가독성을 위해 굵게 유지 */
-    .section h2, .hero h1 {
-        font-weight: 700 !important;
-    }
-
-    /* Utterances, iframe 등 외부 요소의 폰트도 강제 적용 */
-    .utterances, .utterances-frame, .utterances-frame *,
-    body * { 
-        font-family: 'S-Core Dream', sans-serif !important; 
-        font-weight: 100 !important;
-    }
-    
-    /* 제목 굵기만 다시 덮어쓰기 */
-    .utterances .markdown-body h1, .utterances .markdown-body h2, 
-    .utterances .markdown-body h3, .utterances .markdown-body strong {
-        font-weight: 700 !important;
-    }
-
-    /* 네비게이션 모바일 설정 (상단 고정) */
-    .navbar {
-        position: fixed;
-        top: 0;
-        bottom: auto;
-        left: 0;
-        width: 100%;
+        /* 폰트 적용: S-Core Dream 100 적용 (데스크톱 기본) */
+        font-family: 'S-Core Dream', 'Malgun Gothic', 'SF Pro Display', sans-serif; 
+        font-weight: 100; 
         margin: 0;
-        border-radius: 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        background-color: var(--primary-color);
-        border-top: none;
+        padding: 0;
+        background-color: var(--main-bg);
+        color: var(--text-color-dark);
+        line-height: 1.4;
+        scroll-behavior: smooth;
+        letter-spacing: 0.8px; /* ★★★ 글자 간격 넓게 설정 (기본 0.8px) ★★★ */
     }
 
-    .navbar a:first-child, .navbar a:last-child {
-        border-radius: 0;
+    /* --- Global & Layout Styles --- */
+    .container {
+        max-width: var(--container-width);
+        margin: auto;
+        padding: 0 15px;
+    }
+
+    /* --- 모든 섹션의 크기 최소화 --- */
+    .section {
+        background-color: var(--section-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        margin: 15px auto;
+        padding: var(--section-padding-min);
+        border: 1px solid var(--border-color);
+    }
+
+    .section h2 {
+        text-align: center;
+        color: var(--primary-color);
+        font-size: 1.6em;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px; /* ★★★ 제목 글자 간격 더 넓게 설정 ★★★ */
+    }
+
+    p, ul, ol {
+        font-size: 0.95em;
+        margin-bottom: 0.8em;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+        background: var(--primary-color);
+        color: var(--text-color-light);
+        text-align: center;
+        padding: 60px 20px;
+        height: 20vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before, .hero::after {
+        content: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+        margin: 0 0 5px;
+        text-shadow: none;
+        z-index: 1;
+        font-weight: 700;
+        letter-spacing: 2px; /* ★★★ 히어로 제목 간격 가장 넓게 설정 ★★★ */
+    }
+
+    .hero p {
+        font-size: 1.1em;
+        margin: 0;
+        z-index: 1;
+    }
+
+    /* --- Navbar (데스크톱 기본 설정) --- */
+    .navbar {
+        background-color: var(--primary-color);
+        overflow: hidden;
+        position: sticky;
+        top: 10px;
+        z-index: 1000;
+        box-shadow: var(--shadow);
+
+        border-radius: var(--border-radius);
+        width: fit-content;
+        margin: 10px auto 0 auto;
+    }
+
+    .navbar .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 100%;
     }
 
     .navbar a {
-        flex: 1;
-        padding: 6px 5px;
         color: var(--text-color-light);
+        text-align: center;
+        padding: 8px 15px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        font-weight: 400; 
+        letter-spacing: 1px; /* ★★★ 메뉴 글자 간격 넓게 설정 ★★★ */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
     }
 
-    /* --- 콘텐츠 영역 조정 --- */
-
-    body {
-        padding-top: 45px; 
-        padding-bottom: 0;
+    .navbar a span {
+        font-size: 0.85em;
     }
 
-    .hero {
-        height: 15vh;
-        padding: 40px 10px;
+    .navbar a:hover {
+        background-color: #555555;
+        transform: none;
     }
 
-    .section {
-        margin: 10px 10px;
-        padding: 15px 10px;
+    /* 둥근 모서리 침범 방지를 위해 개별 링크에 둥근 모서리 적용 */
+    .navbar a:first-child {
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
+    }
+    .navbar a:last-child {
+        border-top-right-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
     }
 
+    /* --- Gallery Grid --- */
     .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 8px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+        padding: 5px 0;
     }
-}
+    .gallery-grid figure {
+        margin: 0;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: box-shadow 0.3s ease;
+    }
+    .gallery-grid figure:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .gallery-grid img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+    }
+    .gallery-grid figcaption {
+        background-color: #eeeeee;
+        color: var(--primary-color);
+        padding: 6px;
+        font-size: 0.8em;
+        text-align: center;
+        border-bottom-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+        letter-spacing: 0.5px; /* 캡션은 살짝만 넓게 */
+    }
 
-        /* --- 흑백 색상 팔레트 --- */
-        :root {
-            --main-bg: #f8f8f8;
-            --section-bg: #ffffff;
-            --primary-color: #333333;
-            --secondary-color: #666666;
-            --border-color: #cccccc;
-            --text-color-dark: var(--primary-color);
-            --text-color-light: #ffffff;
-            
-            --border-radius: 10px;
-            --section-padding-min: 25px 15px;
-            --container-width: 700px;
-            --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
-        }
+    /* --- Footer --- */
+    footer {
+        background-color: var(--primary-color);
+        color: var(--text-color-light);
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 15px;
+        font-size: 0.75em;
+        border-radius: 0;
+    }
+    
+    /* ----------------------------------------------------- */
+    /* Utterances 폰트 강제 적용 (데스크톱 & 모바일 공통) */
+    /* ----------------------------------------------------- */
+    .utterances {
+        font-family: 'S-Core Dream', 'Malgun Gothic', sans-serif !important;
+        font-weight: 100 !important;
+    }
 
+
+    /* ====================================================== */
+    /* 모바일 최적화 (Max-width: 768px 이하) */
+    /* ====================================================== */
+
+    @media (max-width: 768px) {
+        
+        /* ----------------------------------------------------- */
+        /* ★★★ 모바일 폰트 전체 강제 적용 (본문 및 모든 텍스트) ★★★ */
+        /* ----------------------------------------------------- */
         body {
-            /* 폰트 적용: S-Core Dream 100 적용 (데스크톱 기본) */
-            font-family: 'S-Core Dream', 'Malgun Gothic', 'SF Pro Display', sans-serif; 
-            font-weight: 100; 
-            margin: 0;
-            padding: 0;
-            background-color: var(--main-bg);
-            color: var(--text-color-dark);
-            line-height: 1.4;
-            scroll-behavior: smooth;
+            font-family: 'S-Core Dream', sans-serif !important; 
+            font-weight: 100 !important;
+            letter-spacing: 0.6px !important; /* ★★★ 모바일 글자 간격 설정 ★★★ */
         }
 
-        /* --- Global & Layout Styles --- */
-        .container {
-            max-width: var(--container-width);
-            margin: auto;
-            padding: 0 15px;
+        /* 제목은 모바일에서도 가독성을 위해 굵게 유지 */
+        .section h2, .hero h1 {
+            font-weight: 700 !important;
         }
 
-        /* --- 모든 섹션의 크기 최소화 --- */
-        .section {
-            background-color: var(--section-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin: 15px auto;
-            padding: var(--section-padding-min);
-            border: 1px solid var(--border-color);
+        /* Utterances, iframe 등 외부 요소의 폰트도 강제 적용 */
+        .utterances, .utterances-frame, .utterances-frame *,
+        body * { 
+            font-family: 'S-Core Dream', sans-serif !important; 
+            font-weight: 100 !important;
+            letter-spacing: 0.6px !important; /* ★★★ 모바일 Utterances 간격 설정 ★★★ */
+        }
+        
+        /* 제목 굵기만 다시 덮어쓰기 */
+        .utterances .markdown-body h1, .utterances .markdown-body h2, 
+        .utterances .markdown-body h3, .utterances .markdown-body strong {
+            font-weight: 700 !important;
         }
 
-        .section h2 {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 1.6em;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-weight: 700;
-        }
-
-        p, ul, ol {
-            font-size: 0.95em;
-            margin-bottom: 0.8em;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            background: var(--primary-color);
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 60px 20px;
-            height: 20vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before, .hero::after {
-            content: none;
-        }
-
-        .hero h1 {
-            font-size: 2.5em;
-            margin: 0 0 5px;
-            text-shadow: none;
-            z-index: 1;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.1em;
-            margin: 0;
-            z-index: 1;
-        }
-
-        /* --- Navbar (데스크톱 기본 설정) --- */
+        /* 네비게이션 모바일 설정 (상단 고정) */
         .navbar {
-            background-color: var(--primary-color);
-            overflow: hidden;
-            position: sticky;
-            top: 10px;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-
-            border-radius: var(--border-radius);
-            width: fit-content;
-            margin: 10px auto 0 auto;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
+            position: fixed;
+            top: 0;
+            bottom: auto;
+            left: 0;
             width: 100%;
-        }
-
-        .navbar a {
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 8px 15px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            font-weight: 400; /* 메뉴 텍스트 굵기 400 설정 */
-            letter-spacing: 0.5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-        }
-
-        .navbar a span {
-            font-size: 0.85em;
-        }
-
-        .navbar a:hover {
-            background-color: #555555;
-            transform: none;
-        }
-
-        /* 둥근 모서리 침범 방지를 위해 개별 링크에 둥근 모서리 적용 */
-        .navbar a:first-child {
-            border-top-left-radius: var(--border-radius);
-            border-bottom-left-radius: var(--border-radius);
-        }
-        .navbar a:last-child {
-            border-top-right-radius: var(--border-radius);
-            border-bottom-right-radius: var(--border-radius);
-        }
-
-        /* --- Gallery Grid --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 10px;
-            padding: 5px 0;
-        }
-        .gallery-grid figure {
             margin: 0;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: box-shadow 0.3s ease;
-        }
-        .gallery-grid figure:hover {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        .gallery-grid img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            display: block;
-        }
-        .gallery-grid figcaption {
-            background-color: #eeeeee;
-            color: var(--primary-color);
-            padding: 6px;
-            font-size: 0.8em;
-            text-align: center;
-            border-bottom-left-radius: var(--border-radius);
-            border-bottom-right-radius: var(--border-radius);
+            border-radius: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: var(--primary-color);
+            border-top: none;
         }
 
-        /* --- Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 15px;
-            font-size: 0.75em;
+        .navbar a:first-child, .navbar a:last-child {
             border-radius: 0;
         }
 
-
-        /* ====================================================== */
-        /* 모바일 최적화 (Max-width: 768px 이하) */
-        /* ====================================================== */
-
-        @media (max-width: 768px) {
-            
-            /* ----------------------------------------------------- */
-            /* ★★★ 모바일 폰트 적용 강제 설정 ★★★ */
-            /* ----------------------------------------------------- */
-            body {
-                /* 모바일에서 Thin 폰트 강제 적용 */
-                font-family: 'S-Core Dream', sans-serif !important; 
-                font-weight: 100 !important;
-            }
-
-            /* 제목은 모바일에서도 가독성을 위해 굵게 유지 */
-            .section h2, .hero h1 {
-                font-weight: 700 !important;
-            }
-
-            /* 네비게이션 모바일 설정 (상단 고정) */
-            .navbar {
-                position: fixed;
-                top: 0;
-                bottom: auto;
-                left: 0;
-                width: 100%;
-                margin: 0;
-                border-radius: 0;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                background-color: var(--primary-color);
-                border-top: none;
-            }
-
-            .navbar a:first-child, .navbar a:last-child {
-                border-radius: 0;
-            }
-
-            .navbar a {
-                flex: 1;
-                padding: 6px 5px;
-                color: var(--text-color-light);
-            }
-
-            /* --- 콘텐츠 영역 조정 --- */
-
-            body {
-                padding-top: 45px; 
-                padding-bottom: 0;
-            }
-
-            .hero {
-                height: 15vh;
-                padding: 40px 10px;
-            }
-
-            .section {
-                margin: 10px 10px;
-                padding: 15px 10px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
+        .navbar a {
+            flex: 1;
+            padding: 6px 5px;
+            color: var(--text-color-light);
         }
-    </style>
+
+        /* --- 콘텐츠 영역 조정 --- */
+
+        body {
+            padding-top: 45px; 
+            padding-bottom: 0;
+        }
+
+        .hero {
+            height: 15vh;
+            padding: 40px 10px;
+        }
+
+        .section {
+            margin: 10px 10px;
+            padding: 15px 10px;
+        }
+
+        .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+    }
+</style>
 </head>
 <body>
 
