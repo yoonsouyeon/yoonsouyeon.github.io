@@ -233,6 +233,29 @@
             margin-top: 20px;
             box-shadow: var(--shadow);
         }
+        
+        /* --- Responsive Video Container --- */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 화면 비율 유지 (높이/너비) */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 20px auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        /* 비디오 태그의 스타일은 video-container 내부에서 직접 정의하거나 여기서 추가합니다. */
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
 
 
         /* ====================================================== */
@@ -328,7 +351,8 @@
         <div class="container">
             <a href="#hero"><span>HOME</span></a>
             <a href="#project-intro"><span>소개</span></a>
-            <a href="#full-interview"><span>인터뷰 전문</span></a> <a href="#process"><span>제작</span></a>
+            <a href="#full-interview"><span>인터뷰 전문</span></a> 
+            <a href="#process"><span>제작</span></a>
             <a href="#gallery"><span>사진첩</span></a>
             <a href="#meaning"><span>의미</span></a>
             <a href="#guestbook"><span>방명록</span></a>
@@ -347,9 +371,18 @@
             <p><strong>[여기에 프로젝트의 주제, 목표, 그리고 인터뷰의 중요성을 작성하세요.]</strong></p>
             <p>본 프로젝트는 평화와 인권을 위해 헌신하는 <strong>세 분의 활동가</strong>를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 평화가 우리 일상 속 실천임을 알리고자 합니다.</p>
             
-            <div style="text-align: center; margin-top: 30px;">
-                **[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**
+            <h3 style="text-align: center; margin-top: 30px; margin-bottom: 15px;">완성된 프로젝트 영상</h3>
+        
+            <div class="video-container">
+                <video controls preload="metadata" poster="images/video_poster.jpg" style="width: 100%; height: 100%;">
+                    <source src="videos/[YOUR_VIDEO_FILE_NAME].mp4" type="video/mp4">
+                    <source src="videos/[YOUR_VIDEO_FILE_NAME].webm" type="video/webm">
+                    <p>죄송합니다. 귀하의 브라우저는 HTML5 비디오를 지원하지 않습니다.</p>
+                </video>
             </div>
+            <p style="text-align: center; margin-top: 30px; font-size: 0.9em; color: var(--secondary-color);">
+                세 분의 참여 활동가: 활동가 A, 활동가 B, 활동가 C
+            </p>
         </div>
     </section>
 
