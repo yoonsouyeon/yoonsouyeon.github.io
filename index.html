@@ -3,309 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사랑의 힘</title>
+    <title>평화를 위한 날개 | [프로젝트 제목]</title>
     
-   <style>
-    /* ====================================================== */
-    /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
-    /* ====================================================== */
-    @font-face {
-        font-family: 'S-Core Dream';
-        font-weight: 100; /* Thin */
-        font-style: normal;
-        /* 폰트 파일 경로 확인 필수: /fonts/ 폴더에 있어야 합니다. */
-        src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
-             url('fonts/S-CoreDream-100Thin.woff') format('woff');
-    }
+    <style>
+        /* ====================================================== */
+        /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
+        /* ====================================================== */
+        @font-face {
+            font-family: 'S-Core Dream';
+            font-weight: 100; /* Thin */
+            font-style: normal;
+            /* 폰트 파일 경로 확인 필수: /fonts/ 폴더에 있어야 합니다. */
+            src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
+                 url('fonts/S-CoreDream-100Thin.woff') format('woff');
+        }
 
-    /* --- 흑백 색상 팔레트 --- */
-    :root {
-        --main-bg: #f8f8f8;
-        --section-bg: #ffffff;
-        --primary-color: #333333;
-        --secondary-color: #666666;
-        --border-color: #cccccc;
-        --text-color-dark: var(--primary-color);
-        --text-color-light: #ffffff;
-        
-        --border-radius: 10px;
-        --section-padding-min: 25px 15px;
-        --container-width: 700px;
-        --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
-    }
+        /* --- 흑백 색상 팔레트 --- */
+        :root {
+            --main-bg: #f8f8f8;
+            --section-bg: #ffffff;
+            --primary-color: #333333;
+            --secondary-color: #666666;
+            --border-color: #cccccc;
+            --text-color-dark: var(--primary-color);
+            --text-color-light: #ffffff;
+            
+            --border-radius: 10px;
+            --section-padding-min: 25px 15px;
+            --container-width: 700px;
+            --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+        }
 
-    body {
-        /* 폰트 적용: S-Core Dream 100 적용 (데스크톱 기본) */
-        font-family: 'S-Core Dream', 'Malgun Gothic', 'SF Pro Display', sans-serif; 
-        font-weight: 100; 
-        margin: 0;
-        padding: 0;
-        background-color: var(--main-bg);
-        color: var(--text-color-dark);
-        line-height: 1.4;
-        scroll-behavior: smooth;
-        letter-spacing: 0.8px; /* ★★★ 글자 간격 넓게 설정 (기본 0.8px) ★★★ */
-    }
-
-    /* --- Global & Layout Styles --- */
-    .container {
-        max-width: var(--container-width);
-        margin: auto;
-        padding: 0 15px;
-    }
-
-    /* --- 모든 섹션의 크기 최소화 --- */
-    .section {
-        background-color: var(--section-bg);
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow);
-        margin: 15px auto;
-        padding: var(--section-padding-min);
-        border: 1px solid var(--border-color);
-    }
-
-    .section h2 {
-        text-align: center;
-        color: var(--primary-color);
-        font-size: 1.6em;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        font-weight: 700;
-        letter-spacing: 1.5px; /* ★★★ 제목 글자 간격 더 넓게 설정 ★★★ */
-    }
-
-    p, ul, ol {
-        font-size: 0.95em;
-        margin-bottom: 0.8em;
-    }
-
-    /* --- Hero Section --- */
-    .hero {
-        background: var(--primary-color);
-        color: var(--text-color-light);
-        text-align: center;
-        padding: 60px 20px;
-        height: 20vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero::before, .hero::after {
-        content: none;
-    }
-
-    .hero h1 {
-        font-size: 2.5em;
-        margin: 0 0 5px;
-        text-shadow: none;
-        z-index: 1;
-        font-weight: 700;
-        letter-spacing: 2px; /* ★★★ 히어로 제목 간격 가장 넓게 설정 ★★★ */
-    }
-
-    .hero p {
-        font-size: 1.1em;
-        margin: 0;
-        z-index: 1;
-    }
-
-    /* --- Navbar (데스크톱 기본 설정) --- */
-    .navbar {
-        background-color: var(--primary-color);
-        overflow: hidden;
-        position: sticky;
-        top: 10px;
-        z-index: 1000;
-        box-shadow: var(--shadow);
-
-        border-radius: var(--border-radius);
-        width: fit-content;
-        margin: 10px auto 0 auto;
-    }
-
-    .navbar .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        width: 100%;
-    }
-
-    .navbar a {
-        color: var(--text-color-light);
-        text-align: center;
-        padding: 8px 15px;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-        font-weight: 400; 
-        letter-spacing: 1px; /* ★★★ 메뉴 글자 간격 넓게 설정 ★★★ */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-    }
-
-    .navbar a span {
-        font-size: 0.85em;
-    }
-
-    .navbar a:hover {
-        background-color: #555555;
-        transform: none;
-    }
-
-    /* 둥근 모서리 침범 방지를 위해 개별 링크에 둥근 모서리 적용 */
-    .navbar a:first-child {
-        border-top-left-radius: var(--border-radius);
-        border-bottom-left-radius: var(--border-radius);
-    }
-    .navbar a:last-child {
-        border-top-right-radius: var(--border-radius);
-        border-bottom-right-radius: var(--border-radius);
-    }
-
-    /* --- Gallery Grid --- */
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 10px;
-        padding: 5px 0;
-    }
-    .gallery-grid figure {
-        margin: 0;
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: box-shadow 0.3s ease;
-    }
-    .gallery-grid figure:hover {
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-    .gallery-grid img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        display: block;
-    }
-    .gallery-grid figcaption {
-        background-color: #eeeeee;
-        color: var(--primary-color);
-        padding: 6px;
-        font-size: 0.8em;
-        text-align: center;
-        border-bottom-left-radius: var(--border-radius);
-        border-bottom-right-radius: var(--border-radius);
-        letter-spacing: 0.5px; /* 캡션은 살짝만 넓게 */
-    }
-
-    /* --- Footer --- */
-    footer {
-        background-color: var(--primary-color);
-        color: var(--text-color-light);
-        text-align: center;
-        padding: 10px 0;
-        margin-top: 15px;
-        font-size: 0.75em;
-        border-radius: 0;
-    }
-    
-    /* ----------------------------------------------------- */
-    /* Utterances 폰트 강제 적용 (데스크톱 & 모바일 공통) */
-    /* ----------------------------------------------------- */
-    .utterances {
-        font-family: 'S-Core Dream', 'Malgun Gothic', sans-serif !important;
-        font-weight: 100 !important;
-    }
-
-
-    /* ====================================================== */
-    /* 모바일 최적화 (Max-width: 768px 이하) */
-    /* ====================================================== */
-
-    @media (max-width: 768px) {
-        
-        /* ----------------------------------------------------- */
-        /* ★★★ 모바일 폰트 전체 강제 적용 (본문 및 모든 텍스트) ★★★ */
-        /* ----------------------------------------------------- */
         body {
-            font-family: 'S-Core Dream', sans-serif !important; 
-            font-weight: 100 !important;
-            letter-spacing: 0.6px !important; /* ★★★ 모바일 글자 간격 설정 ★★★ */
-        }
-
-        /* 제목은 모바일에서도 가독성을 위해 굵게 유지 */
-        .section h2, .hero h1 {
-            font-weight: 700 !important;
-        }
-
-        /* Utterances, iframe 등 외부 요소의 폰트도 강제 적용 */
-        .utterances, .utterances-frame, .utterances-frame *,
-        body * { 
-            font-family: 'S-Core Dream', sans-serif !important; 
-            font-weight: 100 !important;
-            letter-spacing: 0.6px !important; /* ★★★ 모바일 Utterances 간격 설정 ★★★ */
-        }
-        
-        /* 제목 굵기만 다시 덮어쓰기 */
-        .utterances .markdown-body h1, .utterances .markdown-body h2, 
-        .utterances .markdown-body h3, .utterances .markdown-body strong {
-            font-weight: 700 !important;
-        }
-
-        /* 네비게이션 모바일 설정 (상단 고정) */
-        .navbar {
-            position: fixed;
-            top: 0;
-            bottom: auto;
-            left: 0;
-            width: 100%;
+            /* 폰트 적용: S-Core Dream 100 적용 (데스크톱 기본) */
+            font-family: 'S-Core Dream', 'Malgun Gothic', 'SF Pro Display', sans-serif; 
+            font-weight: 100; 
             margin: 0;
-            border-radius: 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            background-color: var(--primary-color);
-            border-top: none;
+            padding: 0;
+            background-color: var(--main-bg);
+            color: var(--text-color-dark);
+            line-height: 1.4;
+            scroll-behavior: smooth;
+            letter-spacing: 0.8px; /* 글자 간격 넓게 설정 (기본 0.8px) */
         }
 
-        .navbar a:first-child, .navbar a:last-child {
-            border-radius: 0;
+        /* --- Global & Layout Styles --- */
+        .container {
+            max-width: var(--container-width);
+            margin: auto;
+            padding: 0 15px;
+        }
+
+        /* --- 모든 섹션의 크기 최소화 --- */
+        .section {
+            background-color: var(--section-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin: 15px auto;
+            padding: var(--section-padding-min);
+            border: 1px solid var(--border-color);
+        }
+
+        .section h2 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px; /* 제목 글자 간격 넓게 설정 */
+        }
+
+        p, ul, ol {
+            font-size: 0.95em;
+            margin-bottom: 0.8em;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: var(--primary-color);
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 60px 20px;
+            height: 20vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before, .hero::after {
+            content: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin: 0 0 5px;
+            text-shadow: none;
+            z-index: 1;
+            font-weight: 700;
+            letter-spacing: 2px; /* 히어로 제목 간격 가장 넓게 설정 */
+        }
+
+        .hero p {
+            font-size: 1.1em;
+            margin: 0;
+            z-index: 1;
+        }
+
+        /* --- Navbar (데스크톱 기본 설정) --- */
+        .navbar {
+            background-color: var(--primary-color);
+            overflow: hidden;
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+
+            border-radius: var(--border-radius);
+            width: fit-content;
+            margin: 10px auto 0 auto;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            width: 100%;
         }
 
         .navbar a {
-            flex: 1;
-            padding: 6px 5px;
             color: var(--text-color-light);
+            text-align: center;
+            padding: 8px 15px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-weight: 400; 
+            letter-spacing: 1px; /* 메뉴 글자 간격 넓게 설정 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
         }
 
-        /* --- 콘텐츠 영역 조정 --- */
-
-        body {
-            padding-top: 45px; 
-            padding-bottom: 0;
+        .navbar a span {
+            font-size: 0.85em;
         }
 
-        .hero {
-            height: 15vh;
-            padding: 40px 10px;
+        .navbar a:hover {
+            background-color: #555555;
+            transform: none;
         }
 
-        .section {
-            margin: 10px 10px;
-            padding: 15px 10px;
+        /* 둥근 모서리 침범 방지를 위해 개별 링크에 둥근 모서리 적용 */
+        .navbar a:first-child {
+            border-top-left-radius: var(--border-radius);
+            border-bottom-left-radius: var(--border-radius);
+        }
+        .navbar a:last-child {
+            border-top-right-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
         }
 
+        /* --- Gallery Grid --- */
         .gallery-grid {
-            grid-template-columns: 1fr;
-            gap: 8px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            padding: 5px 0;
         }
-    }
-</style>
+        .gallery-grid figure {
+            margin: 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s ease;
+        }
+        .gallery-grid figure:hover {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-grid figcaption {
+            background-color: #eeeeee;
+            color: var(--primary-color);
+            padding: 6px;
+            font-size: 0.8em;
+            text-align: center;
+            border-bottom-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+            letter-spacing: 0.5px; /* 캡션은 살짝만 넓게 */
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 15px;
+            font-size: 0.75em;
+            border-radius: 0;
+        }
+        
+        /* ----------------------------------------------------- */
+        /* Utterances 폰트 강제 적용 (데스크톱 & 모바일 공통) */
+        /* ----------------------------------------------------- */
+        .utterances {
+            font-family: 'S-Core Dream', 'Malgun Gothic', sans-serif !important;
+            font-weight: 100 !important;
+        }
+        
+        /* --- Google Docs Iframe 스타일링 --- */
+        .google-docs-embed {
+            width: 100%;
+            height: 500px; /* 적절한 높이 설정 */
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            box-shadow: var(--shadow);
+        }
+
+
+        /* ====================================================== */
+        /* 모바일 최적화 (Max-width: 768px 이하) */
+        /* ====================================================== */
+
+        @media (max-width: 768px) {
+            
+            /* ----------------------------------------------------- */
+            /* ★★★ 모바일 폰트 전체 강제 적용 (본문 및 모든 텍스트) ★★★ */
+            /* ----------------------------------------------------- */
+            body {
+                font-family: 'S-Core Dream', sans-serif !important; 
+                font-weight: 100 !important;
+                letter-spacing: 0.6px !important; /* 모바일 글자 간격 설정 */
+            }
+
+            /* 제목은 모바일에서도 가독성을 위해 굵게 유지 */
+            .section h2, .hero h1 {
+                font-weight: 700 !important;
+            }
+
+            /* Utterances, iframe 등 외부 요소의 폰트도 강제 적용 */
+            .utterances, .utterances-frame, .utterances-frame *,
+            body * { 
+                font-family: 'S-Core Dream', sans-serif !important; 
+                font-weight: 100 !important;
+                letter-spacing: 0.6px !important; /* 모바일 Utterances 간격 설정 */
+            }
+            
+            /* 제목 굵기만 다시 덮어쓰기 */
+            .utterances .markdown-body h1, .utterances .markdown-body h2, 
+            .utterances .markdown-body h3, .utterances .markdown-body strong {
+                font-weight: 700 !important;
+            }
+            
+            /* Google Docs Embed 높이 모바일 조정 */
+            .google-docs-embed {
+                height: 400px; 
+            }
+
+            /* 네비게이션 모바일 설정 (상단 고정) */
+            .navbar {
+                position: fixed;
+                top: 0;
+                bottom: auto;
+                left: 0;
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                background-color: var(--primary-color);
+                border-top: none;
+            }
+
+            .navbar a:first-child, .navbar a:last-child {
+                border-radius: 0;
+            }
+
+            .navbar a {
+                flex: 1;
+                padding: 6px 5px;
+                color: var(--text-color-light);
+            }
+
+            /* --- 콘텐츠 영역 조정 --- */
+
+            body {
+                padding-top: 45px; 
+                padding-bottom: 0;
+            }
+
+            .hero {
+                height: 15vh;
+                padding: 40px 10px;
+            }
+
+            .section {
+                margin: 10px 10px;
+                padding: 15px 10px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -313,6 +328,9 @@
         <div class="container">
             <a href="#hero"><span>HOME</span></a>
             <a href="#project-intro"><span>소개</span></a>
+            <a href="#interview-a"><span>A 활동가</span></a>
+            <a href="#interview-b"><span>B 활동가</span></a>
+            <a href="#interview-c"><span>C 활동가</span></a>
             <a href="#process"><span>제작</span></a>
             <a href="#gallery"><span>사진첩</span></a>
             <a href="#meaning"><span>의미</span></a>
@@ -322,146 +340,135 @@
     </div>
 
     <div class="hero" id="hero">
-        <h1>사랑의 힘</h1>
+        <h1>평화를 위한 날개</h1>
+        <p>세상을 바꾸는 활동가들의 빛나는 이야기</p>
     </div>
 
     <section class="section" id="project-intro">
-       <section class="section" id="project-intro">
-    <div class="container">
-        <h2>프로젝트 소개</h2>
-        <p><strong>[여기에 프로젝트의 주제, 목표, 그리고 인터뷰의 중요성을 작성하세요.]</strong></p>
-        <p>본 프로젝트는 평화와 인권을 위해 헌신하는 <strong>세 분의 활동가</strong>를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 평화가 우리 일상 속 실천임을 알리고자 합니다.</p>
-        
-        <div style="text-align: center; margin-top: 30px;">
-            **[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**
+        <div class="container">
+            <h2>프로젝트 소개</h2>
+            <p><strong>[여기에 프로젝트의 주제, 목표, 그리고 인터뷰의 중요성을 작성하세요.]</strong></p>
+            <p>본 프로젝트는 평화와 인권을 위해 헌신하는 <strong>세 분의 활동가</strong>를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 평화가 우리 일상 속 실천임을 알리고자 합니다.</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                **[여기에 완성된 프로젝트 영상의 YouTube 또는 기타 임베드 코드를 삽입하세요.]**
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="section" id="interview-a">
-    <div class="container">
-        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 25px;">
-            활동가 A: [분야: 예시) 환경 평화]
-        </h2>
-        
-        <div class="interview-content">
-            <h3>활동가 A 소개</h3>
-            <p>OOO 활동가는 [구체적인 활동 내용] 분야에서 10년 이상 활동해 오셨습니다. 특히 [특정 성과]에 기여하며 지역 사회에 큰 영향을 미쳤습니다.</p>
+    <section class="section" id="interview-a">
+        <div class="container">
+            <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 25px;">
+                활동가 A: [분야: 예시) 환경 평화]
+            </h2>
             
-            <h3>주요 인터뷰 내용</h3>
-            <p><strong>Q. 활동을 시작하게 된 계기는 무엇인가요?</strong></p>
-            <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 15px; margin: 10px 0;">
-                "평화란 거창한 것이 아니라, 우리가 매일 버리는 쓰레기를 줄이는 작은 행동에서 시작된다고 믿었습니다."
-            </blockquote>
+            <div class="interview-content">
+                <h3>주요 인터뷰 전문</h3>
+                <p>아래에서 OOO 활동가와의 심층 인터뷰 전문을 확인하실 수 있습니다. (스크롤 가능)</p>
+                
+               <iframe src="https://docs.google.com/document/d/e/2PACX-1vSRIHihK3DK7n1AmUfePnyXR-SNdPAKN5hSl4sXWGbNUGtPlaeuq89oQ87mpS0AhFXZwjGEt5O9GtGO/pub?embedded=true"></iframe>
+                <p style="margin-top: 30px;"><strong>[추가 설명: 활동가 A가 집중하는 핵심 메시지를 요약하세요.]</strong></p>
+            </div>
             
-            <p><strong>Q. 프로젝트에 대한 소감은?</strong></p>
-            <ul>
-                <li>가장 기억에 남는 순간: [순간]</li>
-                <li>앞으로의 비전: [비전]</li>
-            </ul>
+            <div style="text-align: center; margin-top: 30px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                <a href="#hero" style="color: var(--secondary-color); text-decoration: none;">↑ TOP으로 돌아가기</a>
+            </div>
         </div>
-        
-        <div style="text-align: center; margin-top: 30px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
-            <a href="#hero" style="color: var(--secondary-color); text-decoration: none;">↑ TOP으로 돌아가기</a>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section class="section" id="interview-b">
-    <div class="container">
-        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 25px;">
-            활동가 B: [분야: 예시) 인권 및 교육]
-        </h2>
-        <div class="interview-content">
-            <h3>활동가 B 소개</h3>
-            <p>OOO 활동가는 [구체적인 활동 내용] 분야에서 10년 이상 활동해 오셨습니다. 특히 [특정 성과]에 기여하며 지역 사회에 큰 영향을 미쳤습니다.</p>
-            
-            <h3>주요 인터뷰 내용</h3>
-            <p><strong>Q. 활동을 시작하게 된 계기는 무엇인가요?</strong></p>
-            <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 15px; margin: 10px 0;">
-                "평화란 거창한 것이 아니라, 우리가 매일 버리는 쓰레기를 줄이는 작은 행동에서 시작된다고 믿었습니다."
-            </blockquote>
-            
-            <p><strong>Q. 프로젝트에 대한 소감은?</strong></p>
-            <ul>
-                <li>가장 기억에 남는 순간: [순간]</li>
-                <li>앞으로의 비전: [비전]</li>
-            </ul>
-        </div>
-        <div style="text-align: center; margin-top: 30px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
-            <a href="#hero" style="color: var(--secondary-color); text-decoration: none;">↑ TOP으로 돌아가기</a>
-        </div>
-    </div>
-</section>
+    <section class="section" id="interview-b">
+        <div class="container">
+            <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 25px;">
+                활동가 B: [분야: 예시) 인권 및 교육]
+            </h2>
+            <div class="interview-content">
+                <h3>주요 인터뷰 전문</h3>
+                <p>아래에서 OOO 활동가와의 심층 인터뷰 전문을 확인하실 수 있습니다. (스크롤 가능)</p>
 
-<section class="section" id="interview-c">
-    <div class="container">
-        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 25px;">
-            활동가 C: [분야: 예시) 지역 사회 봉사]
-        </h2>
-        <div class="interview-content">
-            <h3>활동가 C 소개</h3>
-            <p>OOO 활동가는 [구체적인 활동 내용] 분야에서 10년 이상 활동해 오셨습니다. 특히 [특정 성과]에 기여하며 지역 사회에 큰 영향을 미쳤습니다.</p>
-            
-            <h3>주요 인터뷰 내용</h3>
-            <p><strong>Q. 활동을 시작하게 된 계기는 무엇인가요?</strong></p>
-            <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 15px; margin: 10px 0;">
-                "평화란 거창한 것이 아니라, 우리가 매일 버리는 쓰레기를 줄이는 작은 행동에서 시작된다고 믿었습니다."
-            </blockquote>
-            
-            <p><strong>Q. 프로젝트에 대한 소감은?</strong></p>
-            <ul>
-                <li>가장 기억에 남는 순간: [순간]</li>
-                <li>앞으로의 비전: [비전]</li>
-            </ul>
+                <iframe class="google-docs-embed" src="[YOUR_DOCS_EMBED_URL_B]" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+                    </iframe>
+                <p style="margin-top: 30px;"><strong>[추가 설명: 활동가 B가 집중하는 핵심 메시지를 요약하세요.]</strong></p>
+            </div>
+            <div style="text-align: center; margin-top: 30px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                <a href="#hero" style="color: var(--secondary-color); text-decoration: none;">↑ TOP으로 돌아가기</a>
+            </div>
         </div>
-        <div style="text-align: center; margin-top: 30px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
-            <a href="#hero" style="color: var(--secondary-color); text-decoration: none;">↑ TOP으로 돌아가기</a>
+    </section>
+
+    <section class="section" id="interview-c">
+        <div class="container">
+            <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 25px;">
+                활동가 C: [분야: 예시) 지역 사회 봉사]
+            </h2>
+            <div class="interview-content">
+                <h3>주요 인터뷰 전문</h3>
+                <p>아래에서 OOO 활동가와의 심층 인터뷰 전문을 확인하실 수 있습니다. (스크롤 가능)</p>
+
+                <iframe class="google-docs-embed" src="[YOUR_DOCS_EMBED_URL_C]" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+                    </iframe>
+                <p style="margin-top: 30px;"><strong>[추가 설명: 활동가 C가 집중하는 핵심 메시지를 요약하세요.]</strong></p>
+            </div>
+            <div style="text-align: center; margin-top: 30px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                <a href="#hero" style="color: var(--secondary-color); text-decoration: none;">↑ TOP으로 돌아가기</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    
+    <section class="section" id="process">
+        <div class="container">
+            <h2>제작 과정</h2>
+            <ol>
+                <li><strong>기획 & 섭외 (X월):</strong> 인터뷰 대상자 선정 및 질문지 구성</li>
+                <li><strong>현장 촬영 (Y월):</strong> 활동 현장 방문 및 심층 인터뷰 진행</li>
+                <li><strong>영상 편집 & 후반 작업 (Z월):</strong> 핵심 메시지 전달을 위한 구성, 자막, 배경 음악</li>
+                <li><strong>홈페이지 구현 & 공개:</strong> 최종 결과물 온라인 공개 및 발표</li>
+            </ol>
+            <p style="margin-top: 20px;">각 단계에서 발생한 어려움과 이를 극복한 과정을 상세히 기록하여 프로젝트의 투명성을 높였습니다.</p>
+        </div>
+    </section>
     
     <section class="section" id="gallery">
         <div class="container">
             <h2>사진첩</h2>
             <div class="gallery-grid">
                 <figure>
-                    <img src="images/photo1.jpg"
-                    <figcaption>고라니 발자국</figcaption>
+                    <img src="images/photo1.jpg" alt="인터뷰 현장 모습">
+                    <figcaption>인터뷰 현장의 따뜻한 순간</figcaption>
                 </figure>
                 <figure>
-                    <img src="images/photo2.jpg"
-                    <figcaption>퉁퉁마디</figcaption>
+                    <img src="images/photo2.jpg" alt="촬영 장비 셋업">
+                    <figcaption>꼼꼼한 촬영 준비</figcaption>
                 </figure>
                 <figure>
-                    <img src="images/photo3.jpg"
-                    <figcaption>새 발자국</figcaption>
+                    <img src="images/photo3.jpg" alt="활동가와 기념 사진">
+                    <figcaption>함께 빛나는 평화의 씨앗</figcaption>
                 </figure>
             </div>
-            <p style="text-align: center; margin-top: 30px; font-style: italic; color: var(--secondary-color);"</p>
+            <p style="text-align: center; margin-top: 30px; font-style: italic; color: var(--secondary-color);">**참고:** `images/` 폴더를 만들고 사진 파일을 넣어주세요.</p>
         </div>
     </section>
 
     <section class="section" id="meaning">
         <div class="container">
             <h2>프로젝트의 의미와 결론</h2>
-            <p>이 프로젝트를 진행하며 가지고 있던 고민들의 답을 찾아가는 계기가 되었습니다. 결론~~~ </p>
+            <p>이 프로젝트를 통해 우리는 평화 활동의 **연속성과 확장성**에 주목했습니다. 활동가들의 이야기를 듣고 기록함으로써, 시청자들이 **평화**라는 개념을 자신과 연결하고 일상 속 작은 실천의 중요성을 깨닫게 하는 것이 궁극적인 목표입니다.</p>
+            <p>평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. </p>
         </div>
     </section>
     
-<section class="section" id="guestbook">
+    <section class="section" id="guestbook">
         <div class="container">
             <h2 style="font-family: 'S-Core Dream', sans-serif; font-weight: 700;">방명록 / 참여하기</h2>
             <p style="text-align: center; margin-bottom: 20px;">프로젝트에 대한 소감, 질문, 응원의 메시지를 남겨주세요. (GitHub 계정 로그인 필요)</p>
             
             <div id="comments-section">
                 <script src="https://utteranc.es/client.js"
-        repo="yoonsouyeon/yoonsouyeon.github.io"
-        issue-term="pathname"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-</script>
+                        repo="[YOUR-USERNAME/YOUR-REPO-NAME]" 
+                        issue-term="pathname"
+                        theme="github-dark-orange" crossorigin="anonymous"
+                        async>
+                </script>
             </div>
         </div>
     </section>
@@ -470,17 +477,19 @@
     <section class="section" id="about-me">
         <div class="container">
             <h2>제작자 소개</h2>
-            <p><strong>윤소연(그냥)</strong></p>
-            <p>📧 E-mail : souyeon1028@gmail.com</p>
-            <p>📞 Phone : 010-5331-2753
+            <p><strong>[본인 이름]</strong></p>
+            <p>OOO대학교 OOO학과</p>
+            <p>이 프로젝트를 통해 소셜 미디어와 영상 제작 기술을 활용하여 사회적 메시지를 전달하는 경험을 쌓았습니다.</p>
+            <p>📧 연락처: your-email@example.com</p>
             <div style="text-align: center; margin-top: 20px;">
+                <a href="https://github.com/yoonsouyeon" target="_blank" style="color: var(--primary-color); font-size: 1.2em; text-decoration: underline;">GitHub 링크</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 [그냥]. All Rights Reserved.</p>
+            <p>&copy; 2025 [본인 이름/팀 이름]. All Rights Reserved.</p>
             <p>Designed simply.</p>
         </div>
     </footer>
