@@ -230,7 +230,7 @@
         /* --- Google Docs Iframe 스타일링 --- */
         .google-docs-embed {
             width: 100%;
-            height: 500px; /* 적절한 높이 설정 */
+            height: 500px;
             border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
             margin-top: 20px;
@@ -350,9 +350,10 @@
         <div class="container">
             <a href="#hero"><span>HOME</span></a>
             <a href="#project-intro"><span>소개</span></a>
-            <a href="#full-interview"><span>인터뷰 전문</span></a> 
+            <a href="#final-video"><span>완성작</span></a> <a href="#full-interview"><span>인터뷰 전문</span></a> 
             <a href="#process"><span>제작</span></a>
-            <a href="#repository"><span>저장소</span></a> <a href="#meaning"><span>의미</span></a>
+            <a href="#repository"><span>저장소</span></a> 
+            <a href="#meaning"><span>의미</span></a>
             <a href="#guestbook"><span>방명록</span></a>
             <a href="#about-me"><span>제작자</span></a>
         </div>
@@ -369,8 +370,18 @@
             <p><strong>[여기에 프로젝트의 주제, 목표, 그리고 인터뷰의 중요성을 작성하세요.]</strong></p>
             <p>본 프로젝트는 평화와 인권을 위해 헌신하는 <strong>세 분의 활동가</strong>를 직접 만나, 그들의 삶과 비전, 그리고 활동 과정을 깊이 있게 영상으로 담아낸 졸업 프로젝트입니다. 평화가 우리 일상 속 실천임을 알리고자 합니다.</p>
             
-            <h3 style="text-align: center; margin-top: 30px; margin-bottom: 15px;">완성된 프로젝트 영상</h3>
-        
+            <p style="text-align: center; margin-top: 30px; font-size: 0.9em; color: var(--secondary-color);">
+                세 분의 참여 활동가: 활동가 A, 활동가 B, 활동가 C
+            </p>
+        </div>
+    </section>
+    
+    <section class="section" id="final-video">
+        <div class="container">
+            <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 25px;">
+                완성된 프로젝트 영상
+            </h2>
+            
             <div class="video-container">
                 <video controls preload="metadata" poster="images/video_poster.jpg">
                     <source src="videos/[YOUR_VIDEO_FILE_NAME].mp4" type="video/mp4">
@@ -378,9 +389,9 @@
                     <p>죄송합니다. 귀하의 브라우저는 HTML5 비디오를 지원하지 않습니다. (파일 경로 오류일 수 있습니다)</p>
                 </video>
             </div>
-            <p style="text-align: center; margin-top: 30px; font-size: 0.9em; color: var(--secondary-color);">
-                세 분의 참여 활동가: 활동가 A, 활동가 B, 활동가 C
-            </p>
+            <div style="text-align: center; margin-top: 30px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
+                <a href="#hero" style="color: var(--secondary-color); text-decoration: none;">↑ TOP으로 돌아가기</a>
+            </div>
         </div>
     </section>
 
