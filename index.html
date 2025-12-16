@@ -116,7 +116,7 @@
             z-index: 1;
         }
 
-        /* --- Navbar (데스크톱 기본 설정) --- */
+        /* --- Navbar (데스크톱/PC 설정) --- */
         .navbar {
             background-color: var(--primary-color);
             overflow: hidden;
@@ -124,24 +124,26 @@
             top: 10px;
             z-index: 1000;
             box-shadow: var(--shadow);
-
             border-radius: var(--border-radius);
-            width: fit-content;
+            
+            /* ★★★ 내비게이션 넓이 확장 ★★★ */
+            width: 90%; 
+            max-width: 900px;
             margin: 10px auto 0 auto;
         }
 
         .navbar .container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* 요소들을 균등하게 분배 */
             align-items: center;
-            padding: 0;
+            padding: 0 10px; /* 좌우 패딩을 좁혀 공간 확보 */
             width: 100%;
         }
 
         .navbar a {
             color: var(--text-color-light);
             text-align: center;
-            padding: 8px 15px;
+            padding: 8px 12px; /* 패딩을 좁혀 공간 확보 */
             text-decoration: none;
             transition: background-color 0.3s ease;
             font-weight: 400; 
@@ -150,6 +152,7 @@
             flex-direction: column;
             align-items: center;
             gap: 0;
+            flex-grow: 1; /* 각 링크가 공간을 균등하게 차지 */
         }
 
         .navbar a span {
@@ -171,11 +174,11 @@
             border-bottom-right-radius: var(--border-radius);
         }
 
-        /* --- Gallery Grid --- */
+        /* --- Gallery Grid (저장소 섹션용) --- */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 최소 크기 조정 */
+            gap: 15px; /* 간격 넓힘 */
             padding: 5px 0;
         }
         .gallery-grid figure {
@@ -188,9 +191,9 @@
         .gallery-grid figure:hover {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-        .gallery-grid img {
+        .gallery-grid img, .gallery-grid video {
             width: 100%;
-            height: 150px;
+            height: 150px; /* 높이 고정 */
             object-fit: cover;
             display: block;
         }
@@ -202,7 +205,7 @@
             text-align: center;
             border-bottom-left-radius: var(--border-radius);
             border-bottom-right-radius: var(--border-radius);
-            letter-spacing: 0.5px; /* 캡션은 살짝만 넓게 */
+            letter-spacing: 0.5px;
         }
 
         /* --- Footer --- */
@@ -227,17 +230,17 @@
         /* --- Google Docs Iframe 스타일링 --- */
         .google-docs-embed {
             width: 100%;
-            height: 500px; /* 적절한 높이 설정 */
+            height: 500px;
             border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
             margin-top: 20px;
             box-shadow: var(--shadow);
         }
         
-        /* --- Responsive Video Container --- */
+        /* --- Responsive Video Container (완성 영상) --- */
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 화면 비율 유지 (높이/너비) */
+            padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
             max-width: 100%;
@@ -246,7 +249,6 @@
             box-shadow: var(--shadow);
         }
         
-        /* 비디오 태그의 스타일은 video-container 내부에서 직접 정의합니다. */
         .video-container video {
             position: absolute;
             top: 0;
@@ -265,34 +267,30 @@
         @media (max-width: 768px) {
             
             /* ----------------------------------------------------- */
-            /* ★★★ 모바일 폰트 전체 강제 적용 (본문 및 모든 텍스트) ★★★ */
+            /* ★★★ 모바일 폰트 전체 강제 적용 ★★★ */
             /* ----------------------------------------------------- */
             body {
                 font-family: 'S-Core Dream', sans-serif !important; 
                 font-weight: 100 !important;
-                letter-spacing: 0.6px !important; /* 모바일 글자 간격 설정 */
+                letter-spacing: 0.6px !important;
             }
 
-            /* 제목은 모바일에서도 가독성을 위해 굵게 유지 */
             .section h2, .hero h1 {
                 font-weight: 700 !important;
             }
 
-            /* Utterances, iframe 등 외부 요소의 폰트도 강제 적용 */
             .utterances, .utterances-frame, .utterances-frame *,
             body * { 
                 font-family: 'S-Core Dream', sans-serif !important; 
                 font-weight: 100 !important;
-                letter-spacing: 0.6px !important; /* 모바일 Utterances 간격 설정 */
+                letter-spacing: 0.6px !important;
             }
             
-            /* 제목 굵기만 다시 덮어쓰기 */
             .utterances .markdown-body h1, .utterances .markdown-body h2, 
             .utterances .markdown-body h3, .utterances .markdown-body strong {
                 font-weight: 700 !important;
             }
             
-            /* Google Docs Embed 높이 모바일 조정 */
             .google-docs-embed {
                 height: 400px; 
             }
@@ -303,7 +301,7 @@
                 top: 0;
                 bottom: auto;
                 left: 0;
-                width: 100%;
+                width: 100%; /* 너비를 100%로 설정 */
                 margin: 0;
                 border-radius: 0;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -339,8 +337,8 @@
             }
 
             .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 8px;
+                grid-template-columns: 1fr; /* 모바일에서는 1열 */
+                gap: 10px;
             }
         }
     </style>
@@ -353,8 +351,7 @@
             <a href="#project-intro"><span>소개</span></a>
             <a href="#full-interview"><span>인터뷰 전문</span></a> 
             <a href="#process"><span>제작</span></a>
-            <a href="#gallery"><span>사진첩</span></a>
-            <a href="#meaning"><span>의미</span></a>
+            <a href="#repository"><span>저장소</span></a> <a href="#meaning"><span>의미</span></a>
             <a href="#guestbook"><span>방명록</span></a>
             <a href="#about-me"><span>제작자</span></a>
         </div>
@@ -377,7 +374,7 @@
                 <video controls preload="metadata" poster="images/video_poster.jpg">
                     <source src="videos/[YOUR_VIDEO_FILE_NAME].mp4" type="video/mp4">
                     <source src="videos/[YOUR_VIDEO_FILE_NAME].webm" type="video/webm">
-                    <p>죄송합니다. 귀하의 브라우저는 HTML5 비디오를 지원하지 않습니다. (파일 경로 오류일 수 있습니다)</p>
+                    <p>죄송합니다. 귀하의 브라우저는 HTML5 비디오를 지원하지 않습니다.</p>
                 </video>
             </div>
             <p style="text-align: center; margin-top: 30px; font-size: 0.9em; color: var(--secondary-color);">
@@ -422,24 +419,36 @@
         </div>
     </section>
     
-    <section class="section" id="gallery">
+    <section class="section" id="repository">
         <div class="container">
-            <h2>사진첩</h2>
+            <h2>저장소: 비하인드 & 클립</h2>
+            <p style="text-align: center;">프로젝트 제작 과정 중 촬영한 비하인드 사진과 짧은 클립 영상을 확인하실 수 있습니다.</p>
+            
             <div class="gallery-grid">
+                <figure>
+                    <video controls preload="metadata" poster="images/clip1_poster.jpg">
+                        <source src="videos/[YOUR_SHORT_VIDEO_NAME].mp4" type="video/mp4">
+                        <p>영상 재생 불가</p>
+                    </video>
+                    <figcaption>짧은 영상 클립: [내용]</figcaption>
+                </figure>
+                
                 <figure>
                     <img src="images/photo1.jpg" alt="인터뷰 현장 모습">
                     <figcaption>인터뷰 현장의 따뜻한 순간</figcaption>
                 </figure>
+                
                 <figure>
                     <img src="images/photo2.jpg" alt="촬영 장비 셋업">
                     <figcaption>꼼꼼한 촬영 준비</figcaption>
                 </figure>
+                
                 <figure>
                     <img src="images/photo3.jpg" alt="활동가와 기념 사진">
                     <figcaption>함께 빛나는 평화의 씨앗</figcaption>
                 </figure>
             </div>
-            <p style="text-align: center; margin-top: 30px; font-style: italic; color: var(--secondary-color);">**참고:** `images/` 폴더를 만들고 사진 파일을 넣어주세요.</p>
+            <p style="text-align: center; margin-top: 30px; font-style: italic; color: var(--secondary-color);">**참고:** `images/`와 `videos/` 폴더에 파일을 넣어주세요.</p>
         </div>
     </section>
 
