@@ -316,14 +316,15 @@
 
             .navbar a {
                 flex: 1;
-                padding: 6px 5px;
+                padding: 6px 3px; /* 패딩 줄여 컴팩트하게 */
+                font-size: 0.7em; /* 글자 크기 줄여 공간 확보 */
                 color: var(--text-color-light);
             }
 
             /* --- 콘텐츠 영역 조정 --- */
 
             body {
-                padding-top: 45px; /* 고정 네비게이션에 의해 가려지지 않도록 패딩 추가 */
+                padding-top: 45px; /* 고정 네비게이션 높이만큼 패딩 확보 */
                 padding-bottom: 0;
             }
 
