@@ -30,7 +30,7 @@
             
             --border-radius: 10px;
             --section-padding-min: 25px 15px;
-            --container-width: 600px; /* ★★★ 박스 너비 700px -> 600px로 축소됨 ★★★ */
+            --container-width: 600px; /* ★★★ PC 환경 박스 너비 (600px) ★★★ */
             --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
         }
 
@@ -49,7 +49,7 @@
 
         /* --- Global & Layout Styles --- */
         .container {
-            /* max-width는 --container-width 변수(600px)를 따릅니다. */
+            /* max-width: 600px 적용 */
             max-width: var(--container-width);
             margin: auto;
             padding: 0 15px;
@@ -127,7 +127,7 @@
             box-shadow: var(--shadow);
             border-radius: var(--border-radius);
             
-            /* 내비게이션 넓이 확장 */
+            /* 네비게이션 최대 넓이 설정 */
             width: 90%; 
             max-width: 900px;
             margin: 10px auto 0 auto;
@@ -137,23 +137,23 @@
             display: flex;
             justify-content: space-between; /* 요소들을 균등하게 분배 */
             align-items: center;
-            padding: 0 10px; /* 좌우 패딩을 좁혀 공간 확보 */
+            padding: 0 10px; 
             width: 100%;
         }
 
         .navbar a {
             color: var(--text-color-light);
             text-align: center;
-            padding: 8px 12px; /* 패딩을 좁혀 공간 확보 */
+            padding: 8px 12px; 
             text-decoration: none;
             transition: background-color 0.3s ease;
             font-weight: 400; 
-            letter-spacing: 1px; /* 메뉴 글자 간격 넓게 설정 */
+            letter-spacing: 1px; 
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0;
-            flex-grow: 1; /* 각 링크가 공간을 균등하게 차지 */
+            flex-grow: 1; 
         }
 
         .navbar a span {
@@ -178,8 +178,8 @@
         /* --- Gallery Grid (저장소 섹션용) --- */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 최소 크기 조정 */
-            gap: 15px; /* 간격 넓힘 */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 15px; 
             padding: 5px 0;
         }
         .gallery-grid figure {
@@ -194,7 +194,7 @@
         }
         .gallery-grid img, .gallery-grid video {
             width: 100%;
-            height: 150px; /* 높이 고정 */
+            height: 150px; 
             object-fit: cover;
             display: block;
         }
