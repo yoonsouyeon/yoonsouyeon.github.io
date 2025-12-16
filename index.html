@@ -30,7 +30,7 @@
             
             --border-radius: 10px;
             --section-padding-min: 25px 15px;
-            --container-width: 700px;
+            --container-width: 600px; /* ★★★ 박스 너비 700px -> 600px로 축소됨 ★★★ */
             --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
         }
 
@@ -49,6 +49,7 @@
 
         /* --- Global & Layout Styles --- */
         .container {
+            /* max-width는 --container-width 변수(600px)를 따릅니다. */
             max-width: var(--container-width);
             margin: auto;
             padding: 0 15px;
