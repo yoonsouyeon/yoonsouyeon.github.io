@@ -246,7 +246,7 @@
             box-shadow: var(--shadow);
         }
         
-        /* 비디오 태그의 스타일은 video-container 내부에서 직접 정의하거나 여기서 추가합니다. */
+        /* 비디오 태그의 스타일은 video-container 내부에서 직접 정의합니다. */
         .video-container video {
             position: absolute;
             top: 0;
@@ -374,10 +374,10 @@
             <h3 style="text-align: center; margin-top: 30px; margin-bottom: 15px;">완성된 프로젝트 영상</h3>
         
             <div class="video-container">
-                <video controls preload="metadata" poster="images/video_poster.jpg" style="width: 100%; height: 100%;">
+                <video controls preload="metadata" poster="images/video_poster.jpg">
                     <source src="videos/[YOUR_VIDEO_FILE_NAME].mp4" type="video/mp4">
                     <source src="videos/[YOUR_VIDEO_FILE_NAME].webm" type="video/webm">
-                    <p>죄송합니다. 귀하의 브라우저는 HTML5 비디오를 지원하지 않습니다.</p>
+                    <p>죄송합니다. 귀하의 브라우저는 HTML5 비디오를 지원하지 않습니다. (파일 경로 오류일 수 있습니다)</p>
                 </video>
             </div>
             <p style="text-align: center; margin-top: 30px; font-size: 0.9em; color: var(--secondary-color);">
