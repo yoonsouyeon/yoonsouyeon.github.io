@@ -127,7 +127,7 @@
             box-shadow: var(--shadow);
             border-radius: var(--border-radius);
             
-            /* ★★★ 내비게이션 최대 너비 900px -> 1100px로 확장 ★★★ */
+            /* ★★★ 내비게이션 최대 너비 1100px로 확장 ★★★ */
             width: 90%; 
             max-width: 1100px; 
             margin: 10px auto 0 auto;
@@ -481,19 +481,18 @@
         </div>
     </section>
     
-   <section class="section" id="guestbook">
-    <div class="container">
-        <div id="comments-section">
-            <script src="https://utteranc.es/client.js"
-                    repo="[yoonsouyeon/yoonsouyeon.github.io]" 
-                    issue-term="pathname"
-                    theme="github-dark-orange" 
-                    crossorigin="anonymous"
-                    async>
-            </script>
-        </div>
-    </div>
-</section>
+    <section class="section" id="guestbook">
+        <div class="container">
+            <h2 style="font-family: 'S-Core Dream', sans-serif; font-weight: 700;">방명록 / 참여하기</h2>
+            <p style="text-align: center; margin-bottom: 20px;">프로젝트에 대한 소감, 질문, 응원의 메시지를 남겨주세요. (GitHub 계정 로그인 필요)</p>
+            
+            <div id="comments-section">
+                <script src="https://utteranc.es/client.js"
+                        repo="[YOUR-USERNAME/YOUR-REPO-NAME]" 
+                        issue-term="pathname"
+                        theme="github-dark-orange" crossorigin="anonymous"
+                        async>
+                </script>
             </div>
         </div>
     </section>
