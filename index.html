@@ -13,236 +13,206 @@
         }
 
         :root {
-            --primary-blue: #007AFF; /* 시안의 포인트 블루 */
-            --bg-light: #F0F4F8;
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --primary-blue: #007AFF;
+            --overlay-bg: rgba(255, 255, 255, 0.96);
         }
 
         * { box-sizing: border-box; }
 
-        body {
-            font-family: 'S-Core Dream', sans-serif;
+        body, html {
             margin: 0;
             padding: 0;
-            background-color: var(--bg-light);
-            color: #333;
-            line-height: 1.6;
-            word-break: keep-all;
+            width: 100%;
+            height: 100%;
+            font-family: 'S-Core Dream', sans-serif;
+            overflow: hidden; /* 스크롤 방지 */
+            background-color: #000;
         }
 
-        /* --- 1. 메인 화면 (Hero Section) --- */
+        /* --- 1. 메인 배경 화면 --- */
         .hero {
             position: relative;
             width: 100%;
             height: 100vh;
-            /* 배경 이미지 설정: 실제 이미지 파일 경로로 수정하세요 */
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
                         url('images/main_background.jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
         }
 
+        /* 중앙 제목 */
         .hero-content {
             text-align: center;
             color: white;
-            z-index: 2;
+            pointer-events: none; /* 클릭 방해 금지 */
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             margin: 0;
             font-weight: 700;
             letter-spacing: -2px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* 플로팅 키워드 스타일 (시안의 텍스트 클릭 부분) */
-        .keyword-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
+        /* --- 2. 인터랙티브 키워드 (플로팅 버튼) --- */
         .keyword {
             position: absolute;
-            color: rgba(255, 255, 255, 0.9);
+            color: white;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 300;
-            transition: all 0.3s ease;
             cursor: pointer;
-            padding: 10px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .keyword:hover {
+            background: white;
             color: var(--primary-blue);
-            background: white;
-            transform: scale(1.1);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
-        /* 키워드 위치 (임의 배치 - 사진에 맞춰 조정하세요) */
-        .kw1 { top: 20%; left: 15%; }
-        .kw2 { top: 30%; right: 20%; }
-        .kw3 { bottom: 25%; left: 25%; }
-        .kw4 { bottom: 15%; right: 30%; }
+        /* 키워드 위치 설정 (사진 구도에 맞게 조정하세요) */
+        .kw-intro { top: 25%; left: 15%; }
+        .kw-video { top: 35%; right: 18%; }
+        .kw-repo { bottom: 30%; left: 20%; }
+        .kw-guest { bottom: 20%; right: 25%; }
 
-        /* --- 2. 내비게이션 바 (시안 스타일) --- */
-        .navbar {
-            position: sticky;
-            top: 20px;
-            width: 90%;
-            max-width: 1000px;
-            margin: -30px auto 40px;
-            background: white;
-            padding: 15px 30px;
-            border-radius: 100px;
-            display: flex;
-            justify-content: space-around;
-            box-shadow: var(--card-shadow);
-            z-index: 1000;
-        }
-
-        .navbar a {
-            text-decoration: none;
-            color: #666;
-            font-size: 0.9rem;
-            font-weight: 400;
-            transition: color 0.3s;
-        }
-
-        .navbar a:hover { color: var(--primary-blue); }
-
-        /* --- 3. 콘텐츠 카드 (상세 페이지) --- */
-        .content-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 25px;
-            padding: 40px;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .card:hover {
-            border-color: var(--primary-blue);
-            transform: translateY(-5px);
-        }
-
-        .card h2 {
-            color: var(--primary-blue);
-            font-size: 1.8rem;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .card-label {
-            font-size: 0.8rem;
-            color: #999;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        /* --- 비디오/이미지 영역 --- */
-        .video-box, .image-box {
+        /* --- 3. 상세 페이지 모달 (상세 내용창) --- */
+        .page-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            border-radius: 15px;
-            overflow: hidden;
-            margin: 20px 0;
-            background: #eee;
+            height: 100%;
+            background: var(--overlay-bg);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            overflow-y: auto; /* 내용 길면 안에서 스크롤 */
         }
 
-        video, img { width: 100%; display: block; }
+        .page-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-        /* --- 모바일 최적화 --- */
+        .content-card {
+            width: 90%;
+            max-width: 700px;
+            padding: 60px 40px;
+            background: white;
+            border-radius: 30px;
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 20px 50px rgba(0,122,255,0.1);
+            position: relative;
+            transform: translateY(50px);
+            transition: all 0.5s ease;
+        }
+
+        .page-overlay.active .content-card {
+            transform: translateY(0);
+        }
+
+        /* 닫기 버튼 */
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 40px;
+            height: 40px;
+            background: #eee;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #666;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover { background: var(--primary-blue); color: white; }
+
+        .card-label { color: var(--primary-blue); font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        .content-card h2 { font-size: 2.2rem; margin-top: 0; color: #333; }
+        
+        /* 비디오 컨테이너 */
+        .video-box { width: 100%; border-radius: 20px; overflow: hidden; margin: 30px 0; background: #000; }
+        video { width: 100%; display: block; }
+
+        /* 모바일 최적화 */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .navbar {
-                width: 95%;
-                padding: 10px;
-                font-size: 0.8rem;
-                flex-wrap: wrap;
-                border-radius: 20px;
-            }
-            .navbar a { padding: 5px 10px; }
-            .keyword { font-size: 1rem; }
+            .hero h1 { font-size: 3rem; }
+            .keyword { font-size: 1rem; padding: 10px 20px; }
+            .content-card { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero" id="hero">
+    <section class="hero">
         <div class="hero-content">
             <h1>Airhead</h1>
-            <p>세상을 바꾸는 활동가들의 기록</p>
+            <p>활동가들의 이야기에 귀를 기울이다</p>
         </div>
-        <div class="keyword-container">
-            <a href="#project-intro" class="keyword kw1">Project Intro</a>
-            <a href="#final-video" class="keyword kw2">Final Video</a>
-            <a href="#repository" class="keyword kw3">Repository</a>
-            <a href="#guestbook" class="keyword kw4">Guestbook</a>
-        </div>
+
+        <div class="keyword kw-intro" onclick="openPage('intro')">Intro</div>
+        <div class="keyword kw-video" onclick="openPage('video')">Movie</div>
+        <div class="keyword kw-repo" onclick="openPage('repo')">Archive</div>
+        <div class="keyword kw-guest" onclick="openPage('guest')">Message</div>
     </section>
 
-    <nav class="navbar">
-        <a href="#hero">Home</a>
-        <a href="#project-intro">소개</a>
-        <a href="#final-video">완성작</a>
-        <a href="#full-interview">인터뷰</a>
-        <a href="#process">과정</a>
-        <a href="#repository">저장소</a>
-        <a href="#guestbook">방명록</a>
-    </nav>
-
-    <div class="content-wrapper">
-        
-        <section class="card" id="project-intro">
+    <div id="intro" class="page-overlay">
+        <div class="content-card">
+            <div class="close-btn" onclick="closePage()">×</div>
             <span class="card-label">Project Introduction</span>
-            <h2>활동가들의 이야기</h2>
-            <p>평화와 인권을 위해 헌신하는 세 분의 활동가를 만나 그들의 삶을 기록했습니다. 우리의 일상이 곧 평화의 실천임을 이야기합니다.</p>
-        </section>
+            <h2>평화를 위한 기록</h2>
+            <p>이 프로젝트는 우리 사회 곳곳에서 보이지 않게 활동하는 이들의 목소리를 담았습니다. 거창한 구호보다 중요한 것은 그들의 진심 어린 삶의 기록입니다.</p>
+        </div>
+    </div>
 
-        <section class="card" id="final-video">
-            <span class="card-label">Final Video</span>
-            <h2>완성된 다큐멘터리</h2>
+    <div id="video" class="page-overlay">
+        <div class="content-card">
+            <div class="close-btn" onclick="closePage()">×</div>
+            <span class="card-label">Main Movie</span>
+            <h2>다큐멘터리 완성작</h2>
             <div class="video-box">
                 <video controls>
                     <source src="videos/final_movie.mp4" type="video/mp4">
                 </video>
             </div>
-            <p>활동가 A, B, C의 인터뷰를 통합한 최종 영상입니다.</p>
-        </section>
+            <p>세 분의 활동가가 전하는 평화의 정의를 영상으로 확인해 보세요.</p>
+        </div>
+    </div>
 
-        <section class="card" id="process">
-            <span class="card-label">Process</span>
-            <h2>기획부터 완성까지</h2>
-            <p>1. 기획 및 섭외<br>2. 현장 촬영<br>3. 편집 및 자막 작업<br>4. 최종 공개</p>
-        </section>
-
-        <section class="card" id="repository">
-            <span class="card-label">Repository</span>
-            <h2>비하인드 클립</h2>
-            <div class="image-box">
-                <img src="images/photo1.jpg" alt="현장사진">
+    <div id="repo" class="page-overlay">
+        <div class="content-card">
+            <div class="close-btn" onclick="closePage()">×</div>
+            <span class="card-label">Archive</span>
+            <h2>비하인드 아카이브</h2>
+            <p>촬영 현장에서의 생생한 기록들과 인터뷰 전문을 보관하고 있습니다.</p>
+            <div style="background: #f0f4f8; padding: 20px; border-radius: 15px;">
+                <p>📸 인터뷰 현장 사진 15매<br>📝 심층 인터뷰 전문 기록</p>
             </div>
-            <p>촬영 현장의 생생한 비하인드 컷입니다.</p>
-        </section>
+        </div>
+    </div>
 
-        <section class="card" id="guestbook" style="grid-column: 1 / -1;">
+    <div id="guest" class="page-overlay">
+        <div class="content-card">
+            <div class="close-btn" onclick="closePage()">×</div>
             <span class="card-label">Guestbook</span>
             <h2>응원의 한마디</h2>
             <div id="comments-section">
@@ -254,19 +224,32 @@
                         async>
                 </script>
             </div>
-        </section>
-
+        </div>
     </div>
 
-    <footer style="text-align: center; padding: 50px; color: #999; font-size: 0.8rem;">
-        &copy; 2025 평화를 위한 날개. All Rights Reserved.
-    </footer>
-
     <script>
-        // 키워드들이 미세하게 움직이는 효과 (시안 느낌 강조)
-        document.querySelectorAll('.keyword').forEach(el => {
-            el.style.transform = `translate(${Math.random() * 20}px, ${Math.random() * 20}px)`;
-        });
+        // 페이지 열기 함수
+        function openPage(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        // 페이지 닫기 함수
+        function closePage() {
+            const overlays = document.querySelectorAll('.page-overlay');
+            overlays.forEach(overlay => {
+                overlay.classList.remove('active');
+            });
+            // 비디오가 있다면 정지
+            const videos = document.querySelectorAll('video');
+            videos.forEach(v => v.pause());
+        }
+
+        // 배경 클릭 시 닫기 기능
+        window.onclick = function(event) {
+            if (event.target.classList.contains('page-overlay')) {
+                closePage();
+            }
+        }
     </script>
 </body>
 </html>
