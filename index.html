@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>평화를 위한 날개</title>
     <style>
-        /* 폰트 정의 (레트로한 느낌을 위해 굵은 서체 권장) */
+        /* 폰트 정의: 눈누 제공 Neo둥근모 라이트 사용 */
         @font-face {
-            font-family: 'S-Core Dream';
-            font-weight: 700;
-            src: url('fonts/S-CoreDream-6Bold.woff2') format('woff2');
+            font-family: 'NeoDunggeunmoPro-Regular';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
         }
 
         :root {
@@ -26,8 +27,9 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: 'S-Core Dream', sans-serif;
-            overflow: hidden; /* 스크롤 방지 */
+            /* 둥근모꼴 폰트 전체 적용 */
+            font-family: 'NeoDunggeunmoPro-Regular', sans-serif;
+            overflow: hidden; 
         }
 
         /* --- 1. 메인 배경 화면 (그라데이션 적용) --- */
@@ -35,7 +37,6 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            /* 파란색과 흰색 그라데이션 바탕색 적용 */
             background: linear-gradient(180deg, var(--primary-blue) 0%, #FFFFFF 100%);
             display: flex;
             justify-content: center;
@@ -50,19 +51,17 @@
         }
 
         .hero h1 {
-            font-size: 5.5rem;
+            font-size: 6rem; /* 둥근모꼴 가독성을 위해 크기 확대 */
             margin: 0;
-            font-weight: 900;
-            letter-spacing: -2px;
-            color: var(--point-pink); /* 프로젝트 제목은 분홍색 */
+            color: var(--point-pink); 
             text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
             filter: drop-shadow(0 10px 20px rgba(255, 181, 216, 0.4));
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #6688AA;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         /* --- 2. 인터랙티브 키워드 (하늘색 적용) --- */
@@ -70,12 +69,11 @@
             position: absolute;
             color: #335577;
             text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.5rem; /* 픽셀 폰트 강조 */
             cursor: pointer;
-            padding: 15px 30px;
-            background: var(--sky-blue); /* 키워드 색상은 하늘색 */
-            border: 3px solid white;
+            padding: 15px 35px;
+            background: var(--sky-blue); 
+            border: 4px solid white;
             border-radius: 20px;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 8px 15px rgba(0,0,0,0.05);
@@ -88,7 +86,7 @@
             box-shadow: 0 12px 25px rgba(167, 199, 255, 0.4);
         }
 
-        /* 키워드 임의 배치 (구름 이미지를 연상시키는 배치) */
+        /* 키워드 배치 */
         .kw-intro { top: 20%; left: 15%; }
         .kw-video { top: 30%; right: 18%; }
         .kw-repo { bottom: 25%; left: 20%; }
@@ -119,11 +117,11 @@
 
         .content-card {
             width: 90%;
-            max-width: 650px;
-            padding: 50px 40px;
+            max-width: 700px;
+            padding: 60px 40px;
             background: white;
             border-radius: 40px;
-            border: 4px solid var(--sky-blue); /* 테두리는 하늘색 */
+            border: 5px solid var(--sky-blue);
             box-shadow: 0 30px 60px rgba(0,0,0,0.1);
             position: relative;
             transform: scale(0.9);
@@ -138,30 +136,32 @@
             position: absolute;
             top: 25px;
             right: 25px;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background: var(--sky-blue);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: white;
             transition: 0.3s;
         }
 
         .close-btn:hover { background: var(--point-pink); transform: rotate(90deg); }
 
-        .card-label { color: var(--primary-blue); font-weight: bold; margin-bottom: 15px; display: block; }
-        .content-card h2 { font-size: 2.5rem; margin-top: 0; color: #333; }
+        .card-label { color: var(--primary-blue); font-size: 1.1rem; margin-bottom: 20px; display: block; }
+        .content-card h2 { font-size: 3rem; margin-top: 0; color: #333; }
+        .content-card p { font-size: 1.2rem; line-height: 1.8; }
         
         .video-box { width: 100%; border-radius: 25px; overflow: hidden; margin: 30px 0; border: 5px solid var(--sky-blue); }
         video { width: 100%; display: block; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .keyword { font-size: 1rem; padding: 10px 20px; }
+            .hero h1 { font-size: 3.5rem; }
+            .keyword { font-size: 1.2rem; padding: 12px 24px; }
+            .content-card h2 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -182,7 +182,7 @@
     <div id="intro" class="page-overlay">
         <div class="content-card">
             <div class="close-btn" onclick="closePage()">×</div>
-            <span class="card-label">Project Introduction</span>
+            <span class="card-label">PROJECT INTRODUCTION</span>
             <h2>프로젝트 소개</h2>
             <p>파란 하늘처럼 맑은 진심을 가진 활동가들의 삶을 담은 졸업 프로젝트입니다. 우리의 기록이 평화의 씨앗이 되길 바랍니다.</p>
         </div>
@@ -191,7 +191,7 @@
     <div id="video" class="page-overlay">
         <div class="content-card">
             <div class="close-btn" onclick="closePage()">×</div>
-            <span class="card-label">Documentary Movie</span>
+            <span class="card-label">DOCUMENTARY MOVIE</span>
             <h2>영상 관람</h2>
             <div class="video-box">
                 <video controls>
@@ -205,7 +205,7 @@
     <div id="repo" class="page-overlay">
         <div class="content-card">
             <div class="close-btn" onclick="closePage()">×</div>
-            <span class="card-label">Data Archive</span>
+            <span class="card-label">DATA ARCHIVE</span>
             <h2>인터뷰 및 자료</h2>
             <p>세 분의 활동가와 나눈 깊은 대화의 기록과 촬영 비하인드를 정리해 두었습니다.</p>
         </div>
@@ -214,7 +214,7 @@
     <div id="guest" class="page-overlay">
         <div class="content-card">
             <div class="close-btn" onclick="closePage()">×</div>
-            <span class="card-label">Guestbook</span>
+            <span class="card-label">GUESTBOOK</span>
             <h2>방명록</h2>
             <div id="comments-section">
                 <script src="https://utteranc.es/client.js"
