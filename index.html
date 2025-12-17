@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>평화를 위한 날개</title>
     <style>
-        /* 1. 둥근모꼴 웹폰트 로드 (가장 안정적인 CDN 경로) */
+        /* 1. 둥근모꼴 웹폰트 로드 */
         @font-face {
             font-family: 'DungGeunMo';
             src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.1/DungGeunMo.woff') format('woff');
@@ -14,15 +14,14 @@
         }
 
         :root {
-            --primary-blue: #A7C7FF;    /* 추출된 파란색 */
-            --sky-blue: #D0EFFF;        /* 추출된 하늘색 */
-            --point-pink: #FFB5D8;      /* 추출된 분홍색 */
+            --primary-blue: #A7C7FF;    
+            --sky-blue: #D0EFFF;        
+            --point-pink: #FFB5D8;      
             --overlay-bg: rgba(255, 255, 255, 0.96);
         }
 
         * { 
             box-sizing: border-box; 
-            /* 모든 요소에 폰트를 강제 적용 */
             font-family: 'DungGeunMo', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif !important;
         }
 
@@ -71,15 +70,16 @@
             position: absolute;
             color: #335577;
             text-decoration: none;
-            font-size: 1.5rem; 
+            font-size: 1.4rem; 
             cursor: pointer;
-            padding: 15px 35px;
+            padding: 12px 28px;
             background: var(--sky-blue); 
             border: 4px solid white;
             border-radius: 20px;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 8px 15px rgba(0,0,0,0.05);
             display: inline-block;
+            white-space: nowrap;
         }
 
         .keyword:hover {
@@ -89,11 +89,12 @@
             box-shadow: 0 12px 25px rgba(167, 199, 255, 0.4);
         }
 
-        /* 키워드 배치 */
-        .kw-intro { top: 20%; left: 15%; }
-        .kw-video { top: 30%; right: 18%; }
-        .kw-repo { bottom: 25%; left: 20%; }
-        .kw-guest { bottom: 15%; right: 25%; }
+        /* 키워드 배치 (5개로 분산 배치) */
+        .kw-intro { top: 20%; left: 10%; }
+        .kw-video { top: 25%; right: 15%; }
+        .kw-gallery { top: 55%; left: 15%; } /* 갤러리 추가 */
+        .kw-interview { bottom: 25%; right: 10%; } /* 인터뷰 추가 */
+        .kw-guest { bottom: 10%; left: 45%; }
 
         /* --- 3. 상세 페이지 모달 --- */
         .page-overlay {
@@ -120,7 +121,7 @@
 
         .content-card {
             width: 90%;
-            max-width: 700px;
+            max-width: 800px;
             padding: 60px 40px;
             background: white;
             border-radius: 40px;
@@ -158,13 +159,32 @@
         .content-card h2 { font-size: 3rem; margin-top: 0; color: #333; }
         .content-card p { font-size: 1.2rem; line-height: 1.8; }
         
+        /* 갤러리 그리드 레이아웃 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery-item {
+            width: 100%;
+            height: 150px;
+            background: #eee;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--sky-blue);
+        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* 비디오 박스 */
         .video-box { width: 100%; border-radius: 25px; overflow: hidden; margin: 30px 0; border: 5px solid var(--sky-blue); }
         video { width: 100%; display: block; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 3.5rem; }
-            .keyword { font-size: 1.2rem; padding: 12px 24px; }
+            .keyword { font-size: 1.1rem; padding: 10px 20px; }
             .content-card h2 { font-size: 2rem; }
+            .kw-guest { left: 10%; }
         }
     </style>
 </head>
@@ -178,7 +198,8 @@
 
         <div class="keyword kw-intro" onclick="openPage('intro')">Intro</div>
         <div class="keyword kw-video" onclick="openPage('video')">Movie</div>
-        <div class="keyword kw-repo" onclick="openPage('repo')">Archive</div>
+        <div class="keyword kw-gallery" onclick="openPage('gallery')">Gallery</div>
+        <div class="keyword kw-interview" onclick="openPage('interview')">Interview</div>
         <div class="keyword kw-guest" onclick="openPage('guest')">Message</div>
     </section>
 
@@ -187,7 +208,7 @@
             <div class="close-btn" onclick="closePage()">×</div>
             <span class="card-label">PROJECT INTRODUCTION</span>
             <h2>프로젝트 소개</h2>
-            <p>맑은 진심을 가진 활동가들의 삶을 담은 기록입니다.</p>
+            <p>맑은 진심을 가진 활동가들의 삶을 담은 기록입니다. 평화가 우리 일상에 어떻게 닿아있는지 이야기하고자 합니다.</p>
         </div>
     </div>
 
@@ -201,15 +222,33 @@
                     <source src="videos/final_movie.mp4" type="video/mp4">
                 </video>
             </div>
+            <p>활동가들이 전하는 평화의 메시지를 영상으로 만나보세요.</p>
         </div>
     </div>
 
-    <div id="repo" class="page-overlay">
+    <div id="gallery" class="page-overlay">
         <div class="content-card">
             <div class="close-btn" onclick="closePage()">×</div>
-            <span class="card-label">DATA ARCHIVE</span>
-            <h2>인터뷰 및 자료</h2>
-            <p>활동가들의 심층 인터뷰 전문을 보관하고 있습니다.</p>
+            <span class="card-label">VISUAL ARCHIVE</span>
+            <h2>현장 갤러리</h2>
+            <p>프로젝트 제작 현장과 활동가들의 모습을 담은 사진들입니다.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/photo1.jpg" alt="사진 1"></div>
+                <div class="gallery-item"><img src="images/photo2.jpg" alt="사진 2"></div>
+                <div class="gallery-item"><img src="images/photo3.jpg" alt="사진 3"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="interview" class="page-overlay">
+        <div class="content-card">
+            <div class="close-btn" onclick="closePage()">×</div>
+            <span class="card-label">TEXT ARCHIVE</span>
+            <h2>인터뷰 전문</h2>
+            <p>활동가들과 나눈 심층 대화의 기록입니다. 영상에 담지 못한 더 깊은 이야기를 텍스트로 확인해 보세요.</p>
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 20px; border: 2px dashed var(--sky-blue); margin-top: 20px;">
+                <p>📝 활동가 A: "평화란..."<br>📝 활동가 B: "인권은..."<br>📝 활동가 C: "우리의 역할은..."</p>
+            </div>
         </div>
     </div>
 
