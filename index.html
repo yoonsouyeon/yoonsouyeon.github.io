@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Path of Peace | Airhead</title>
     <style>
-        /* 1. 둥근모꼴 웹폰트 로드 (안정적인 CDN 경로) */
+        /* 1. 둥근모꼴 웹폰트 로드 */
         @font-face {
             font-family: 'DungGeunMo';
             src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.1/DungGeunMo.woff') format('woff');
@@ -116,15 +116,13 @@
             box-shadow: 0 15px 25px rgba(167, 199, 255, 0.5);
         }
 
-        /* 키워드 배치 */
-        .kw-intro { top: 15%; left: 10%; }
-        .kw-topic { top: 22%; right: 18%; }
-        .kw-video { top: 42%; left: 8%; }
-        .kw-meaning { top: 48%; right: 12%; }
-        .kw-gallery { bottom: 32%; left: 18%; }
-        .kw-interview { bottom: 28%; right: 15%; }
-        .kw-conclusion { bottom: 18%; left: 38%; }
-        .kw-guest { bottom: 12%; right: 28%; }
+        /* 병합된 키워드 배치 (화면 곳곳에 재배치) */
+        .kw-about { top: 20%; left: 15%; }     /* 소개/주제/의미 통합 */
+        .kw-video { top: 35%; right: 18%; }
+        .kw-gallery { top: 60%; left: 20%; }
+        .kw-interview { bottom: 25%; right: 15%; }
+        .kw-conclusion { bottom: 15%; left: 40%; }
+        .kw-guest { bottom: 10%; right: 25%; }
 
         /* --- 3. 상세 페이지 모달 --- */
         .page-overlay {
@@ -182,13 +180,14 @@
 
         .card-label { color: var(--primary-blue); font-size: 1rem; margin-bottom: 15px; display: block; }
         .content-card h2 { font-size: 2.8rem; margin-top: 0; color: #333; }
-        .content-card p { font-size: 1.15rem; line-height: 1.8; color: #444; word-break: keep-all; }
+        .content-card h3 { font-size: 1.5rem; color: var(--primary-blue); margin: 25px 0 10px; }
+        .content-card p { font-size: 1.15rem; line-height: 1.8; color: #444; word-break: keep-all; margin: 0; }
 
         .video-box { width: 100%; border-radius: 20px; overflow: hidden; margin: 25px 0; border: 5px solid var(--sky-blue); }
         video { width: 100%; display: block; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 3rem; }
             .keyword { font-size: 1rem; padding: 10px 18px; }
             .keyword::after, .keyword::before { display: none; }
         }
@@ -202,34 +201,34 @@
             <p>더 나은 미래를 향해 함께 걷는 우리들의 기록</p>
         </div>
 
-        <div class="keyword kw-intro" onclick="openPage('intro')">Intro</div>
-        <div class="keyword kw-topic" onclick="openPage('topic')">Topic</div>
+        <div class="keyword kw-about" onclick="openPage('about')">About Project</div>
         <div class="keyword kw-video" onclick="openPage('video')">Movie</div>
-        <div class="keyword kw-meaning" onclick="openPage('meaning')">Meaning</div>
         <div class="keyword kw-gallery" onclick="openPage('gallery')">Gallery</div>
         <div class="keyword kw-interview" onclick="openPage('interview')">Interview</div>
         <div class="keyword kw-conclusion" onclick="openPage('conclusion')">Conclusion</div>
         <div class="keyword kw-guest" onclick="openPage('guest')">Message</div>
     </section>
 
-    <div id="intro" class="page-overlay">
+    <div id="about" class="page-overlay">
         <div class="content-card">
             <div class="close-btn" onclick="closePage()">×</div>
-            <span class="card-label">PROJECT INTRODUCTION</span>
-            <h2>프로젝트 소개</h2>
+            <span class="card-label">ABOUT PROJECT</span>
+            <h2>기록의 시작과 의미</h2>
+            
+            <h3>프로젝트 소개</h3>
             <p>
-                저의 프로젝트는 다양한 활동가들을 만나며 저의 고민을 나누고, 또 그들의 이야기를 들으며 '나는 앞으로 어떻게 살아갈지'를 이야기하는 다큐멘터리를 제작하는 것입니다.<br><br>
-                평화를 위해 다양한 현장에서 투쟁하는 사람들을 만나며 "저 사람들의 마음의 원천은 어디일까?", "나는 과연 저 사람들처럼 될 수 있을까?"와 같은 원초적인 고민으로부터 이 여정을 시작하게 되었습니다. 활동가들의 발자국을 따라가며 발견한 저만의 답을 이 기록 속에 담았습니다.
+                저의 프로젝트는 다양한 활동가들을 만나며 저의 고민을 나누고, 또 그들의 이야기를 들으며 '나는 앞으로 어떻게 살아갈지'를 이야기하는 다큐멘터리를 제작하는 것입니다.
             </p>
-        </div>
-    </div>
 
-    <div id="topic" class="page-overlay">
-        <div class="content-card">
-            <div class="close-btn" onclick="closePage()">×</div>
-            <span class="card-label">PROJECT TOPIC</span>
-            <h2>프로젝트 주제</h2>
-            <p>일상 속에서 실천할 수 있는 평화와 인권의 가치를 탐구합니다.</p>
+            <h3>기획 의도 및 주제</h3>
+            <p>
+                평화를 위해 다양한 현장에서 투쟁하는 사람들을 만나며 "저 사람들의 마음의 원천은 어디일까?", "나는 과연 저 사람들처럼 될 수 있을까?"와 같은 원초적인 고민으로부터 이 여정을 시작하게 되었습니다. "일상 속 실천 가능한 평화와 인권"을 주제로 우리 주변의 소중한 가치들을 탐구합니다.
+            </p>
+
+            <h3>프로젝트의 의미</h3>
+            <p>
+                보이지 않는 곳에서의 헌신을 기록함으로써 사회적 연대와 평화의 중요성을 일깨우고, 활동가들의 발자국을 따라가며 우리 사회의 희망을 발견하고자 합니다.
+            </p>
         </div>
     </div>
 
@@ -241,15 +240,6 @@
             <div class="video-box">
                 <video controls><source src="videos/final_movie.mp4" type="video/mp4"></video>
             </div>
-        </div>
-    </div>
-
-    <div id="meaning" class="page-overlay">
-        <div class="content-card">
-            <div class="close-btn" onclick="closePage()">×</div>
-            <span class="card-label">PROJECT MEANING</span>
-            <h2>프로젝트의 의미</h2>
-            <p>활동가들의 발자국을 따라가며 우리 사회의 연대와 희망을 발견합니다.</p>
         </div>
     </div>
 
