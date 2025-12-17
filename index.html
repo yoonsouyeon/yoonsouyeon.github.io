@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Path of Peace | Airhead</title>
     <style>
-        /* 1. 둥근모꼴 웹폰트 로드 */
+        /* 1. 둥근모꼴 웹폰트 로드 (가장 안정적인 CDN 경로) */
         @font-face {
             font-family: 'DungGeunMo';
             src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.1/DungGeunMo.woff') format('woff');
@@ -13,17 +13,17 @@
             font-style: normal;
         }
 
-        :root {
-            --primary-blue: #A7C7FF;    
-            --sky-blue: #D0EFFF;        
-            --point-pink: #FFB5D8;      
-            --overlay-bg: rgba(255, 255, 255, 0.96);
-        }
-
-        /* 모든 텍스트에 둥근모꼴 강제 적용 */
+        /* ★ 모든 요소에 둥근모꼴 강제 적용 (폰트 미적용 방지) ★ */
         * { 
             box-sizing: border-box; 
             font-family: 'DungGeunMo', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif !important;
+        }
+
+        :root {
+            --primary-blue: #A7C7FF;    /* 추출된 파란색 */
+            --sky-blue: #D0EFFF;        /* 추출된 하늘색 */
+            --point-pink: #FFB5D8;      /* 추출된 분홍색 */
+            --overlay-bg: rgba(255, 255, 255, 0.96);
         }
 
         body, html {
@@ -31,11 +31,11 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; 
+            overflow: hidden; /* 메인 화면 스크롤 방지 */
             background-color: #fff;
         }
 
-        /* --- 1. 메인 배경 화면 (그라데이션) --- */
+        /* --- 1. 메인 배경 화면 (파란색-흰색 그라데이션) --- */
         .hero {
             position: relative;
             width: 100%;
@@ -55,7 +55,7 @@
         .hero h1 {
             font-size: 5rem; 
             margin: 0;
-            color: var(--point-pink); 
+            color: var(--point-pink); /* 제목 분홍색 */
             text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
             filter: drop-shadow(0 10px 20px rgba(255, 181, 216, 0.4));
         }
@@ -67,7 +67,7 @@
             word-break: keep-all;
         }
 
-        /* --- 2. 말풍선 모양 키워드 버튼 --- */
+        /* --- 2. 말풍선 모양 키워드 버튼 (하늘색) --- */
         .keyword {
             position: absolute;
             color: #335577;
@@ -84,7 +84,7 @@
             z-index: 10;
         }
 
-        /* 말풍선 꼬리 */
+        /* 말풍선 꼬리 디자인 */
         .keyword::after {
             content: '';
             position: absolute;
@@ -117,7 +117,7 @@
             box-shadow: 0 15px 25px rgba(167, 199, 255, 0.5);
         }
 
-        /* 키워드 배치 */
+        /* 키워드 배치 조정 */
         .kw-intro { top: 15%; left: 10%; }
         .kw-topic { top: 22%; right: 18%; }
         .kw-video { top: 42%; left: 8%; }
@@ -298,13 +298,17 @@
 
     <script>
         function openPage(id) { document.getElementById(id).classList.add('active'); }
+        
         function closePage() {
             const overlays = document.querySelectorAll('.page-overlay');
             overlays.forEach(overlay => overlay.classList.remove('active'));
             const videos = document.querySelectorAll('video');
             videos.forEach(v => v.pause());
         }
-        window.onclick = function(event) { if (event.target.classList.contains('page-overlay')) closePage(); }
+
+        window.onclick = function(event) { 
+            if (event.target.classList.contains('page-overlay')) closePage(); 
+        }
     </script>
 </body>
 </html>
