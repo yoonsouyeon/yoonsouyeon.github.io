@@ -3,520 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>평화의 기록</title>
-    
+    <title>평화를 위한 날개</title>
     <style>
-        /* ====================================================== */
-        /* 폰트 정의: 에스코어 드림 100 (Thin) 로드 */
-        /* ====================================================== */
+        /* 폰트 정의 */
         @font-face {
             font-family: 'S-Core Dream';
-            font-weight: 100; /* Thin */
-            font-style: normal;
-            /* 폰트 파일 경로 확인 필수: /fonts/ 폴더에 있어야 합니다. */
-            src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2'),
-                 url('fonts/S-CoreDream-100Thin.woff') format('woff');
+            font-weight: 100;
+            src: url('fonts/S-CoreDream-100Thin.woff2') format('woff2');
         }
 
-        /* --- 흑백 색상 팔레트 --- */
         :root {
-            --main-bg: #f8f8f8;
-            --section-bg: #ffffff;
-            --primary-color: #333333;
-            --secondary-color: #666666;
-            --border-color: #cccccc;
-            --text-color-dark: var(--primary-color);
-            --text-color-light: #ffffff;
-            
-            --border-radius: 10px;
-            --section-padding-min: 25px 15px;
-            --container-width: 600px; /* PC 환경 컨테이너 최대 너비 (600px 유지) */
-            --shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+            --primary-blue: #007AFF; /* 시안의 포인트 블루 */
+            --bg-light: #F0F4F8;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
+
+        * { box-sizing: border-box; }
 
         body {
-            /* 폰트 적용: S-Core Dream 100 적용 (데스크톱 기본) */
-            font-family: 'S-Core Dream', 'Malgun Gothic', 'SF Pro Display', sans-serif; 
-            font-weight: 100; 
+            font-family: 'S-Core Dream', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--main-bg);
-            color: var(--text-color-dark);
-            line-height: 1.4;
-            scroll-behavior: smooth;
-            letter-spacing: 0.8px; /* 글자 간격 넓게 설정 (기본 0.8px) */
+            background-color: var(--bg-light);
+            color: #333;
+            line-height: 1.6;
+            word-break: keep-all;
         }
 
-        /* --- Global & Layout Styles --- */
-        .container {
-            /* max-width: 600px 적용 (!important로 강제 지정) */
-            max-width: 600px !important; 
-            margin: auto;
-            padding: 0 15px;
-        }
-
-        /* --- 모든 섹션의 크기 최소화 --- */
-        .section {
-            background-color: var(--section-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin: 15px auto;
-            padding: var(--section-padding-min);
-            border: 1px solid var(--border-color);
-        }
-
-        .section h2 {
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 1.6em;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-weight: 700;
-            letter-spacing: 1.5px; /* 제목 글자 간격 넓게 설정 */
-        }
-
-        p, ul, ol {
-            font-size: 0.95em;
-            margin-bottom: 0.8em;
-        }
-
-        /* --- Hero Section --- */
+        /* --- 1. 메인 화면 (Hero Section) --- */
         .hero {
-            background: var(--primary-color);
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 60px 20px;
-            height: 20vh;
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            /* 배경 이미지 설정: 실제 이미지 파일 경로로 수정하세요 */
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('images/main_background.jpg') no-repeat center center/cover;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
             overflow: hidden;
         }
 
-        .hero::before, .hero::after {
-            content: none;
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 2.5em;
-            margin: 0 0 5px;
-            text-shadow: none;
-            z-index: 1;
-            font-weight: 700;
-            letter-spacing: 2px; /* 히어로 제목 간격 가장 넓게 설정 */
-        }
-
-        .hero p {
-            font-size: 1.1em;
+            font-size: 4rem;
             margin: 0;
-            z-index: 1;
+            font-weight: 700;
+            letter-spacing: -2px;
         }
 
-        /* --- Navbar (데스크톱/PC 설정) --- */
-        .navbar {
-            background-color: var(--primary-color);
-            overflow: hidden;
-            position: sticky;
-            top: 10px;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            border-radius: var(--border-radius);
-            
-            /* 내비게이션 최대 너비 1100px로 확장 */
-            width: 90%; 
-            max-width: 1100px; 
-            margin: 10px auto 0 auto;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between; /* 요소들을 균등하게 분배 */
-            align-items: center;
-            padding: 0 10px; 
+        /* 플로팅 키워드 스타일 (시안의 텍스트 클릭 부분) */
+        .keyword-container {
+            position: absolute;
             width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .keyword {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 50px;
+        }
+
+        .keyword:hover {
+            color: var(--primary-blue);
+            background: white;
+            transform: scale(1.1);
+        }
+
+        /* 키워드 위치 (임의 배치 - 사진에 맞춰 조정하세요) */
+        .kw1 { top: 20%; left: 15%; }
+        .kw2 { top: 30%; right: 20%; }
+        .kw3 { bottom: 25%; left: 25%; }
+        .kw4 { bottom: 15%; right: 30%; }
+
+        /* --- 2. 내비게이션 바 (시안 스타일) --- */
+        .navbar {
+            position: sticky;
+            top: 20px;
+            width: 90%;
+            max-width: 1000px;
+            margin: -30px auto 40px;
+            background: white;
+            padding: 15px 30px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: var(--card-shadow);
+            z-index: 1000;
         }
 
         .navbar a {
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 8px 12px; 
             text-decoration: none;
-            transition: background-color 0.3s ease;
-            font-weight: 400; 
-            letter-spacing: 1px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-            flex-grow: 1; 
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.3s;
         }
 
-        .navbar a span {
-            font-size: 0.85em;
-        }
+        .navbar a:hover { color: var(--primary-blue); }
 
-        .navbar a:hover {
-            background-color: #555555;
-            transform: none;
-        }
-
-        /* 둥근 모서리 침범 방지를 위해 개별 링크에 둥근 모서리 적용 */
-        .navbar a:first-child {
-            border-top-left-radius: var(--border-radius);
-            border-bottom-left-radius: var(--border-radius);
-        }
-        .navbar a:last-child {
-            border-top-right-radius: var(--border-radius);
-            border-bottom-right-radius: var(--border-radius);
-        }
-
-        /* --- Gallery Grid (저장소 섹션용) --- */
-        .gallery-grid {
+        /* --- 3. 콘텐츠 카드 (상세 페이지) --- */
+        .content-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 15px; 
-            padding: 5px 0;
-        }
-        .gallery-grid figure {
-            margin: 0;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: box-shadow 0.3s ease;
-        }
-        .gallery-grid figure:hover {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        .gallery-grid img, .gallery-grid video {
-            width: 100%;
-            height: 150px; 
-            object-fit: cover;
-            display: block;
-        }
-        .gallery-grid figcaption {
-            background-color: #eeeeee;
-            color: var(--primary-color);
-            padding: 6px;
-            font-size: 0.8em;
-            text-align: center;
-            border-bottom-left-radius: var(--border-radius);
-            border-bottom-right-radius: var(--border-radius);
-            letter-spacing: 0.5px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
         }
 
-        /* --- Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--text-color-light);
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 15px;
-            font-size: 0.75em;
-            border-radius: 0;
-        }
-        
-        /* ----------------------------------------------------- */
-        /* Utterances 폰트 강제 적용 (데스크톱 & 모바일 공통) */
-        /* ----------------------------------------------------- */
-        .utterances {
-            font-family: 'S-Core Dream', 'Malgun Gothic', sans-serif !important;
-            font-weight: 100 !important;
-        }
-        
-        /* --- Google Docs Iframe 스타일링 --- */
-        .google-docs-embed {
-            width: 100%;
-            height: 500px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            margin-top: 20px;
+        .card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
             box-shadow: var(--shadow);
-        }
-        
-        /* --- Responsive Video Container (완성 영상) --- */
-        .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 화면 비율 유지 (높이/너비) */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 20px auto;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
         }
-        
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+
+        .card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .card-label {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 5px;
             display: block;
         }
 
+        /* --- 비디오/이미지 영역 --- */
+        .video-box, .image-box {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+            background: #eee;
+        }
 
-        /* ====================================================== */
-        /* 모바일 최적화 (Max-width: 768px 이하) */
-        /* ====================================================== */
+        video, img { width: 100%; display: block; }
 
+        /* --- 모바일 최적화 --- */
         @media (max-width: 768px) {
-            
-            /* ----------------------------------------------------- */
-            /* ★★★ 모바일 폰트 전체 강제 적용 ★★★ */
-            /* ----------------------------------------------------- */
-            body {
-                font-family: 'S-Core Dream', sans-serif !important; 
-                font-weight: 100 !important;
-                letter-spacing: 0.6px !important;
-            }
-
-            .section h2, .hero h1 {
-                font-weight: 700 !important;
-            }
-
-            .utterances, .utterances-frame, .utterances-frame *,
-            body * { 
-                font-family: 'S-Core Dream', sans-serif !important; 
-                font-weight: 100 !important;
-                letter-spacing: 0.6px !important;
-            }
-            
-            .utterances .markdown-body h1, .utterances .markdown-body h2, 
-            .utterances .markdown-body h3, .utterances .markdown-body strong {
-                font-weight: 700 !important;
-            }
-            
-            /* Google Docs Embed 높이 모바일 조정 */
-            .google-docs-embed {
-                height: 400px; 
-            }
-
-            /* 내비게이션 모바일 설정 (상단 고정, 100% 너비) */
+            .hero h1 { font-size: 2.5rem; }
             .navbar {
-                position: fixed;
-                top: 0;
-                bottom: auto;
-                left: 0;
-                width: 100%; 
-                margin: 0;
-                border-radius: 0;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                background-color: var(--primary-color);
-                border-top: none;
+                width: 95%;
+                padding: 10px;
+                font-size: 0.8rem;
+                flex-wrap: wrap;
+                border-radius: 20px;
             }
-
-            .navbar a:first-child, .navbar a:last-child {
-                border-radius: 0;
-            }
-
-            .navbar a {
-                flex: 1;
-                padding: 6px 3px; /* 패딩 줄여 컴팩트하게 */
-                font-size: 0.7em; /* 글자 크기 줄여 공간 확보 */
-                color: var(--text-color-light);
-            }
-
-            /* --- 콘텐츠 영역 조정 --- */
-
-            body {
-                padding-top: 45px; /* 고정 내비게이션 높이만큼 패딩 확보 */
-                padding-bottom: 0;
-            }
-
-            .hero {
-                height: 15vh;
-                padding: 40px 10px;
-            }
-
-            .section {
-                margin: 10px 10px;
-                padding: 15px 10px;
-            }
-
-            /* 저장소 갤러리 모바일 1열 */
-            .gallery-grid {
-                grid-template-columns: 1fr; 
-                gap: 10px;
-            }
-            
-            /* 모바일에서는 .container의 max-width를 100%로 둡니다. (모바일 최적화) */
-            .container {
-                max-width: 100% !important; 
-            }
+            .navbar a { padding: 5px 10px; }
+            .keyword { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <div class="container">
-            <a href="#hero"><span>HOME</span></a>
-            <a href="#project-intro"><span>소개</span></a>
-            <a href="#final-video"><span>완성작</span></a> 
-            <a href="#full-interview"><span>인터뷰</span></a> 
-            <a href="#process"><span>제작</span></a>
-            <a href="#repository"><span>저장소</span></a> 
-            <a href="#meaning"><span>의미</span></a>
-            <a href="#guestbook"><span>방명록</span></a>
-            <a href="#about-me"><span>제작자</span></a>
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Airhead</h1>
+            <p>세상을 바꾸는 활동가들의 기록</p>
         </div>
-    </div>
-
-    <div class="hero" id="hero">
-        <h1>평화의 기록</h1>
-    </div>
-
-    <section class="section" id="project-intro">
-        <div class="container">
-            <h2>프로젝트 소개</h2>
-            <p>저의 프로젝트는 다양한 활동가들을 만나며 저의 고민을 나누고,
-            <p>또 활동가들의 이야기를 들으며 나는 어떻게 살아갈지 이야기하는 다큐멘터리를 제작했습니다.
-            <p>지금까지 학교에서 배우며 생긴 고민들과 앞으로 나는 앞으로 어떻게 살 것인가를 찾아가고 있습니다.</p>
-            
-            <p style="text-align: center; margin-top: 30px; font-size: 0.9em; color: var(--secondary-color);">
-            </p>
+        <div class="keyword-container">
+            <a href="#project-intro" class="keyword kw1">Project Intro</a>
+            <a href="#final-video" class="keyword kw2">Final Video</a>
+            <a href="#repository" class="keyword kw3">Repository</a>
+            <a href="#guestbook" class="keyword kw4">Guestbook</a>
         </div>
     </section>
-    
-    <section class="section" id="final-video">
-        <div class="container">
-            <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 25px;">
-                완성된 프로젝트 영상
-            </h2>
-            
-            <div class="video-container">
-                <video controls preload="metadata" poster="images/video_poster.jpg">
-                    <source src="videos/[YOUR_VIDEO_FILE_NAME].mp4" type="video/mp4">
-                    <source src="videos/[YOUR_VIDEO_FILE_NAME].webm" type="video/webm">
-                    <p>죄송합니다. 귀하의 브라우저는 HTML5 비디오를 지원하지 않습니다. (파일 경로 오류일 수 있습니다)</p>
+
+    <nav class="navbar">
+        <a href="#hero">Home</a>
+        <a href="#project-intro">소개</a>
+        <a href="#final-video">완성작</a>
+        <a href="#full-interview">인터뷰</a>
+        <a href="#process">과정</a>
+        <a href="#repository">저장소</a>
+        <a href="#guestbook">방명록</a>
+    </nav>
+
+    <div class="content-wrapper">
+        
+        <section class="card" id="project-intro">
+            <span class="card-label">Project Introduction</span>
+            <h2>활동가들의 이야기</h2>
+            <p>평화와 인권을 위해 헌신하는 세 분의 활동가를 만나 그들의 삶을 기록했습니다. 우리의 일상이 곧 평화의 실천임을 이야기합니다.</p>
+        </section>
+
+        <section class="card" id="final-video">
+            <span class="card-label">Final Video</span>
+            <h2>완성된 다큐멘터리</h2>
+            <div class="video-box">
+                <video controls>
+                    <source src="videos/final_movie.mp4" type="video/mp4">
                 </video>
             </div>
-            <div style="text-align: center; margin-top: 30px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
-                <a href="#hero" style="color: var(--secondary-color); text-decoration: none;">↑ TOP으로 돌아가기</a>
+            <p>활동가 A, B, C의 인터뷰를 통합한 최종 영상입니다.</p>
+        </section>
+
+        <section class="card" id="process">
+            <span class="card-label">Process</span>
+            <h2>기획부터 완성까지</h2>
+            <p>1. 기획 및 섭외<br>2. 현장 촬영<br>3. 편집 및 자막 작업<br>4. 최종 공개</p>
+        </section>
+
+        <section class="card" id="repository">
+            <span class="card-label">Repository</span>
+            <h2>비하인드 클립</h2>
+            <div class="image-box">
+                <img src="images/photo1.jpg" alt="현장사진">
             </div>
-        </div>
-    </section>
+            <p>촬영 현장의 생생한 비하인드 컷입니다.</p>
+        </section>
 
-    <section class="section" id="full-interview">
-        <div class="container">
-            <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin-bottom: 25px;">
-                활동가 소개 & 인터뷰 전문
-            </h2>
-            <p style="text-align: center;">다양한 활동가와 진행한 인터뷰 전문을 아래에서 확인하실 수 있습니다.</p>
-<li><strong>평화바람 딸기</strong></li>
-                <li><strong>새만금신공항백지화공동행동 김지은</strong></li>
-                <li><strong>독립연구활동가 아정</strong></li>
-                <li><strong>전쟁과여성인권박물관 김동희</strong></li>
-                <li><strong>해초</strong></li>
-                <li><strong>핫핑크돌핀스 조약골</strong></li>
-            
-            <p style="text-align: center; margin-top: 15px;">
-            </p>
-
-            <iframe class="google-docs-embed" src="[YOUR_SINGLE_DOCS_EMBED_URL]" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-                </iframe>
-            
-            <div style="text-align: center; margin-top: 30px; border-top: 1px dashed var(--border-color); padding-top: 20px;">
-                <a href="#hero" style="color: var(--secondary-color); text-decoration: none;">↑ TOP으로 돌아가기</a>
-            </div>
-        </div>
-    </section>
-
-    
-    <section class="section" id="process">
-        <div class="container">
-            <h2>제작 과정</h2>
-            <ol>
-               <li><strong>기획 (9월) : </strong>작은 고민들로부터 시작</li>
-                <li><strong>현장 촬영 (9월~12월) : </strong>현장 촬영 & 활동가 인터뷰 진행</li>
-                <li><strong>영상 편집 & 후반 작업 (12월~1월) : </strong>영상 편집</li>
-                <li><strong>홈페이지 구현 & 공개 : </strong>최종 결과물 2026년 1월 3일 졸업식에서 공개</li>
-            </ol>
-            <p style="margin-top: 20px;"></p>
-        </div>
-    </section>
-    
-    <section class="section" id="repository">
-        <div class="container">
-            <h2>저장소: 사진과 영상</h2>
-            <p style="text-align: center;">프로젝트 제작 과정을 담은 사진과 짧은 영상을 확인하실 수 있습니다.</p>
-            
-            <div class="gallery-grid">
-                <figure>
-                    <video controls preload="metadata" poster="images/clip1_poster.jpg">
-                        <source src="videos/[YOUR_SHORT_VIDEO_NAME].mp4" type="video/mp4">
-                        <p>영상 재생 불가</p>
-                    </video>
-                    <figcaption>짧은 영상 클립: [내용]</figcaption>
-                </figure>
-                
-                <figure>
-                    <img src="images/photo1.jpg" alt="인터뷰 현장 모습">
-                    <figcaption>수라갯벌 고라니 발자국</figcaption>
-                </figure>
-                
-                <figure>
-                    <img src="images/photo2.jpg" alt="촬영 장비 셋업">
-                    <figcaption>수라갯벌 퉁퉁마디</figcaption>
-                </figure>
-                
-                <figure>
-                    <img src="images/photo3.jpg" alt="활동가와 기념 사진">
-                    <figcaption>수라갯벌 새 발자국</figcaption>
-                </figure>
-            </div>
-            <p style="text-align: center; margin-top: 30px; font-style: italic; color: var(--secondary-color);">**참고:** `images/`와 `videos/` 폴더에 파일을 넣어주세요.</p>
-        </div>
-    </section>
-
-    <section class="section" id="meaning">
-        <div class="container">
-            <h2>프로젝트의 의미와 결론</h2>
-            <p>이 프로젝트를 통해 우리는 평화 활동의 **연속성과 확장성**에 주목했습니다. 활동가들의 이야기를 듣고 기록함으로써, 시청자들이 **평화**라는 개념을 자신과 연결하고 일상 속 작은 실천의 중요성을 깨닫게 하는 것이 궁극적인 목표입니다.</p>
-            <p>평화는 '이미 존재하는 것'이 아니라, '함께 만들어가는 것'임을 깨닫는 계기가 되기를 바랍니다. </p>
-        </div>
-    </section>
-    
-    <section class="section" id="guestbook">
-        <div class="container">
-            <h2 style="font-family: 'S-Core Dream', sans-serif; font-weight: 700;">방명록 / 참여하기</h2>
-            <p style="text-align: center; margin-bottom: 20px;">프로젝트에 대한 소감, 질문, 응원의 메시지를 남겨주세요. (GitHub 계정 로그인 필요)</p>
-            
+        <section class="card" id="guestbook" style="grid-column: 1 / -1;">
+            <span class="card-label">Guestbook</span>
+            <h2>응원의 한마디</h2>
             <div id="comments-section">
                 <script src="https://utteranc.es/client.js"
-                        repo="[yoonsouyeon/yoonsouyeon.github.io]" 
+                        repo="[본인아이디]/[저장소이름]"
                         issue-term="pathname"
-                        theme="github-dark-orange" crossorigin="anonymous"
+                        theme="github-light"
+                        crossorigin="anonymous"
                         async>
                 </script>
             </div>
-        </div>
-    </section>
-    
+        </section>
 
-    <section class="section" id="about-me">
-        <div class="container">
-            <h2>제작자 소개</h2>
-            <p><strong>윤소연(그냥)</strong></p>
-            <p>📧 E-mail : souyeon1028@gmail.com</p>
-            <p>📞 Phone : 010-5331-2753</p>
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="https://github.com/yoonsouyeon" target="_blank" style="color: var(--primary-color); font-size: 1.2em; text-decoration: underline;">GitHub 링크</a>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 윤소연. All Rights Reserved.</p>
-        </div>
+    <footer style="text-align: center; padding: 50px; color: #999; font-size: 0.8rem;">
+        &copy; 2025 평화를 위한 날개. All Rights Reserved.
     </footer>
 
+    <script>
+        // 키워드들이 미세하게 움직이는 효과 (시안 느낌 강조)
+        document.querySelectorAll('.keyword').forEach(el => {
+            el.style.transform = `translate(${Math.random() * 20}px, ${Math.random() * 20}px)`;
+        });
+    </script>
 </body>
 </html>
