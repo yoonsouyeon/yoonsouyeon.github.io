@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>평화를 위한 날개</title>
     <style>
-        /* 폰트 정의: 눈누 제공 Neo둥근모 라이트 사용 */
+        /* 1. 둥근모꼴 웹폰트 로드 (가장 안정적인 CDN 경로) */
         @font-face {
-            font-family: 'NeoDunggeunmoPro-Regular';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2') format('woff2');
+            font-family: 'DungGeunMo';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.1/DungGeunMo.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
@@ -20,19 +20,22 @@
             --overlay-bg: rgba(255, 255, 255, 0.96);
         }
 
-        * { box-sizing: border-box; }
+        * { 
+            box-sizing: border-box; 
+            /* 모든 요소에 폰트를 강제 적용 */
+            font-family: 'DungGeunMo', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif !important;
+        }
 
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            /* 둥근모꼴 폰트 전체 적용 */
-            font-family: 'NeoDunggeunmoPro-Regular', sans-serif;
             overflow: hidden; 
+            background-color: #fff;
         }
 
-        /* --- 1. 메인 배경 화면 (그라데이션 적용) --- */
+        /* --- 1. 메인 배경 화면 (그라데이션) --- */
         .hero {
             position: relative;
             width: 100%;
@@ -43,7 +46,6 @@
             align-items: center;
         }
 
-        /* 중앙 프로젝트 제목 (분홍색 적용) */
         .hero-content {
             text-align: center;
             z-index: 5;
@@ -51,7 +53,7 @@
         }
 
         .hero h1 {
-            font-size: 6rem; /* 둥근모꼴 가독성을 위해 크기 확대 */
+            font-size: 6rem; 
             margin: 0;
             color: var(--point-pink); 
             text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
@@ -64,12 +66,12 @@
             margin-top: 20px;
         }
 
-        /* --- 2. 인터랙티브 키워드 (하늘색 적용) --- */
+        /* --- 2. 인터랙티브 키워드 (하늘색 버튼) --- */
         .keyword {
             position: absolute;
             color: #335577;
             text-decoration: none;
-            font-size: 1.5rem; /* 픽셀 폰트 강조 */
+            font-size: 1.5rem; 
             cursor: pointer;
             padding: 15px 35px;
             background: var(--sky-blue); 
@@ -77,6 +79,7 @@
             border-radius: 20px;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            display: inline-block;
         }
 
         .keyword:hover {
@@ -92,7 +95,7 @@
         .kw-repo { bottom: 25%; left: 20%; }
         .kw-guest { bottom: 15%; right: 25%; }
 
-        /* --- 3. 상세 페이지 모달 (내용창) --- */
+        /* --- 3. 상세 페이지 모달 --- */
         .page-overlay {
             position: fixed;
             top: 0;
@@ -184,7 +187,7 @@
             <div class="close-btn" onclick="closePage()">×</div>
             <span class="card-label">PROJECT INTRODUCTION</span>
             <h2>프로젝트 소개</h2>
-            <p>파란 하늘처럼 맑은 진심을 가진 활동가들의 삶을 담은 졸업 프로젝트입니다. 우리의 기록이 평화의 씨앗이 되길 바랍니다.</p>
+            <p>맑은 진심을 가진 활동가들의 삶을 담은 기록입니다.</p>
         </div>
     </div>
 
@@ -198,7 +201,6 @@
                     <source src="videos/final_movie.mp4" type="video/mp4">
                 </video>
             </div>
-            <p>평화의 목소리를 생생한 다큐멘터리 영상으로 만나보세요.</p>
         </div>
     </div>
 
@@ -207,7 +209,7 @@
             <div class="close-btn" onclick="closePage()">×</div>
             <span class="card-label">DATA ARCHIVE</span>
             <h2>인터뷰 및 자료</h2>
-            <p>세 분의 활동가와 나눈 깊은 대화의 기록과 촬영 비하인드를 정리해 두었습니다.</p>
+            <p>활동가들의 심층 인터뷰 전문을 보관하고 있습니다.</p>
         </div>
     </div>
 
